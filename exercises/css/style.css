@@ -1,0 +1,9 @@
+
+.block {float: left; margin:10px 0 }
+.text {float: left; font-face: "San-serif, Times New Roman, Veroniaca"; font-size: 14px; width:300px;}
+.block img {float: left;}
+#content {width: 450px; overflow:hidden; padding:5px; background:#d3d3d3;}
+
+#content h1 { text-align:center;}
+
+.floatR { float:right!important}

@@ -1,0 +1,135 @@
+println "*" * 1;
+println "*" * 2;
+println "*" * 4;
+println "*" * 8;
+or
+ println "*";
+0.step(9,2) {println "*"*it} 
+
+------------------------------------------------------------------
+ def x=[1,"a",20,"book","cat","30","",null,100]
+
+ List<Integer> y=[];
+x.each{
+String p=it;
+if(p?.isNumber()) y<<p
+}
+sum=0;
+y.each { sum= sum+it.toDouble();}
+print sum; 
+-------------------------------------------------------------------
+
+def inputFile = new File("/home/intelligrape/vineet/test.txt")
+int l=1;
+
+    def findWord = {File iFile, String word->
+iFile.eachLine {
+   def line = it.split(" ")
+   //println line
+int w=1;
+   line.each {String x->
+       if(x==word)    {
+           println "$word is found @ line $l @ word no $w" 
+       }
+       w++
+   }
+    l++
+}
+}
+findWord(inputFile, "this")
+------------------------------------------------------------------
+class HourMinutes {
+    int hrs
+    int min
+    
+    HourMinutes plus(HourMinutes time)    {
+    HourMinutes abc=new HourMinutes();
+    abc.hrs=this.hrs+time.hrs
+    abc.min=this.min+time.min
+    if(abc.min>60)    {
+        abc.hrs+=abc.min/60
+        abc.min=abc.min%60
+    }
+    return abc;
+    }
+    
+    HourMinutes minus(HourMinutes time)    {
+    HourMinutes abc=new HourMinutes();
+    abc.hrs=this.hrs-time.hrs
+    abc.min=this.min-time.min
+    if(abc.min<0)    {
+        a.hrs-=1
+        abc.min+=60
+    }
+    return abc;
+    }
+    String toString() {
+        return "Time : "+hrs+" hrs "+min+" mins"
+    }
+}
+HourMinutes time1 = new HourMinutes(hrs: 5, min: 40)
+HourMinutes time2 = new HourMinutes(hrs: 3, min: 50)
+time1+time2
+time1-time2
+
+------------------------------------------------------------------------
+1.upto(10) {println "3 x $it : ${3*it}"}
+
+
+-------------------------------------------------------------------------
+def search = {def name,List nameList->
+    int cnt=0
+    nameList.each {
+        if(name==it)    {
+           
+            println "${name} found @ position ${cnt}"
+        } 
+        cnt++
+    }
+}
+
+search("vineet", ["rajan", "john", "rajan", "ramesh", "puneet", "vineet"])
+
+-----------------------------------------------------------------------------
+
+if("Test") { 
+    println "test evaluated to true inside if" 
+}
+if('null') { println "test evaluated to true inside if" }
+
+if(100) { println "test evaluated to true inside if" } 
+
+if([]) { println "test evaluated to true inside if" } ////if test evaluated as faLSE HERE
+
+if (0) { println "test evaluated to true inside if" } //if test evaluated as faLSE HERE
+
+if([null, null]) { println "test evaluated to true inside if" }  //if test evaluated as faLSE HERE
+
+------------------------------------------------------------------------------------
+
+"touch /home/intelligrape/vineet/newTFile.txt".execute().text
+File myFile = new File("/home/intelligrape/vineet/two.html")
+int count=1
+myFile.eachLine {
+    if(count%2)    {
+        new File("/home/intelligrape/vineet/newTFile.txt").append(count+" "+it+ "\n") 
+        
+   }
+   count++;
+}
+------------------------------------------------------------------------------------------------
+def content = new File("/home/intelligrape/vineet/test.txt").text
+def data=content.tokenize()
+data.each {print it}
+
+
+---------------------------------------------------------------------------------------------------
+
+"touch /home/intelligrape/vineet/newFile.txt".execute().text
+File newFile= new File("/home/intelligrape/vineet/newFile.txt")
+File dir = new File("/home/intelligrape/vineet/")
+dir.eachFile {
+    newFile.append(new File("$it").text)
+}
+
+------------------------------------------------------------------------------------

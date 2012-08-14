@@ -1,0 +1,68 @@
+<html>
+<head>
+ <script type="text/javascript" src="jquery.js"></script>
+</head>
+<body>
+<form>
+  <fieldset>
+
+    <select name="selectfrom" id="select-from" multiple size="5">
+      <option value="1">Item 1</option>
+      <option value="2">Item 2</option>
+      <option value="3">Item 3</option>
+      <option value="4">Item 4</option>
+      <option value="5">Item 5</option>
+      <option value="6">Item 6</option>
+    </select>
+
+    <a href="JavaScript:void(0);" id="btn-add">Add &raquo;</a>
+    <a href="JavaScript:void(0);" id="btn-remove">&laquo; Remove</a>
+
+    <select name="selectto" id="select-to" multiple size="5">
+      <option value="7">Item 7</option>
+      <option value="8">Item 8</option>
+      <option value="9">Item 9</option>
+    </select>
+
+<a href="http://www.w3schools.com" title="hey">Visit W3Schools.com!</a>
+
+Get: <textarea id=t1 name=t1 rows="2" cols="20" name="Get"> </textarea>
+ 
+
+
+  </fieldset>
+</form>
+<script>
+$(document).ready(function() {
+ 
+    $('#btn-add').click(function(){
+        $('#select-from option:selected').each( function() {
+                $('#select-to').append("<option value='"+$(this).val()+"'>"+$(this).text()+"</option>");
+            $(this).remove();
+        });
+    });
+
+    $('#btn-remove').click(function(){
+        $('#select-to option:selected').each( function() {
+            $('#select-from').append("<option value='"+$(this).val()+"'>"+$(this).text()+"</option>");
+            $(this).remove();
+        });
+    });
+
+   $('a[title="hey"]').mouseover(function(){
+$('#select-to').each( function() {
+            $('#t1').append($(this).text());
+ 
+ });
+
+$('#select-from').each( function() {
+            $('#t1').append($(this).text());
+ 
+ });
+
+});
+ 
+});
+</script>
+</body>
+<html>

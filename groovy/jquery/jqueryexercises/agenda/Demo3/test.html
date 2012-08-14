@@ -1,0 +1,77 @@
+<html>                                                                  
+ <head>                                                                  
+ <script type="text/javascript" src="jquery.js"></script>
+ </head>                                                                 
+ <body>
+<form>         
+	<div id="firstTextBox">
+		Your text here <input type="text" id="text1" name="text1" size="30"/>
+		<input type="checkbox" name="makeReadOnly" id="r2" checked="checked">Make Read Only 
+		<a href="#" id="a1"> Show/Hide this line</a>
+	</div>
+
+	<div id="secondTextBox">
+		Your Text repeats here <input type="text" id="text2" readonly size="30"/>
+	<a href="#" id="a2" > Show/Hide  this line</a>
+	</div>
+
+	<div id="f1">
+		<input type="button" id="b1" value="Clear Text boxes"/>
+		<input type="button" id="b2" value="Put a border around divs"/>
+	</div>
+</form>
+<script>
+$(document).ready(function(){
+ $('input[name=text1]').click(function (){
+	//$('input[name=text1]').attr('readonly',true)
+	//$('#secondTextBox').hide();
+})
+
+$('input[type=button]:first').click(function(){
+	//$('#secondTextBox').show();
+	//$('#secondTextBox').css('border','2px solid red');
+})
+
+$('#text1').keyup(function(){
+x=$('#text1').val()
+$('#text2').val(x)
+})
+
+$('#b1').click(function(){
+         $('#text1').val(" ")
+          $('#text2').val(" ")
+
+})
+
+$('#b2').click(function(){
+$('#firstTextBox').css('border','2px solid red');
+$('#secondTextBox').css('border','2px solid red');
+$('#f1').css('border','2px solid red');
+})
+
+$('#a1').mouseover(function(){
+          $('#a1').hide(1000,function(){
+          $('#a1').show();})
+})
+
+$('#a2').mouseover(function(){
+          $('#a2').hide(1000,function(){
+          $('#a2').show();})
+})
+
+ $("#r2").change(function() {
+        if (this.checked) {
+            $("#text1").attr('disabled', 'disabled');
+            $("#text1").attr('readonly', 'true');
+        }
+        else {
+            $("#text1").removeAttr('disabled');
+            $("#text1").removeAttr('readonly');
+        }
+    });
+ $("#r2").trigger("change")
+})
+</script>
+ </body>                                                                 
+ </html>
+
