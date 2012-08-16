@@ -1,11 +1,12 @@
 target
 test
 stacktrace.log
-*.ipr
-*.iml
-.idea
+.ipr
+.iml
 .classpath
 out/
 *.tld
 .project
 *~
+.idea
+
