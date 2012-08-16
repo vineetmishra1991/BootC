@@ -2,11 +2,14 @@ target
 test
 stacktrace.log
 .ipr
-.iml
+*.iml
 .classpath
 out/
 *.tld
 .project
 *~
 .idea
+Linksharing/Linksharing.iml
+applications/myApp/myApp-grailsPlugins.iml
+Linksharing/devDB.h2.db
 
