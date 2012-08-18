@@ -8,10 +8,9 @@ class User {
     String email
     Date dateCreated
     Date lastUpdated
-    Boolean sex
+    Boolean male
 
-    static hasMany = [subscriptions:Subscription,topics:Topic]
-
+    static hasMany = [subscriptions:Subscription,topics: Topic]
 
 
     static constraints = {

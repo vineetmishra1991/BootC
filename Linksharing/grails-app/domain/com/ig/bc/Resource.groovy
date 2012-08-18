@@ -9,6 +9,7 @@ abstract class Resource {
     String summary
 
     static hasMany = [readingitems:Readingitem]
+   static belongsTo = [Topic]
 
     static constraints = {
         summary(maxSize: 1024)

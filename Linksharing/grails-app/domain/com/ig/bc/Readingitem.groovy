@@ -7,6 +7,7 @@ class Readingitem {
     User usr
     Resource res
 
+    static belongsTo = [Resource]
 
     static constraints = {
     }
