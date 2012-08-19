@@ -14,4 +14,6 @@ abstract class Resource {
     static constraints = {
         summary(maxSize: 1024)
         }
+
+
 }

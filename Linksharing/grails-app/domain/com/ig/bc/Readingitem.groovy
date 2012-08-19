@@ -4,11 +4,11 @@ class Readingitem {
 
     Boolean isfavorite
     Boolean isread
-    User usr
-    Resource res
-
-    static belongsTo = [Resource]
+    User user
+    Resource resource
+    static belongsTo = [resource:Resource,user:User]
 
     static constraints = {
     }
+
 }

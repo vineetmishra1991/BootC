@@ -10,7 +10,7 @@ class User {
     Date lastUpdated
     Boolean male
 
-    static hasMany = [subscriptions:Subscription,topics: Topic]
+    static hasMany = [subscriptions:Subscription,topics: Topic,readingitems:Readingitem]
 
 
     static constraints = {
