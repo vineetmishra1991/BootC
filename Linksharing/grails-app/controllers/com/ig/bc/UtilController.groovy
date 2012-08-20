@@ -47,17 +47,35 @@ class UtilController {
         top2.addToResources(new Linkresource(title: 'ninth',summary: 'informative one ninth url',url: 'http://www.intelligrap3e.com')).save(failOnError: true,flush: true)
         top2.addToResources(new Linkresource(title: 'tenth',summary: 'informative one tenth url',url: 'http://www.linke2din.com')).save(failOnError: true,flush: true)
 
-        Resource.list().each {
 
-        usr1.addToReadingitems(isfavorite: false,isread: false, user: usr1, resource: it).save(failOnError: true,flush: true)
-
-                             }
-
-        Resource.list().each {
-
-            usr2.addToReadingitems(isfavorite: false,isread: false, user: usr1, resource: it).save(failOnError: true,flush: true)
+        usr1.subscriptions.each {Subscription subscription->
+            subscription.topic.resources.each { Resource resource ->
+                usr1.addToReadingitems(new Readingitem(isfavorite: false,isread: false,user:usr1, resource:resource)).save(failOnError: true,flush: true)
+            }
 
         }
+
+        usr2.subscriptions.each {Subscription subscription->
+            subscription.topic.resources.each { Resource resource ->
+                usr2.addToReadingitems(new Readingitem(isfavorite: false,isread: false,user:usr2, resource:resource)).save(failOnError: true,flush: true)
+            }
+
+        }
+//
+// Resource.list().each {
+
+//        usr1.addToReadingitems(isfavorite: false,isread: false, user: usr1, resource: it).save(failOnError: true,flush: true)
+
+//        }
+
+
+
+
+//        Resource.list().each {
+
+//            usr2.addToReadingitems(isfavorite: false,isread: false, user: usr1, resource: it).save(failOnError: true,flush: true)
+
+//        }
 
 
         usr1.getReadingitems().each {
