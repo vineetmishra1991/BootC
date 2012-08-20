@@ -102,6 +102,35 @@ class UserController {
 
     def dashboard(){
 
-          render(view: "Dashboard")
+          User user=User.findByEmail(session.userEmail)
+
+        // List list=Readingitem.findAllByUserAndIsread(user, false)
+
+        List<Readingitem> list=[]
+
+          user.readingitems.each {Readingitem readingitem->
+
+              if (!readingitem.isread) {
+
+
+             list.add(readingitem.resource.title)
+
+              }
+
+          }
+           List subslist=[]
+        user.subscriptions.each {Subscription subscriber->
+
+           subslist.add(subscriber.topic.name)
+
+        }
+           List ownedlist=[]
+          user.topics.each{Topic topic->
+
+             ownedlist.add(topic.name)
+
+          }
+
+          render(view: "Dashboard",model: [list:list,subslist:subslist,ownedlist:ownedlist])
     }
 }

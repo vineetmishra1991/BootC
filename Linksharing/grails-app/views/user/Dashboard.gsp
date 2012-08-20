@@ -19,8 +19,24 @@
 <g:form controller="login" action="logout">
 
 You Are successfully logged in !!!
+      <br>
+ Your unread items are :  <br>
+    <g:each in="${list}" var="subs">
+        ${subs}
+        <br/>
+    </g:each>
 
+  Your subscribed items are : <br>
+    <g:each in="${subslist}" var="subp">
+        ${subp}
+        <br/>
+    </g:each>
 
+  The topic you own are : <br>
+    <g:each in="${subslist}" var="subp">
+        ${subp}
+        <br/>
+    </g:each>
 
 
 <input type="Submit" value="Logout" >
