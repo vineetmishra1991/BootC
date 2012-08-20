@@ -3,7 +3,6 @@ package com.ig.bc
 class LoginController {
 
     def index() {
-
             redirect(uri: '/pogin.html')
     }
 
@@ -13,7 +12,9 @@ class LoginController {
         if (email && password)  {
             if (User.countByEmailAndPassword(email,password)){
                session.userEmail=email
-                render(view: "Dashboard")
+               session.password=password
+                redirect(controller: 'user',action: 'dashboard')
+
                 return
             }
         }
