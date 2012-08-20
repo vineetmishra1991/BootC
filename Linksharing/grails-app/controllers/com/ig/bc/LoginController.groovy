@@ -14,11 +14,12 @@ class LoginController {
                session.userEmail=email
                session.password=password
                 redirect(controller: 'user',action: 'dashboard')
-
                 return
             }
+
         }
         redirect(action: 'index')
+
     }
 
     def logout() {

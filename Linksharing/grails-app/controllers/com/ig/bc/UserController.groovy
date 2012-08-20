@@ -113,21 +113,21 @@ class UserController {
               if (!readingitem.isread) {
 
 
-             list.add(readingitem.resource.title)
+             list.add(readingitem)
 
               }
 
           }
-           List subslist=[]
+           List<Subscription> subslist=[]
         user.subscriptions.each {Subscription subscriber->
 
-           subslist.add(subscriber.topic.name)
+           subslist.add(subscriber)
 
         }
-           List ownedlist=[]
+           List<Topic> ownedlist=[]
           user.topics.each{Topic topic->
 
-             ownedlist.add(topic.name)
+             ownedlist.add(topic)
 
           }
 

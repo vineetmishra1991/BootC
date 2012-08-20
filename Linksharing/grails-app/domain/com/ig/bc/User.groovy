@@ -12,6 +12,8 @@ class User {
 
     static hasMany = [subscriptions:Subscription,topics: Topic,readingitems:Readingitem]
 
+//   topic is a set which contains object of type Topic, set can be explicitly converted to a list
+
 
     static constraints = {
         dateCreated(nullable: true)

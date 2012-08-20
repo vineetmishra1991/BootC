@@ -14,12 +14,15 @@
   <title></title>
 </head>
 <body>
-  total users :   ${count}
-<br/>
+  Total Users :   ${count}
+<br/>      <br>
 Subscriptions Details :
 <br/>
 <g:each in="${subscriptionDetails}" var="subs">
-    ${subs}
+    <br>
+    <tr>
+   <td>${subs}</td>
+    </tr>
     <br/>
 </g:each>
 </body>
