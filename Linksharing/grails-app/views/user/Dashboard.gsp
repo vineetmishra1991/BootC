@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    ${flash.message}
+    %{--${flash.message}--}%
     You Are successfully logged in !!!
     <br>
     <h1>Unread Items</h1>

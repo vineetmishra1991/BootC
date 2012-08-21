@@ -3,8 +3,19 @@ package com.ig.bc
 class LoginController {
 
     def index() {
-            redirect(uri: '/pogin.html')
+
+        if(session.userEmail)
+        {
+            redirect(controller: 'user',action: 'dashboard')
+        }
+        else
+        {
+            render(view: '/login')
+        }
+
     }
+
+
 
     def loginHandler(){
            String email=params.t1
