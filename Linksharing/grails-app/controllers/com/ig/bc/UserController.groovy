@@ -102,35 +102,35 @@ class UserController {
 
     def dashboard(){
 
-          User user=User.findByEmail(session.userEmail)
+//          User user=User.findByEmail(session.userEmail)
+//
+//        // List list=Readingitem.findAllByUserAndIsread(user, false)
+//
+//        List<Readingitem> list=[]
+//
+//          user.readingitems.each {Readingitem readingitem->
+//
+//              if (!readingitem.isread) {
+//
+//
+//             list.add(readingitem)
+//
+//              }
+//
+//          }
+//           List<Subscription> subslist=[]
+//        user.subscriptions.each {Subscription subscriber->
+//
+//           subslist.add(subscriber)
+//
+//        }
+//           List<Topic> ownedlist=[]
+//          user.topics.each{Topic topic->
+//
+//             ownedlist.add(topic)
+//
+//          }
 
-        // List list=Readingitem.findAllByUserAndIsread(user, false)
-
-        List<Readingitem> list=[]
-
-          user.readingitems.each {Readingitem readingitem->
-
-              if (!readingitem.isread) {
-
-
-             list.add(readingitem)
-
-              }
-
-          }
-           List<Subscription> subslist=[]
-        user.subscriptions.each {Subscription subscriber->
-
-           subslist.add(subscriber)
-
-        }
-           List<Topic> ownedlist=[]
-          user.topics.each{Topic topic->
-
-             ownedlist.add(topic)
-
-          }
-
-          render(view: "Dashboard",model: [list:list,subslist:subslist,ownedlist:ownedlist])
+          render(view: "Dashboard")
     }
 }

@@ -19,6 +19,7 @@ class AdminController {
         User.list().each {User user->
            subscriptionDetails.add("User name : ${user.firstname}, Subscriptions : ${user.subscriptions.size()}")
         }
+
         render (view:"stats",model: [count:count,subscriptionDetails:subscriptionDetails])
 
     }

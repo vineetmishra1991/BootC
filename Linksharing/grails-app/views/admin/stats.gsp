@@ -24,6 +24,7 @@ Subscriptions Details :
    <td>${subs}</td>
     </tr>
     <br/>
+    %{--<ls:formattedDate date="${subs}"/>--}%
 </g:each>
 </body>
 </html>

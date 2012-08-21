@@ -99,4 +99,11 @@ class ReadingitemController {
             redirect(action: "show", id: id)
         }
     }
+
+    def markRead(Long id){
+
+        Readingitem item=Readingitem.get(id)
+        item.isread=true
+        redirect(controller: 'user',action: 'dashboard')
+           }
 }
