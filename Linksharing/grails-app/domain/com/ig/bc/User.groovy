@@ -29,7 +29,7 @@ class User {
         email(email: true, nullable: false, unique: true)
         confirmPassword(bindable: true)
         password(validator: {currentPassword, obj ->
-            println "${obj.confirmPassword} >>> ${obj.password}"
+//            println "${obj.confirmPassword} >>> ${obj.password}"
             if(currentPassword != obj.confirmPassword){
 
                 return false
