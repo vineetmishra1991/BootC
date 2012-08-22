@@ -7,9 +7,9 @@ class UtilController {
 
     def create()
     {
-        User usr1=new User(firstname: 'vineet',lastname: 'mishra',address: 'pvihar',password: 'vineet',email: 'vnt.mshra@gmail.com',male: true)
-        User usr2=new User(firstname: 'john',lastname: 'saxena',address: 'pvihardd',password: 'john',email: 'john.saxena@gmail.com',male: true)
-        User usr3=new User(firstname: 'Admin',lastname: 'Company',address: 'noida',password: 'admin',email: 'admin@intelligrape.com',male: true)
+        User usr1=new User(firstname: 'vineet',lastname: 'mishra',address: 'pvihar',password: 'vineet',confirmPassword: 'vineet', email: 'vnt.mshra@gmail.com',male: true)
+        User usr2=new User(firstname: 'john',lastname: 'saxena',address: 'pvihardd',password: 'john',confirmPassword: 'john',email: 'john.saxena@gmail.com',male: true)
+        User usr3=new User(firstname: 'Admin',lastname: 'Company',address: 'noida',password: 'admin',confirmPassword: 'admin',email: 'admin@intelligrape.com',male: true)
         usr1.save(failOnError: true)
         usr2.save(failOnError: true)
         usr3.save(failOnError: true)

@@ -9,6 +9,7 @@ class Readingitem {
 
     static belongsTo = [resource:Resource, user:User]
 
+
     static constraints = {
     }
 

@@ -50,6 +50,14 @@
 	<g:textField name="password" value="${userInstance?.password}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'confirmPassword', 'error')} ">
+    <label for="confirmPassword">
+        <g:message code="user.password.label" default="Confirm Password" />
+
+    </label>
+    <g:textField name="confirmPassword" value="${userInstance?.confirmPassword}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'readingitems', 'error')} ">
 	<label for="readingitems">
 		<g:message code="user.readingitems.label" default="Readingitems" />
