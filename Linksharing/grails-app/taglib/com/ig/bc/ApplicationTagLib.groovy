@@ -10,8 +10,7 @@ class ApplicationTagLib {
 
          User user=User.findByEmail(session.userEmail)
          List list=Readingitem.findAllByUserAndIsread(user, false,[max: max])
-         List viewdate=list.user.dateCreated
-         out<<render(template: '/user/unreadtable',model: [list:list,viewdate:viewdate])
+         out<<render(template: '/user/unreadtable',model: [list:list])
 
          }
 
@@ -20,19 +19,19 @@ class ApplicationTagLib {
          User user=User.findByEmail(session.userEmail)
 
          List<Subscription> subslist=Subscription.findAllBySubscriber(user)
-         List<Topic> topicList = subslist.topic as List<Topic>
+         List<Topic> topicList = subslist.topic
 
          out<<render(template: '/user/subscribedtopics',model: [topicList:topicList])
 
 
      }
 
-    def ownedTopics={
+    def ownedTopics={attrs->
 
         User user=User.findByEmail(session.userEmail)
 
         List<Topic> ownerList=Topic.findAllByOwner(user)
-        out<<render(template: '/user/subscribedtopics',model: [topicList: ownerList])
+        out<<render(template: '/user/ownedtopics',model: [ownerList: ownerList])
     }
 
     def markAsRead={attrs->

@@ -63,8 +63,8 @@ class TopicController {
         if (version != null) {
             if (topicInstance.version > version) {
                 topicInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'topic.label', default: 'Topic')] as Object[],
-                          "Another user has updated this Topic while you were editing")
+                        [message(code: 'topic.label', default: 'Topic')] as Object[],
+                        "Another user has updated this Topic while you were editing")
                 render(view: "edit", model: [topicInstance: topicInstance])
                 return
             }
@@ -99,4 +99,19 @@ class TopicController {
             redirect(action: "show", id: id)
         }
     }
+
+    def commandObjectBinding(VaildatorCO validateCO) {
+///        println "Errors in BookCommand : " + validateEmail.errors
+////        if(validateEmail.hasErrors()){println "error"}
+//        println "hey"
+      if (!validateCO.validate()){
+
+           validateCO.errors.allErrors.each {
+              println it
+           }
+      }
+
+
+    }
+
 }

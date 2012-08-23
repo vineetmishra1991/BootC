@@ -1,6 +1,6 @@
 package com.ig.bc
 
-class Subscription {
+class   Subscription {
 
     Date dateCreated
     Date lastUpdated
@@ -11,7 +11,7 @@ class Subscription {
 
     static belongsTo = [subscriber:User,topic:Topic]
 
-    static constraints = {
-        topic(unique: 'subscriber')
-    }
+//    static constraints = {
+//        topic(unique: 'subscriber')
+//    }
 }

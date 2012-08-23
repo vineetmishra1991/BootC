@@ -54,7 +54,7 @@
                     %{--</g:each>--}%
                     %{--</tbody>--}%
                 %{--</table>--}%
-
+      <ls:ownedTopics/>
 
 <g:form controller="login" action="logout">
 
