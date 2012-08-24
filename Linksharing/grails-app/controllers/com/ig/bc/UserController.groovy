@@ -63,8 +63,8 @@ class UserController {
         if (version != null) {
             if (userInstance.version > version) {
                 userInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'user.label', default: 'User')] as Object[],
-                          "Another user has updated this User while you were editing")
+                        [message(code: 'user.label', default: 'User')] as Object[],
+                        "Another user has updated this User while you were editing")
                 render(view: "edit", model: [userInstance: userInstance])
                 return
             }
@@ -100,7 +100,24 @@ class UserController {
         }
     }
 
-    def dashboard(){
+    def highest() {
+        def subscription = Subscription.createCriteria().list() {
+            projections {
+                groupProperty('topic')
+                count('topic','s')
+// above can also be done as count('''subscriber','s')
+               }
+            'topic' {
+                'eq'("visibility", Visibility.PUBLIC)
+            }
+            order('s','desc')
+            maxResults 1
+        }
+
+        render(subscription)
+    }
+
+    def dashboard() {
 
 //          User user=User.findByEmail(session.userEmail)
 //
@@ -131,6 +148,6 @@ class UserController {
 //
 //          }
 
-          render(view: "Dashboard")
+        render(view: "Dashboard")
     }
 }
