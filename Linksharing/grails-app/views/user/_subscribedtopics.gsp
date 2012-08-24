@@ -15,7 +15,6 @@
     </g:each>
 
     </tbody>
-
 </table>
 
 
