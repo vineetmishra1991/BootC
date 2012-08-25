@@ -3,7 +3,7 @@ package com.ig.bc
 class BootstrapService {
 
     def userInitService
-    def topicInitService
+    def topicInitAndSubscribeCreatorService
     def setResourceToTopicService
     def subscriptionService
     def setReadingItemTrueRandomAndPrintUnreadItemsService
@@ -15,9 +15,9 @@ class BootstrapService {
     def initializeData() {
 
         userInitService.userInit()
-        topicInitService.topicInit()
+        topicInitAndSubscribeCreatorService.topicInit()
+        topicInitAndSubscribeCreatorService.subscriberInit()
         setResourceToTopicService.setResourcetotopic()
-        subscriptionService.subscriberInit()
         subscriptionService.addRandomSubscribersToTopic()
         subscriptionService.setReadingitemofuser()
         setReadingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()

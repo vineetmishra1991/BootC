@@ -8,7 +8,7 @@ abstract class Resource {
     String title
     String summary
 
-   static belongsTo = [topic:Topic,user:User]
+   static belongsTo = [topic:Topic]
     static hasMany = [readingitems: Readingitem]
 
     static constraints = {

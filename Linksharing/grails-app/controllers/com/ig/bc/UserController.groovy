@@ -111,11 +111,25 @@ class UserController {
                 'eq'("visibility", Visibility.PUBLIC)
             }
             order('s','desc')
-            maxResults 1
+            maxResults 3
         }
 
         render(subscription)
     }
+
+//    def mostRead(){
+//        def subscription = Subscription.createCriteria().list() {
+//            projections {
+//                groupProperty('topic')
+//                count('topic','s')
+//// above can also be done as count('''subscriber','s')
+//            }
+//
+//            order('s','desc')
+//            maxResults 1
+//        }
+//
+//    }
 
     def dashboard() {
 

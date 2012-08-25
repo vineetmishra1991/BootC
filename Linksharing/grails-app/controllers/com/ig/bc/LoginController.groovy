@@ -4,34 +4,30 @@ class LoginController {
 
     def index() {
 
-        if(session.userEmail)
-        {
-            redirect(controller: 'user',action: 'dashboard')
+        if (session.userEmail) {
+            redirect(controller: 'user', action: 'dashboard')
         }
-        else
-        {
+        else {
             render(view: '/login')
         }
 
     }
 
-
-
-    def loginHandler(){
-           String email=params.t1
-           String password=params.t2
+    def loginHandler() {
+        String email = params.t1
+        String password = params.t2
         String controllerName = "login"
         String actionName = "index"
-        if (email && password)  {
-            if (User.countByEmailAndPassword(email,password)){
-               session.userEmail=email
+        if (email && password) {
+            if (User.countByEmailAndPassword(email, password)) {
+                session.userEmail = email
                 controllerName = 'user'
                 actionName = 'dashboard'
             }
 //            else{ flash.message="Not Exist !!"}
 
         }
-        redirect(controller: controllerName,action: actionName)
+        redirect(controller: controllerName, action: actionName)
 
     }
 

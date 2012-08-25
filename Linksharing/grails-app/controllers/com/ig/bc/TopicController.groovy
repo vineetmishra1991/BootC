@@ -4,6 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class TopicController {
 
+    def inviteLogService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -104,13 +105,13 @@ class TopicController {
 ///        println "Errors in BookCommand : " + validateEmail.errors
 ////        if(validateEmail.hasErrors()){println "error"}
 //        println "hey"
-      if (!validateCO.validate()){
-
-           validateCO.errors.allErrors.each {
-              println it
-           }
-      }
-
+//      if (!validateCO.validate()){
+//
+//           validateCO.errors.allErrors.each {
+//              println it
+//           }
+//      }
+          inviteLogService.commandObjectBinding(validateCO)
 
     }
 

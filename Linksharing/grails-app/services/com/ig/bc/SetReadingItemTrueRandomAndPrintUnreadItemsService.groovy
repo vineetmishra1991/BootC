@@ -6,7 +6,7 @@ class SetReadingItemTrueRandomAndPrintUnreadItemsService {
 
     }
 
-    def setReadingitemstruerandom(){
+    def setReadingitemstruerandom() {
 
         User user = User.get(1)
         user.getReadingitems().each {
