@@ -69,8 +69,6 @@
 
 <div>
     <g:form controller="documentresource" action="commandObjectBinding" enctype="multipart/form-data" method="POST">
-        File Name: <input type="text" name="fileName"> <br> <br>
-        Content Type: <input type="text" name="contentType"> <br> <br>
         Title: <input type="text" name="title"> <br> <br>
         Summary: <textarea maxlength="1000" name="summary">
     </textarea>   <br> <br><br>

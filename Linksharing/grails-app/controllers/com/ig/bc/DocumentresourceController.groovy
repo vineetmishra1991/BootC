@@ -3,7 +3,7 @@ package com.ig.bc
 import org.springframework.dao.DataIntegrityViolationException
 
 class DocumentresourceController {
-
+            def saveDocumentResourceService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -102,18 +102,8 @@ class DocumentresourceController {
 
     def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO) {
 
-        def id=documentResourceAdderCO.id
-        def file = documentResourceAdderCO.myFile
-
-        def fname=file.getOriginalFilename()
-
-        println fname
-        println id
-
-        println "${grailsApplication.config.uploadPath}"
-        file.transferTo(new File("${grailsApplication.config.uploadPath}/${fname}"))
-
+        def path=grailsApplication.config.uploadPath
+        saveDocumentResourceService.commandObjectBinding(documentResourceAdderCO,path)
     }
-
 
 }
