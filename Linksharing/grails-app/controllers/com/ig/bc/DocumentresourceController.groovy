@@ -63,8 +63,8 @@ class DocumentresourceController {
         if (version != null) {
             if (documentresourceInstance.version > version) {
                 documentresourceInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'documentresource.label', default: 'Documentresource')] as Object[],
-                          "Another user has updated this Documentresource while you were editing")
+                        [message(code: 'documentresource.label', default: 'Documentresource')] as Object[],
+                        "Another user has updated this Documentresource while you were editing")
                 render(view: "edit", model: [documentresourceInstance: documentresourceInstance])
                 return
             }
@@ -99,4 +99,21 @@ class DocumentresourceController {
             redirect(action: "show", id: id)
         }
     }
+
+    def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO) {
+
+        def id=documentResourceAdderCO.id
+        def file = documentResourceAdderCO.myFile
+
+        def fname=file.getOriginalFilename()
+
+        println fname
+        println id
+
+        println "${grailsApplication.config.uploadPath}"
+        file.transferTo(new File("${grailsApplication.config.uploadPath}/${fname}"))
+
+    }
+
+
 }

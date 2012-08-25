@@ -39,6 +39,7 @@
 		<g:message code="documentresource.topic.label" default="Topic" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="topic" name="topic.id" from="${com.ig.bc.Topic.list()}" optionKey="id" required="" value="${documentresourceInstance?.topic?.id}" class="many-to-one"/>
+	<g:select id="topic" name="topic.id" from="${com.ig.bc.Topic.list()}" optionKey="id" required="" value="${documentresourceInstance?.topic?.id}"
+              class="many-to-one"/>
 </div>
 

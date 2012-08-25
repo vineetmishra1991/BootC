@@ -17,7 +17,7 @@ class BootstrapService {
         userInitService.userInit()
         topicInitAndSubscribeCreatorService.topicInit()
         topicInitAndSubscribeCreatorService.subscriberInit()
-        setResourceToTopicService.setResourcetotopic()
+        setResourceToTopicService.setLinkResourcetotopic()
         subscriptionService.addRandomSubscribersToTopic()
         subscriptionService.setReadingitemofuser()
         setReadingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()
