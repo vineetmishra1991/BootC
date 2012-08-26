@@ -102,6 +102,13 @@ class DocumentresourceController {
 
     def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO) {
 
+        def file = documentResourceAdderCO.myFile
+        def typeOfFile=file.contentType
+        if (!(typeOfFile='application/pdf')){
+             flash.message="only pdf file supported"
+             redirect(controller: 'documentresource',action: 'list')
+             return false
+        }
         def path=grailsApplication.config.uploadPath
         saveDocumentResourceService.commandObjectBinding(documentResourceAdderCO,path)
     }
