@@ -63,8 +63,8 @@ class ReadingitemController {
         if (version != null) {
             if (readingitemInstance.version > version) {
                 readingitemInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'readingitem.label', default: 'Readingitem')] as Object[],
-                          "Another user has updated this Readingitem while you were editing")
+                        [message(code: 'readingitem.label', default: 'Readingitem')] as Object[],
+                        "Another user has updated this Readingitem while you were editing")
                 render(view: "edit", model: [readingitemInstance: readingitemInstance])
                 return
             }
@@ -100,10 +100,10 @@ class ReadingitemController {
         }
     }
 
-    def markRead(Long id){
+    def markRead(Long id) {
 
-        Readingitem item=Readingitem.get(id)
-        item.isread=true
-        redirect(controller: 'user',action: 'dashboard')
-           }
+        Readingitem item = Readingitem.get(id)
+        item.isread = true
+        redirect(controller: 'user', action: 'dashboard')
+    }
 }

@@ -63,8 +63,8 @@ class SubscriptionController {
         if (version != null) {
             if (subscriptionInstance.version > version) {
                 subscriptionInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'subscription.label', default: 'Subscription')] as Object[],
-                          "Another user has updated this Subscription while you were editing")
+                        [message(code: 'subscription.label', default: 'Subscription')] as Object[],
+                        "Another user has updated this Subscription while you were editing")
                 render(view: "edit", model: [subscriptionInstance: subscriptionInstance])
                 return
             }

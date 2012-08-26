@@ -3,7 +3,7 @@ package com.ig.bc
 import org.springframework.dao.DataIntegrityViolationException
 
 class DocumentresourceController {
-            def saveDocumentResourceService
+    def saveDocumentResourceService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -19,15 +19,17 @@ class DocumentresourceController {
         [documentresourceInstance: new Documentresource(params)]
     }
 
-    def save() {
-        def documentresourceInstance = new Documentresource(params)
-        if (!documentresourceInstance.save(flush: true)) {
-            render(view: "create", model: [documentresourceInstance: documentresourceInstance])
-            return
-        }
+    def save(DocumentResourceAdderCO documentResourceAdderCO) {
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), documentresourceInstance.id])
-        redirect(action: "show", id: documentresourceInstance.id)
+        def file = documentResourceAdderCO.myFile
+        def typeOfFile = file.contentType
+        if (!(typeOfFile == 'application/pdf')) {
+            flash.message = "Only pdf File Format Supported"
+            redirect(controller: 'documentresource', action: 'list')
+            return false
+        }
+        def path = grailsApplication.config.uploadPath
+        saveDocumentResourceService.commandObjectBinding(documentResourceAdderCO, path)
     }
 
     def show(Long id) {
@@ -102,15 +104,6 @@ class DocumentresourceController {
 
     def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO) {
 
-        def file = documentResourceAdderCO.myFile
-        def typeOfFile=file.contentType
-        if (!(typeOfFile='application/pdf')){
-             flash.message="only pdf file supported"
-             redirect(controller: 'documentresource',action: 'list')
-             return false
-        }
-        def path=grailsApplication.config.uploadPath
-        saveDocumentResourceService.commandObjectBinding(documentResourceAdderCO,path)
-    }
 
+    }
 }

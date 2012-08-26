@@ -111,7 +111,7 @@ class TopicController {
 //              println it
 //           }
 //      }
-          inviteLogService.commandObjectBinding(validateCO)
+        inviteLogService.commandObjectBinding(validateCO)
 
     }
 

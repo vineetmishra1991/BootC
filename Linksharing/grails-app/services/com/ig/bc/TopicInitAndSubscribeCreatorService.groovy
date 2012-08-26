@@ -6,7 +6,7 @@ class TopicInitAndSubscribeCreatorService {
 
     }
 
-    def topicInit(){
+    def topicInit() {
         List<Topic> topics = [new Topic(name: 'Grails', visibility: Visibility.PUBLIC),
                 new Topic(name: 'Groovy', visibility: Visibility.PUBLIC),
                 new Topic(name: 'Linux', visibility: Visibility.PUBLIC),
@@ -19,13 +19,13 @@ class TopicInitAndSubscribeCreatorService {
         }
     }
 
-    def subscriberInit(){
+    def subscriberInit() {
 
-        User user1=User.findByFirstname('vineet')
-        User user2=User.findByFirstname('john')
-        User user3=User.findByFirstname('Ashish')
-        User user4=User.findByFirstname('Ron')
-        User user5=User.findByFirstname('harry')
+        User user1 = User.findByFirstname('vineet')
+        User user2 = User.findByFirstname('john')
+        User user3 = User.findByFirstname('Ashish')
+        User user4 = User.findByFirstname('Ron')
+        User user5 = User.findByFirstname('harry')
 
 
         println Topic.list()

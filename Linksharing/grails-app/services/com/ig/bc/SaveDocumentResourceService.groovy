@@ -6,7 +6,7 @@ class SaveDocumentResourceService {
 
     }
 
-    def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO,def path){
+    def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO, def path) {
 
         def id = documentResourceAdderCO.id
         def title = documentResourceAdderCO.title

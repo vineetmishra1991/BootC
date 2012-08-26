@@ -6,7 +6,7 @@ class UserInitService {
 
     }
 
-    def userInit(){
+    def userInit() {
 
         User usr1 = new User(firstname: 'vineet', lastname: 'mishra', address: 'pvihar', password: 'vineet', confirmPassword: 'vineet', email: 'vnt.mshra@gmail.com', male: true)
         User usr2 = new User(firstname: 'john', lastname: 'saxena', address: 'pvihardd', password: 'john', confirmPassword: 'john', email: 'john.saxena@gmail.com', male: true)

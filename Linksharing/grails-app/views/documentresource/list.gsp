@@ -10,9 +10,6 @@
 <body>
 <a href="#list-documentresource" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<br><br>
-
-${flash.message}<br><br>
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
@@ -71,7 +68,7 @@ ${flash.message}<br><br>
 <br><br>
 
 <div>
-    <g:form controller="documentresource" action="commandObjectBinding" enctype="multipart/form-data" method="POST">
+    <g:form controller="documentresource" action="save" enctype="multipart/form-data" method="POST">
         Title: <input type="text" name="title"> <br> <br>
         Summary: <textarea maxlength="1000" name="summary">
     </textarea>   <br> <br><br>

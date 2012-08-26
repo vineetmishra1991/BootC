@@ -12,56 +12,57 @@
 
     <meta name="layout" content="main">
 
-  <title></title>
+    <title></title>
 </head>
+
 <body>
 
-    %{--${flash.message}--}%
-    You Are successfully logged in !!!
-    <br>
-    <h1>Unread Items</h1>
+%{--${flash.message}--}%
+You Are successfully logged in !!!
+<br>
 
-    <ls:unreadItems max="5"/>
+<h1>Unread Items</h1>
 
-         %{--<br>--}%
-        %{--<h1>Subscribed Items<h1>--}%
+<ls:unreadItems max="5"/>
 
-    <ls:subscribedTopics/>
+%{--<br>--}%
+%{--<h1>Subscribed Items<h1>--}%
 
-    <ls:highestSubscribedPublicTopics/>
+<ls:subscribedTopics/>
 
-    %{--Topics you own are : <br>--}%
-    %{--<g:each in="${ownedlist}" var="subp">--}%
-            %{--${subp}--}%
-            %{--<br/>--}%
-        %{--</g:each>--}%
+<ls:highestSubscribedPublicTopics/>
 
-            %{--<br>--}%
-            %{--<h1>Topics You Own <h1>--}%
-                %{--<table>--}%
-                    %{--<thead>--}%
-                    %{--<tr>--}%
+%{--Topics you own are : <br>--}%
+%{--<g:each in="${ownedlist}" var="subp">--}%
+%{--${subp}--}%
+%{--<br/>--}%
+%{--</g:each>--}%
 
-                        %{--<th>Topic_Owned</th>--}%
+%{--<br>--}%
+%{--<h1>Topics You Own <h1>--}%
+%{--<table>--}%
+%{--<thead>--}%
+%{--<tr>--}%
 
-                    %{--</tr>--}%
-                    %{--</thead>--}%
-                    %{--<tbody>--}%
-                    %{--<g:each in="${ownedlist}" status="i" var="item">--}%
-                        %{--<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">--}%
-                            %{--<td>${item.name}</td>--}%
+%{--<th>Topic_Owned</th>--}%
 
-                        %{--</tr>--}%
-                    %{--</g:each>--}%
-                    %{--</tbody>--}%
-                %{--</table>--}%
-      <ls:ownedTopics/>
+%{--</tr>--}%
+%{--</thead>--}%
+%{--<tbody>--}%
+%{--<g:each in="${ownedlist}" status="i" var="item">--}%
+%{--<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">--}%
+%{--<td>${item.name}</td>--}%
+
+%{--</tr>--}%
+%{--</g:each>--}%
+%{--</tbody>--}%
+%{--</table>--}%
+<ls:ownedTopics/>
 
 <g:form controller="login" action="logout">
 
-<input type="Submit" value="Logout" >
-    </g:form>
-
+    <input type="Submit" value="Logout">
+</g:form>
 
 </body>
 </html>

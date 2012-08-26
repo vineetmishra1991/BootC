@@ -1,7 +1,8 @@
 package com.ig.bc
 
 class InviteLogService {
-                 static  transactional = false
+    static transactional = false
+
     def serviceMethod() {
 
     }

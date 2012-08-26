@@ -13,7 +13,7 @@ class User {
 
     static hasMany = [subscriptions: Subscription, topics: Topic, readingitems: Readingitem]
 
-    static transients = ['fullName','confirmPassword']
+    static transients = ['fullName', 'confirmPassword']
 
     String getFullName() {
 
@@ -30,7 +30,7 @@ class User {
         confirmPassword(bindable: true)
         password(validator: {currentPassword, obj ->
 //            println "${obj.confirmPassword} >>> ${obj.password}"
-            if(currentPassword != obj.confirmPassword){
+            if (currentPassword != obj.confirmPassword) {
 
                 return false
             }

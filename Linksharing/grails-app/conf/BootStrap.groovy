@@ -9,7 +9,7 @@ import com.ig.bc.Readingitem
 
 class BootStrap {
 
-                   def bootstrapService
+    def bootstrapService
     def init = { servletContext ->
 
         bootstrapService.initializeData()
