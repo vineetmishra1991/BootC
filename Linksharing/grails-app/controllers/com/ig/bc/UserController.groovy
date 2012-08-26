@@ -104,13 +104,13 @@ class UserController {
         def subscription = Subscription.createCriteria().list() {
             projections {
                 groupProperty('topic')
-                count('topic','s')
+                count('topic', 's')
 // above can also be done as count('''subscriber','s')
-               }
+            }
             'topic' {
                 'eq'("visibility", Visibility.PUBLIC)
             }
-            order('s','desc')
+            order('s', 'desc')
             maxResults 3
         }
 
