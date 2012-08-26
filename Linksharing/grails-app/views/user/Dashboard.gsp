@@ -28,6 +28,7 @@
 
     <ls:subscribedTopics/>
 
+    <ls:highestSubscribedPublicTopics/>
 
     %{--Topics you own are : <br>--}%
     %{--<g:each in="${ownedlist}" var="subp">--}%
