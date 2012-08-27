@@ -120,4 +120,9 @@ class TopicController {
         inviteLogService.sendMailReminder()
     }
 
+    def sendMailAccordingToDate(){
+
+        inviteLogService.sendReminderAccordingToDate()
+    }
+
 }

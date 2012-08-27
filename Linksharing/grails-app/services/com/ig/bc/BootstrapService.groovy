@@ -4,9 +4,9 @@ class BootstrapService {
 
     def userInitService
     def topicInitAndSubscribeCreatorService
-    def setResourceToTopicService
+    def resourceToTopicService
     def subscriptionService
-    def setReadingItemTrueRandomAndPrintUnreadItemsService
+    def readingItemTrueRandomAndPrintUnreadItemsService
 
     def serviceMethod() {
 
@@ -17,11 +17,11 @@ class BootstrapService {
         userInitService.userInit()
         topicInitAndSubscribeCreatorService.topicInit()
         topicInitAndSubscribeCreatorService.subscriberInit()
-        setResourceToTopicService.setLinkResourcetotopic()
+        resourceToTopicService.setLinkResourcetotopic()
         subscriptionService.addRandomSubscribersToTopic()
         subscriptionService.setReadingitemofuser()
-        setReadingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()
-        setReadingItemTrueRandomAndPrintUnreadItemsService.unreadItemsofuser()
+        readingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()
+        readingItemTrueRandomAndPrintUnreadItemsService.unreadItemsofuser()
 
     }
 }

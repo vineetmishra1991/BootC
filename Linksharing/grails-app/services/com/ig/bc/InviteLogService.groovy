@@ -1,9 +1,12 @@
 package com.ig.bc
 
+import grails.gsp.PageRenderer
+
 class InviteLogService {
     static transactional = false
     def mailService
     def asynchronousMailService
+    def groovyPageRenderer
 
     def serviceMethod() {
 
@@ -51,17 +54,54 @@ class InviteLogService {
                             }
 
                         }
-
                     }
                 }
 
             }
-
+            def readingItems = readingitemList.groupBy {it.resource.topic.name}
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"
                 subject "Hello. This is first Mail (Test)"
-                html "<b>${readingitemList*.resource.url.join(',')}</b>"
+                html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItems', model: [unreadItemsList: readingItems])}"
+            }
+            println "mail sent"
+
+        }
+
+    }
+
+    def sendReminderAccordingToDate() {
+
+        List<User> userList = User.list()
+        Date date = new Date() - 2
+        userList.each {User user ->
+
+            List<Readingitem> readingitemList = []
+            user.subscriptions.each {Subscription subscription ->
+                if (subscription.seriousness == Seriousness.VERY_SERIOUS) {
+                    subscription.topic.resources.each {Resource resource ->
+                        if (resource.dateCreated > date) {
+                            resource.readingitems.each {Readingitem readingitem ->
+
+                                if (!readingitem.isread) {
+
+                                    readingitemList.add(readingitem)
+
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            def readingItems = readingitemList.groupBy {it.resource.topic.name}
+            asynchronousMailService.sendAsynchronousMail {
+
+                to "${user.email}"
+                subject "Hello. This is first Mail (Test)"
+                html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItemsByDate', model: [unreadItemsList: readingItems])}"
             }
             println "mail sent"
 

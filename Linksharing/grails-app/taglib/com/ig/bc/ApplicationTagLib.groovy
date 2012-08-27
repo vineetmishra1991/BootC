@@ -58,7 +58,6 @@ class ApplicationTagLib {
         out << render(template: '/user/highestSubsPublicTopics', model: [subscriberList: subscription])
     }
 }
-
 //    def formattedDate={attrs->
 //
 //        out << """Date: ${attrs.date.format("MM dd yyyy")}"""

@@ -1,6 +1,6 @@
 package com.ig.bc
 
-class SetResourceToTopicService {
+class ResourceToTopicService {
 
     def serviceMethod() {
 

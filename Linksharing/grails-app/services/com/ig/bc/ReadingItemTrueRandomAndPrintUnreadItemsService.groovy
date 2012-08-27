@@ -1,6 +1,6 @@
 package com.ig.bc
 
-class SetReadingItemTrueRandomAndPrintUnreadItemsService {
+class ReadingItemTrueRandomAndPrintUnreadItemsService {
 
     def serviceMethod() {
 
