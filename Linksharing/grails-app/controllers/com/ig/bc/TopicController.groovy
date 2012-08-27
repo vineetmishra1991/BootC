@@ -115,4 +115,9 @@ class TopicController {
 
     }
 
+    def sendMail(){
+
+        inviteLogService.sendMailReminder()
+    }
+
 }

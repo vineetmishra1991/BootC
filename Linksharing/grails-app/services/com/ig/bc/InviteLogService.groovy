@@ -31,6 +31,46 @@ class InviteLogService {
 
     }
 
+    def sendMailReminder() {
+
+        List<User> userList = User.list()
+
+        userList.each {User user ->
+
+            List<Readingitem> readingitemList = []
+            user.subscriptions.each {Subscription subscription ->
+                if (subscription.seriousness == Seriousness.SERIOUS) {
+                    subscription.topic.resources.each {Resource resource ->
+
+                        resource.readingitems.each {Readingitem readingitem ->
+
+                            if (!readingitem.isread) {
+
+                                readingitemList.add(readingitem)
+
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+
+            asynchronousMailService.sendAsynchronousMail {
+
+                to "${user.email}"
+                subject "Hello. This is first Mail (Test)"
+                html "<b>${readingitemList*.resource.url.join(',')}</b>"
+            }
+            println "mail sent"
+
+        }
+
+    }
 
 }
+
+
+
 
