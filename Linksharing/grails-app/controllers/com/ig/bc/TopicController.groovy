@@ -101,7 +101,7 @@ class TopicController {
         }
     }
 
-    def commandObjectBinding(VaildatorCO validateCO) {
+    def sendInvite(VaildatorCO validateCO) {
 ///        println "Errors in BookCommand : " + validateEmail.errors
 ////        if(validateEmail.hasErrors()){println "error"}
 //        println "hey"
@@ -111,7 +111,7 @@ class TopicController {
 //              println it
 //           }
 //      }
-        inviteLogService.commandObjectBinding(validateCO)
+        inviteLogService.sendInviteMail(validateCO)
 
     }
 

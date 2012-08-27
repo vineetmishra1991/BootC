@@ -101,9 +101,4 @@ class DocumentresourceController {
             redirect(action: "show", id: id)
         }
     }
-
-    def commandObjectBinding(DocumentResourceAdderCO documentResourceAdderCO) {
-
-
-    }
 }

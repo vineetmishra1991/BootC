@@ -52,7 +52,7 @@
 		</div>
          <br>
     <div>
-        <g:form controller="topic" action="commandObjectBinding" method="POST">
+        <g:form controller="topic" action="sendInvite" method="POST">
         Email1: <input type="text" name="email1"> <br> <br>
         Email2: <input type="text" name="email2"> <br> <br>
         Email3: <input type="text" name="email3"> <br> <br>

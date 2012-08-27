@@ -14,6 +14,7 @@
   <title></title>
 </head>
 <body>
+
   Total Users :   ${count}
 <br/>      <br>
 Subscriptions Details :
