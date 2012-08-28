@@ -6,7 +6,7 @@ class ResourceAddToTopicService {
 
     }
 
-    def setLinkResourceToTopic() {
+    def setLinkResourcetotopic() {
 
         Topic.list().each {topic ->
 

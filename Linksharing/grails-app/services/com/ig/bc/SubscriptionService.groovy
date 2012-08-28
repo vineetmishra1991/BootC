@@ -9,17 +9,17 @@ class SubscriptionService {
     def addRandomSubscribersToTopic() {
 
         List<Topic> topic = Topic.list()
-        topic.each {topicFind ->
+        topic.each {topicfind ->
             List<User> user = User.list()
-            User userDelete = topicFind.owner
+            User userDelete = topicfind.owner
             user = user - userDelete
             Collections.shuffle(user)
-            user.first().addToSubscriptions(new Subscription(topic: topicFind, seriousness: Seriousness.SERIOUS)).save(failOnError: true, flush: true)
-            user.last().addToSubscriptions(new Subscription(topic: topicFind, seriousness: Seriousness.VERY_SERIOUS)).save(failOnError: true, flush: true)
+            user.first().addToSubscriptions(new Subscription(topic: topicfind, seriousness: Seriousness.SERIOUS)).save(failOnError: true, flush: true)
+            user.last().addToSubscriptions(new Subscription(topic: topicfind, seriousness: Seriousness.VERY_SERIOUS)).save(failOnError: true, flush: true)
         }
     }
 
-    def setReadingItemOfUser() {
+    def setReadingitemofuser() {
 
         List<User> users = User.list()
         users.each {User user ->

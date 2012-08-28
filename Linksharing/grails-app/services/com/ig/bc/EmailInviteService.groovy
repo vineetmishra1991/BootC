@@ -38,16 +38,16 @@ class EmailInviteService {
 
         userList.each {User user ->
 
-            List<ReadingItem> readingItemList = []
+            List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.SERIOUS) {
                     subscription.topic.resources.each {Resource resource ->
 
-                        resource.readingitems.each {ReadingItem readingItem ->
+                        resource.readingitems.each {ReadingItem readingitem ->
 
-                            if (!readingItem.isRead) {
+                            if (!readingitem.isRead) {
 
-                                readingItemList.add(readingItem)
+                                readingitemList.add(readingitem)
 
                             }
 
@@ -56,7 +56,7 @@ class EmailInviteService {
                 }
 
             }
-            def readingItems = readingItemList.groupBy {it.resource.topic.name}
+            def readingItems = readingitemList.groupBy {it.resource.topic.name}
 //            println readingItems.values()
             asynchronousMailService.sendAsynchronousMail {
 
@@ -76,7 +76,7 @@ class EmailInviteService {
         Date date = new Date() - 2
         userList.each {User user ->
 
-            List<ReadingItem> readingItemList = []
+            List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.VERY_SERIOUS) {
                     subscription.topic.resources.each {Resource resource ->
@@ -85,7 +85,7 @@ class EmailInviteService {
 
                                 if (!readingitem.isRead) {
 
-                                    readingItemList.add(readingitem)
+                                    readingitemList.add(readingitem)
 
                                 }
 
@@ -95,7 +95,7 @@ class EmailInviteService {
                 }
 
             }
-            def readingItems = readingItemList.groupBy {it.resource.topic.name}
+            def readingItems = readingitemList.groupBy {it.resource.topic.name}
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"

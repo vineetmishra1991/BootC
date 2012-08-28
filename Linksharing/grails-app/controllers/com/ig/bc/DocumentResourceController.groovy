@@ -33,66 +33,66 @@ class DocumentResourceController {
     }
 
     def show(Long id) {
-        def documentResourceInstance = DocumentResource.get(id)
-        if (!documentResourceInstance) {
+        def documentresourceInstance = DocumentResource.get(id)
+        if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
             return
         }
 
-        [documentresourceInstance: documentResourceInstance]
+        [documentresourceInstance: documentresourceInstance]
     }
 
     def edit(Long id) {
-        def documentResourceInstance = DocumentResource.get(id)
-        if (!documentResourceInstance) {
+        def documentresourceInstance = DocumentResource.get(id)
+        if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
             return
         }
 
-        [documentresourceInstance: documentResourceInstance]
+        [documentresourceInstance: documentresourceInstance]
     }
 
     def update(Long id, Long version) {
-        def documentResourceInstance = DocumentResource.get(id)
-        if (!documentResourceInstance) {
+        def documentresourceInstance = DocumentResource.get(id)
+        if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
             return
         }
 
         if (version != null) {
-            if (documentResourceInstance.version > version) {
-                documentResourceInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+            if (documentresourceInstance.version > version) {
+                documentresourceInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'documentresource.label', default: 'Documentresource')] as Object[],
                         "Another user has updated this Documentresource while you were editing")
-                render(view: "edit", model: [documentresourceInstance: documentResourceInstance])
+                render(view: "edit", model: [documentresourceInstance: documentresourceInstance])
                 return
             }
         }
 
-        documentResourceInstance.properties = params
+        documentresourceInstance.properties = params
 
-        if (!documentResourceInstance.save(flush: true)) {
-            render(view: "edit", model: [documentresourceInstance: documentResourceInstance])
+        if (!documentresourceInstance.save(flush: true)) {
+            render(view: "edit", model: [documentresourceInstance: documentresourceInstance])
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), documentResourceInstance.id])
-        redirect(action: "show", id: documentResourceInstance.id)
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), documentresourceInstance.id])
+        redirect(action: "show", id: documentresourceInstance.id)
     }
 
     def delete(Long id) {
-        def documentResourceInstance = DocumentResource.get(id)
-        if (!documentResourceInstance) {
+        def documentresourceInstance = DocumentResource.get(id)
+        if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
             return
         }
 
         try {
-            documentResourceInstance.delete(flush: true)
+            documentresourceInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
         }

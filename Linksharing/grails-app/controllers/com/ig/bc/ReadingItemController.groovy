@@ -20,77 +20,77 @@ class ReadingItemController {
     }
 
     def save() {
-        def readingItemInstance = new ReadingItem(params)
-        if (!readingItemInstance.save(flush: true)) {
-            render(view: "create", model: [readingitemInstance: readingItemInstance])
+        def readingitemInstance = new ReadingItem(params)
+        if (!readingitemInstance.save(flush: true)) {
+            render(view: "create", model: [readingitemInstance: readingitemInstance])
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), readingItemInstance.id])
-        redirect(action: "show", id: readingItemInstance.id)
+        flash.message = message(code: 'default.created.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), readingitemInstance.id])
+        redirect(action: "show", id: readingitemInstance.id)
     }
 
     def show(Long id) {
-        def readingItemInstance = ReadingItem.get(id)
-        if (!readingItemInstance) {
+        def readingitemInstance = ReadingItem.get(id)
+        if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
             return
         }
 
-        [readingitemInstance: readingItemInstance]
+        [readingitemInstance: readingitemInstance]
     }
 
     def edit(Long id) {
-        def readingItemInstance = ReadingItem.get(id)
-        if (!readingItemInstance) {
+        def readingitemInstance = ReadingItem.get(id)
+        if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
             return
         }
 
-        [readingitemInstance: readingItemInstance]
+        [readingitemInstance: readingitemInstance]
     }
 
     def update(Long id, Long version) {
-        def readingItemInstance = ReadingItem.get(id)
-        if (!readingItemInstance) {
+        def readingitemInstance = ReadingItem.get(id)
+        if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
             return
         }
 
         if (version != null) {
-            if (readingItemInstance.version > version) {
-                readingItemInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+            if (readingitemInstance.version > version) {
+                readingitemInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'readingitem.label', default: 'Readingitem')] as Object[],
                         "Another user has updated this Readingitem while you were editing")
-                render(view: "edit", model: [readingitemInstance: readingItemInstance])
+                render(view: "edit", model: [readingitemInstance: readingitemInstance])
                 return
             }
         }
 
-        readingItemInstance.properties = params
+        readingitemInstance.properties = params
 
-        if (!readingItemInstance.save(flush: true)) {
-            render(view: "edit", model: [readingitemInstance: readingItemInstance])
+        if (!readingitemInstance.save(flush: true)) {
+            render(view: "edit", model: [readingitemInstance: readingitemInstance])
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), readingItemInstance.id])
-        redirect(action: "show", id: readingItemInstance.id)
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), readingitemInstance.id])
+        redirect(action: "show", id: readingitemInstance.id)
     }
 
     def delete(Long id) {
-        def readingItemInstance = ReadingItem.get(id)
-        if (!readingItemInstance) {
+        def readingitemInstance = ReadingItem.get(id)
+        if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
             return
         }
 
         try {
-            readingItemInstance.delete(flush: true)
+            readingitemInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
         }

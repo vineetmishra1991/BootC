@@ -17,11 +17,11 @@ class BootstrapService {
         userInitService.userInit()
         topicInitAndSubscribeCreatorService.topicInit()
         topicInitAndSubscribeCreatorService.subscriberInit()
-        resourceAddToTopicService.setLinkResourceToTopic()
+        resourceAddToTopicService.setLinkResourcetotopic()
         subscriptionService.addRandomSubscribersToTopic()
-        subscriptionService.setReadingItemOfUser()
-        readingItemTrueRandomAndPrintUnreadItemsService.setReadingItemsTrueRandom()
-        readingItemTrueRandomAndPrintUnreadItemsService.unReadItemsOfUser()
+        subscriptionService.setReadingitemofuser()
+        readingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()
+        readingItemTrueRandomAndPrintUnreadItemsService.unreadItemsofuser()
 
     }
 }
