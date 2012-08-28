@@ -9,7 +9,7 @@ abstract class Resource {
     String summary
 
     static belongsTo = [topic: Topic]
-    static hasMany = [readingitems: Readingitem]
+    static hasMany = [readingitems: ReadingItem]
 
     static constraints = {
         summary(maxSize: 1024)

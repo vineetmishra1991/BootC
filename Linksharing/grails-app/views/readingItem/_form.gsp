@@ -1,8 +1,8 @@
-<%@ page import="com.ig.bc.Readingitem" %>
+<%@ page import="com.ig.bc.ReadingItem" %>
 
 
 
-<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'isfavorite', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'isFavourite', 'error')} ">
 	<label for="isfavorite">
 		<g:message code="readingitem.isfavorite.label" default="Isfavorite" />
 		
@@ -10,7 +10,7 @@
 	<g:checkBox name="isfavorite" value="${readingitemInstance?.isfavorite}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'isread', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'isRead', 'error')} ">
 	<label for="isread">
 		<g:message code="readingitem.isread.label" default="Isread" />
 		

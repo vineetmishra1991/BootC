@@ -4,7 +4,7 @@ class BootstrapService {
 
     def userInitService
     def topicInitAndSubscribeCreatorService
-    def resourceToTopicService
+    def resourceAddToTopicService
     def subscriptionService
     def readingItemTrueRandomAndPrintUnreadItemsService
 
@@ -17,7 +17,7 @@ class BootstrapService {
         userInitService.userInit()
         topicInitAndSubscribeCreatorService.topicInit()
         topicInitAndSubscribeCreatorService.subscriberInit()
-        resourceToTopicService.setLinkResourcetotopic()
+        resourceAddToTopicService.setLinkResourcetotopic()
         subscriptionService.addRandomSubscribersToTopic()
         subscriptionService.setReadingitemofuser()
         readingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()

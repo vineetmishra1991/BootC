@@ -52,21 +52,21 @@ class UtilController {
 //
 //        usr1.subscriptions.each {Subscription subscription->
 //            subscription.topic.resources.each { Resource resource ->
-//                usr1.addToReadingitems(new Readingitem(isfavorite: false,isread: false,user:usr1, resource:resource)).save(failOnError: true,flush: true)
+//                usr1.addToReadingitems(new Readingitem(isFavourite: false,isRead: false,user:usr1, resource:resource)).save(failOnError: true,flush: true)
 //            }
 //
 //        }
 //
 //        usr2.subscriptions.each {Subscription subscription->
 //            subscription.topic.resources.each { Resource resource ->
-//                usr2.addToReadingitems(new Readingitem(isfavorite: false,isread: false,user:usr2, resource:resource)).save(failOnError: true,flush: true)
+//                usr2.addToReadingitems(new Readingitem(isFavourite: false,isRead: false,user:usr2, resource:resource)).save(failOnError: true,flush: true)
 //            }
 //
 //        }
 ////
 //// Resource.list().each {
 //
-////        usr1.addToReadingitems(isfavorite: false,isread: false, user: usr1, resource: it).save(failOnError: true,flush: true)
+////        usr1.addToReadingitems(isFavourite: false,isRead: false, user: usr1, resource: it).save(failOnError: true,flush: true)
 //
 ////        }
 //
@@ -75,7 +75,7 @@ class UtilController {
 //
 ////        Resource.list().each {
 //
-////            usr2.addToReadingitems(isfavorite: false,isread: false, user: usr1, resource: it).save(failOnError: true,flush: true)
+////            usr2.addToReadingitems(isFavourite: false,isRead: false, user: usr1, resource: it).save(failOnError: true,flush: true)
 //
 ////        }
 //
@@ -84,7 +84,7 @@ class UtilController {
 //
 //            if(it.id<4)
 //            {
-//              it.isread=true
+//              it.isRead=true
 //            }
 //
 //        }
@@ -92,7 +92,7 @@ class UtilController {
 //
 //         usr1.getReadingitems().each{
 //
-//             if(it.isread==false)
+//             if(it.isRead==false)
 //             {
 //                 Linkresource lr=(Linkresource)it.resource
 //                  println lr.url

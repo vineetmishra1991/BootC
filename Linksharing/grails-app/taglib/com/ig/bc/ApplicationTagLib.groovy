@@ -9,7 +9,7 @@ class ApplicationTagLib {
         Integer max = attrs.int('max')
 
         User user = User.findByEmail(session.userEmail)
-        List list = Readingitem.findAllByUserAndIsread(user, false, [max: max])
+        List list = ReadingItem.findAllByUserAndIsRead(user, false, [max: max])
         out << render(template: '/user/unreadtable', model: [list: list])
 
     }
@@ -36,8 +36,8 @@ class ApplicationTagLib {
 
     def markAsRead = {attrs ->
 
-        Readingitem item = Readingitem.get(attrs.long('itemId'))
-        out << """<a href="${createLink(action: "markRead", controller: "readingitem", id: item.id)}">Mark Read</a>"""
+        ReadingItem item = ReadingItem.get(attrs.long('itemId'))
+        out << """<a href="${createLink(action: "markRead", controller: "readingItem", id: item.id)}">Mark Read</a>"""
 
     }
     def highestSubscribedPublicTopics = {attrs ->

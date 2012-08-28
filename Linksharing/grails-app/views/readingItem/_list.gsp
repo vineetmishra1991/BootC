@@ -2,9 +2,9 @@
     <thead>
     <tr>
 
-        <g:sortableColumn property="isfavorite" title="${message(code: 'readingitem.isfavorite.label', default: 'Isfavorite')}" />
+        <g:sortableColumn property="isfavorite" title="${message(code: 'readingitem.isFavourite.label', default: 'Isfavorite')}" />
 
-        <g:sortableColumn property="isread" title="${message(code: 'readingitem.isread.label', default: 'Isread')}" />
+        <g:sortableColumn property="isread" title="${message(code: 'readingitem.isRead.label', default: 'Isread')}" />
 
         <th><g:message code="readingitem.resource.label" default="Resource" /></th>
 
@@ -16,7 +16,7 @@
     <g:each in="${readingitemInstanceList}" status="i" var="readingitemInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            <td><g:link action="show" id="${readingitemInstance.id}">${fieldValue(bean: readingitemInstance, field: "isfavorite")}</g:link></td>
+            <td><g:link action="show" id="${readingitemInstance.id}">${fieldValue(bean: readingitemInstance, field: "isFavourite")}</g:link></td>
 
             <td><g:formatBoolean boolean="${readingitemInstance.isread}" /></td>
 

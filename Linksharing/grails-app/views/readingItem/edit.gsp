@@ -1,4 +1,4 @@
-<%@ page import="com.ig.bc.Readingitem" %>
+<%@ page import="com.ig.bc.ReadingItem" %>
 <!doctype html>
 <html>
 	<head>

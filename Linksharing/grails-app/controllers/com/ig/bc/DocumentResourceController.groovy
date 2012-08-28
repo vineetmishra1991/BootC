@@ -2,8 +2,8 @@ package com.ig.bc
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class DocumentresourceController {
-    def saveDocumentResourceService
+class DocumentResourceController {
+    def documentResourceService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -12,11 +12,11 @@ class DocumentresourceController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [documentresourceInstanceList: Documentresource.list(params), documentresourceInstanceTotal: Documentresource.count()]
+        [documentresourceInstanceList: DocumentResource.list(params), documentresourceInstanceTotal: DocumentResource.count()]
     }
 
     def create() {
-        [documentresourceInstance: new Documentresource(params)]
+        [documentresourceInstance: new DocumentResource(params)]
     }
 
     def save(DocumentResourceAdderCO documentResourceAdderCO) {
@@ -25,15 +25,15 @@ class DocumentresourceController {
         def typeOfFile = file.contentType
         if (!(typeOfFile == 'application/pdf')) {
             flash.message = "Only pdf File Format Supported"
-            redirect(controller: 'documentresource', action: 'list')
+            redirect(controller: 'documentResource', action: 'list')
             return false
         }
         def path = grailsApplication.config.uploadPath
-        saveDocumentResourceService.commandObjectBinding(documentResourceAdderCO, path)
+        documentResourceService.commandObjectBinding(documentResourceAdderCO, path)
     }
 
     def show(Long id) {
-        def documentresourceInstance = Documentresource.get(id)
+        def documentresourceInstance = DocumentResource.get(id)
         if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
@@ -44,7 +44,7 @@ class DocumentresourceController {
     }
 
     def edit(Long id) {
-        def documentresourceInstance = Documentresource.get(id)
+        def documentresourceInstance = DocumentResource.get(id)
         if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
@@ -55,7 +55,7 @@ class DocumentresourceController {
     }
 
     def update(Long id, Long version) {
-        def documentresourceInstance = Documentresource.get(id)
+        def documentresourceInstance = DocumentResource.get(id)
         if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")
@@ -84,7 +84,7 @@ class DocumentresourceController {
     }
 
     def delete(Long id) {
-        def documentresourceInstance = Documentresource.get(id)
+        def documentresourceInstance = DocumentResource.get(id)
         if (!documentresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'documentresource.label', default: 'Documentresource'), id])
             redirect(action: "list")

@@ -1,11 +1,9 @@
 package com.ig.bc
 
-class Readingitem {
+class ReadingItem {
 
-    Boolean isfavorite
-    Boolean isread
-    User user
-    Resource resource
+    Boolean isFavourite
+    Boolean isRead
 
     static belongsTo = [resource: Resource, user: User]
 

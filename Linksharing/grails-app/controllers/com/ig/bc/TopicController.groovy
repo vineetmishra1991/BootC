@@ -4,7 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class TopicController {
 
-    def inviteLogService
+    def emailInviteService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index() {
@@ -111,18 +111,18 @@ class TopicController {
 //              println it
 //           }
 //      }
-        inviteLogService.sendInviteMail(validateCO)
+        emailInviteService.sendInviteMail(validateCO)
 
     }
 
     def sendMail(){
 
-        inviteLogService.sendMailReminder()
+        emailInviteService.sendMailReminder()
     }
 
     def sendMailAccordingToDate(){
 
-        inviteLogService.sendReminderAccordingToDate()
+        emailInviteService.sendReminderAccordingToDate()
     }
 
 }

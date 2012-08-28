@@ -1,7 +1,5 @@
 package com.ig.bc
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -100,19 +98,25 @@ class UserController {
 //        }
 //    }
 
-//    def mostRead(){
-//        def subscription = Subscription.createCriteria().list() {
-//            projections {
-//                groupProperty('topic')
-//                count('topic','s')
-//// above can also be done as count('''subscriber','s')
-//            }
-//
-//            order('s','desc')
-//            maxResults 1
-//        }
-//
-//    }
+    def mostRead() {
+
+        User user = User.findByFirstname('Vineet')
+        def topicsList = user.subscriptions*.topic
+        println topicsList.class
+        topicsList.each {print it.name}
+
+        def readingItem = ReadingItem.createCriteria().list() {
+            'resource' {
+
+                inList("topic", [topicsList])
+            }
+
+            'eq'("isRead", true)
+        }
+
+        render(readingItem)
+
+    }
 
     def dashboard() {
 
@@ -124,7 +128,7 @@ class UserController {
 //
 //          user.readingitems.each {Readingitem readingitem->
 //
-//              if (!readingitem.isread) {
+//              if (!readingitem.isRead) {
 //
 //
 //             list.add(readingitem)

@@ -2,7 +2,7 @@ package com.ig.bc
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class ReadingitemController {
+class ReadingItemController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -12,15 +12,15 @@ class ReadingitemController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [readingitemInstanceList: Readingitem.list(params), readingitemInstanceTotal: Readingitem.count()]
+        [readingitemInstanceList: ReadingItem.list(params), readingitemInstanceTotal: ReadingItem.count()]
     }
 
     def create() {
-        [readingitemInstance: new Readingitem(params)]
+        [readingitemInstance: new ReadingItem(params)]
     }
 
     def save() {
-        def readingitemInstance = new Readingitem(params)
+        def readingitemInstance = new ReadingItem(params)
         if (!readingitemInstance.save(flush: true)) {
             render(view: "create", model: [readingitemInstance: readingitemInstance])
             return
@@ -31,7 +31,7 @@ class ReadingitemController {
     }
 
     def show(Long id) {
-        def readingitemInstance = Readingitem.get(id)
+        def readingitemInstance = ReadingItem.get(id)
         if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
@@ -42,7 +42,7 @@ class ReadingitemController {
     }
 
     def edit(Long id) {
-        def readingitemInstance = Readingitem.get(id)
+        def readingitemInstance = ReadingItem.get(id)
         if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
@@ -53,7 +53,7 @@ class ReadingitemController {
     }
 
     def update(Long id, Long version) {
-        def readingitemInstance = Readingitem.get(id)
+        def readingitemInstance = ReadingItem.get(id)
         if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
@@ -82,7 +82,7 @@ class ReadingitemController {
     }
 
     def delete(Long id) {
-        def readingitemInstance = Readingitem.get(id)
+        def readingitemInstance = ReadingItem.get(id)
         if (!readingitemInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'readingitem.label', default: 'Readingitem'), id])
             redirect(action: "list")
@@ -102,8 +102,8 @@ class ReadingitemController {
 
     def markRead(Long id) {
 
-        Readingitem item = Readingitem.get(id)
-        item.isread = true
+        ReadingItem item = ReadingItem.get(id)
+        item.isRead = true
         redirect(controller: 'user', action: 'dashboard')
     }
 }

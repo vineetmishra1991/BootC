@@ -2,7 +2,7 @@ package com.ig.bc
 
 import org.springframework.dao.DataIntegrityViolationException
 
-class LinkresourceController {
+class LinkResourceController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -12,15 +12,15 @@ class LinkresourceController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [linkresourceInstanceList: Linkresource.list(params), linkresourceInstanceTotal: Linkresource.count()]
+        [linkresourceInstanceList: LinkResource.list(params), linkresourceInstanceTotal: LinkResource.count()]
     }
 
     def create() {
-        [linkresourceInstance: new Linkresource(params)]
+        [linkresourceInstance: new LinkResource(params)]
     }
 
     def save() {
-        def linkresourceInstance = new Linkresource(params)
+        def linkresourceInstance = new LinkResource(params)
         if (!linkresourceInstance.save(flush: true)) {
             render(view: "create", model: [linkresourceInstance: linkresourceInstance])
             return
@@ -31,7 +31,7 @@ class LinkresourceController {
     }
 
     def show(Long id) {
-        def linkresourceInstance = Linkresource.get(id)
+        def linkresourceInstance = LinkResource.get(id)
         if (!linkresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
@@ -42,7 +42,7 @@ class LinkresourceController {
     }
 
     def edit(Long id) {
-        def linkresourceInstance = Linkresource.get(id)
+        def linkresourceInstance = LinkResource.get(id)
         if (!linkresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
@@ -53,7 +53,7 @@ class LinkresourceController {
     }
 
     def update(Long id, Long version) {
-        def linkresourceInstance = Linkresource.get(id)
+        def linkresourceInstance = LinkResource.get(id)
         if (!linkresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
@@ -82,7 +82,7 @@ class LinkresourceController {
     }
 
     def delete(Long id) {
-        def linkresourceInstance = Linkresource.get(id)
+        def linkresourceInstance = LinkResource.get(id)
         if (!linkresourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")

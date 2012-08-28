@@ -1,6 +1,6 @@
 package com.ig.bc
 
-class SaveDocumentResourceService {
+class DocumentResourceService {
 
     def serviceMethod() {
 
@@ -13,11 +13,11 @@ class SaveDocumentResourceService {
         def summary = documentResourceAdderCO.summary
         def file = documentResourceAdderCO.myFile
         Topic topicNew = Topic.get(id)
-        Documentresource documentResource = new Documentresource(title: title, summary: summary, topic: topicNew).save(flush: true, failOnError: true)
+        DocumentResource documentResource = new DocumentResource(title: title, summary: summary, topic: topicNew).save(flush: true, failOnError: true)
         def resourceId = documentResource.id
         file.transferTo(new File("${path}/${resourceId}"))
-        documentResource.filename = resourceId
-        documentResource.contenttype = file.contentType
+        documentResource.fileName = resourceId
+        documentResource.contentType = file.contentType
         documentResource.save(flush: true, failOnError: true)
         topicNew.addToResources(documentResource).save(flush: true, failOnError: true)
 

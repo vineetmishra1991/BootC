@@ -12,7 +12,7 @@
     <g:each in="${list}" status="i" var="item">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <td><b><a href="${item.resource.url}" target="_blank">${item.resource.url}</a></b></td>
-            <td><b>${item.isfavorite ? 'Yes' : 'No'}</b></td>
+            <td><b>${item.isFavourite ? 'Yes' : 'No'}</b></td>
             <td><ls:markAsRead itemId="${item.id}"/></td>
 
         </tr>

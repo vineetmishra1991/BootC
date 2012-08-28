@@ -100,7 +100,7 @@
 					<span id="readingitems-label" class="property-label"><g:message code="user.readingitems.label" default="Readingitems" /></span>
 					
 						<g:each in="${userInstance.readingitems}" var="r">
-						<span class="property-value" aria-labelledby="readingitems-label"><g:link controller="readingitem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="readingitems-label"><g:link controller="readingItem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

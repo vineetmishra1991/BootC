@@ -1,5 +1,5 @@
 
-<%@ page import="com.ig.bc.Readingitem" %>
+<%@ page import="com.ig.bc.ReadingItem" %>
 <!doctype html>
 <html>
 	<head>
@@ -23,20 +23,20 @@
 			</g:if>
 			<ol class="property-list readingitem">
 			
-				<g:if test="${readingitemInstance?.isfavorite}">
+				<g:if test="${readingitemInstance?.isFavourite}">
 				<li class="fieldcontain">
 					<span id="isfavorite-label" class="property-label"><g:message code="readingitem.isfavorite.label" default="Isfavorite" /></span>
 					
-						<span class="property-value" aria-labelledby="isfavorite-label"><g:formatBoolean boolean="${readingitemInstance?.isfavorite}" /></span>
+						<span class="property-value" aria-labelledby="isfavorite-label"><g:formatBoolean boolean="${readingitemInstance?.isFavourite}" /></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${readingitemInstance?.isread}">
+				<g:if test="${readingitemInstance?.isRead}">
 				<li class="fieldcontain">
 					<span id="isread-label" class="property-label"><g:message code="readingitem.isread.label" default="Isread" /></span>
 					
-						<span class="property-value" aria-labelledby="isread-label"><g:formatBoolean boolean="${readingitemInstance?.isread}" /></span>
+						<span class="property-value" aria-labelledby="isread-label"><g:formatBoolean boolean="${readingitemInstance?.isRead}" /></span>
 					
 				</li>
 				</g:if>

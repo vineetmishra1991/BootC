@@ -12,7 +12,7 @@ class ReadingItemTrueRandomAndPrintUnreadItemsService {
         user.getReadingitems().each {
 
             if (it.id < 4) {
-                it.isread = true
+                it.isRead = true
             }
 
         }
@@ -24,8 +24,8 @@ class ReadingItemTrueRandomAndPrintUnreadItemsService {
         User user = User.get(1)
         user.getReadingitems().each {
 
-            if (!it.isread) {
-                Linkresource lr = (Linkresource) it.resource
+            if (!it.isRead) {
+                LinkResource lr = (LinkResource) it.resource
                 println lr.url
             }
 

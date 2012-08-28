@@ -1,4 +1,4 @@
-<%@ page import="com.ig.bc.Documentresource" %>
+<%@ page import="com.ig.bc.DocumentResource" %>
 
 
 
@@ -10,7 +10,7 @@
 	<g:textArea name="summary" cols="40" rows="5" maxlength="1024" value="${documentresourceInstance?.summary}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: documentresourceInstance, field: 'filename', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: documentresourceInstance, field: 'fileName', 'error')} required">
 	<label for="filename">
 		<g:message code="documentresource.filename.label" default="Filename" />
 		<span class="required-indicator">*</span>
@@ -18,7 +18,7 @@
 	<g:textField name="filename" required="" value="${documentresourceInstance?.filename}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: documentresourceInstance, field: 'contenttype', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: documentresourceInstance, field: 'contentType', 'error')} required">
 	<label for="contenttype">
 		<g:message code="documentresource.contenttype.label" default="Contenttype" />
 		<span class="required-indicator">*</span>

@@ -1,4 +1,4 @@
-<%@ page import="com.ig.bc.Documentresource" %>
+<%@ page import="com.ig.bc.DocumentResource" %>
 <!doctype html>
 <html>
 <head>
@@ -28,9 +28,9 @@
 
             <g:sortableColumn property="summary" title="${message(code: 'documentresource.summary.label', default: 'Summary')}"/>
 
-            <g:sortableColumn property="filename" title="${message(code: 'documentresource.filename.label', default: 'Filename')}"/>
+            <g:sortableColumn property="filename" title="${message(code: 'documentresource.fileName.label', default: 'Filename')}"/>
 
-            <g:sortableColumn property="contenttype" title="${message(code: 'documentresource.contenttype.label', default: 'Contenttype')}"/>
+            <g:sortableColumn property="contenttype" title="${message(code: 'documentresource.contentType.label', default: 'Contenttype')}"/>
 
             <g:sortableColumn property="dateCreated" title="${message(code: 'documentresource.dateCreated.label', default: 'Date Created')}"/>
 
@@ -46,9 +46,9 @@
 
                 <td><g:link action="show" id="${documentresourceInstance.id}">${fieldValue(bean: documentresourceInstance, field: "summary")}</g:link></td>
 
-                <td>${fieldValue(bean: documentresourceInstance, field: "filename")}</td>
+                <td>${fieldValue(bean: documentresourceInstance, field: "fileName")}</td>
 
-                <td>${fieldValue(bean: documentresourceInstance, field: "contenttype")}</td>
+                <td>${fieldValue(bean: documentresourceInstance, field: "contentType")}</td>
 
                 <td><g:formatDate date="${documentresourceInstance.dateCreated}"/></td>
 
@@ -68,7 +68,7 @@
 <br><br>
 
 <div>
-    <g:form controller="documentresource" action="save" enctype="multipart/form-data" method="POST">
+    <g:form controller="documentResource" action="save" enctype="multipart/form-data" method="POST">
         Title: <input type="text" name="title"> <br> <br>
         Summary: <textarea maxlength="1000" name="summary">
     </textarea>   <br> <br><br>

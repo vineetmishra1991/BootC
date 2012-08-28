@@ -1,5 +1,5 @@
 
-<%@ page import="com.ig.bc.Linkresource" %>
+<%@ page import="com.ig.bc.LinkResource" %>
 <!doctype html>
 <html>
 	<head>

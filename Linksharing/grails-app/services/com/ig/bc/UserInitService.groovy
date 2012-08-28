@@ -15,11 +15,11 @@ class UserInitService {
         User usr5 = new User(firstname: 'Ron', lastname: 'sharma', address: 'mumbai', password: 'ronw', confirmPassword: 'ronw', email: 'ron@gmail.com', male: true)
         User usr6 = new User(firstname: 'harry', lastname: 'singh', address: 'delhi', password: 'harryp', confirmPassword: 'harryp', email: 'harry@gmail.com', male: true)
 
-        usr1.save(failOnError: true)
-        usr2.save(failOnError: true)
-        usr3.save(failOnError: true)
-        usr4.save(failOnError: true)
-        usr5.save(failOnError: true)
-        usr6.save(failOnError: true)
+        usr1.save(failOnError: true,flush: true)
+        usr2.save(failOnError: true,flush: true)
+        usr3.save(failOnError: true,flush: true)
+        usr4.save(failOnError: true,flush: true)
+        usr5.save(failOnError: true,flush: true)
+        usr6.save(failOnError: true,flush: true)
     }
 }

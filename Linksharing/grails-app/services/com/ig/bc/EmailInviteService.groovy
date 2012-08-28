@@ -1,8 +1,6 @@
 package com.ig.bc
 
-import grails.gsp.PageRenderer
-
-class InviteLogService {
+class EmailInviteService {
     static transactional = false
     def mailService
     def asynchronousMailService
@@ -40,14 +38,14 @@ class InviteLogService {
 
         userList.each {User user ->
 
-            List<Readingitem> readingitemList = []
+            List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.SERIOUS) {
                     subscription.topic.resources.each {Resource resource ->
 
-                        resource.readingitems.each {Readingitem readingitem ->
+                        resource.readingitems.each {ReadingItem readingitem ->
 
-                            if (!readingitem.isread) {
+                            if (!readingitem.isRead) {
 
                                 readingitemList.add(readingitem)
 
@@ -59,6 +57,7 @@ class InviteLogService {
 
             }
             def readingItems = readingitemList.groupBy {it.resource.topic.name}
+//            println readingItems.values()
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"
@@ -77,14 +76,14 @@ class InviteLogService {
         Date date = new Date() - 2
         userList.each {User user ->
 
-            List<Readingitem> readingitemList = []
+            List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.VERY_SERIOUS) {
                     subscription.topic.resources.each {Resource resource ->
                         if (resource.dateCreated > date) {
-                            resource.readingitems.each {Readingitem readingitem ->
+                            resource.readingitems.each {ReadingItem readingitem ->
 
-                                if (!readingitem.isread) {
+                                if (!readingitem.isRead) {
 
                                     readingitemList.add(readingitem)
 

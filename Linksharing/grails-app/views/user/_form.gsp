@@ -66,10 +66,10 @@
 
     <ul class="one-to-many">
         <g:each in="${userInstance?.readingitems ?}" var="r">
-            <li><g:link controller="readingitem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+            <li><g:link controller="readingItem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
         </g:each>
         <li class="add">
-            <g:link controller="readingitem" action="create"
+            <g:link controller="readingItem" action="create"
                     params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'readingitem.label', default: 'Readingitem')])}</g:link>
         </li>
     </ul>

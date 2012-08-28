@@ -1,5 +1,5 @@
 
-<%@ page import="com.ig.bc.Documentresource" %>
+<%@ page import="com.ig.bc.DocumentResource" %>
 <!doctype html>
 <html>
 	<head>
@@ -32,20 +32,20 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${documentresourceInstance?.filename}">
+				<g:if test="${documentresourceInstance?.fileName}">
 				<li class="fieldcontain">
 					<span id="filename-label" class="property-label"><g:message code="documentresource.filename.label" default="Filename" /></span>
 					
-						<span class="property-value" aria-labelledby="filename-label"><g:fieldValue bean="${documentresourceInstance}" field="filename"/></span>
+						<span class="property-value" aria-labelledby="filename-label"><g:fieldValue bean="${documentresourceInstance}" field="fileName"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${documentresourceInstance?.contenttype}">
+				<g:if test="${documentresourceInstance?.contentType}">
 				<li class="fieldcontain">
 					<span id="contenttype-label" class="property-label"><g:message code="documentresource.contenttype.label" default="Contenttype" /></span>
 					
-						<span class="property-value" aria-labelledby="contenttype-label"><g:fieldValue bean="${documentresourceInstance}" field="contenttype"/></span>
+						<span class="property-value" aria-labelledby="contenttype-label"><g:fieldValue bean="${documentresourceInstance}" field="contentType"/></span>
 					
 				</li>
 				</g:if>

@@ -25,8 +25,9 @@ class SubscriptionService {
         users.each {User user ->
             user.subscriptions.each {Subscription subscription ->
                 subscription.topic.resources.each { Resource resource ->
-                    user.addToReadingitems(new Readingitem(isfavorite: false, isread: false, user: user, resource: resource)).save(failOnError: true, flush: true)
+                    user.addToReadingitems(new ReadingItem(isFavourite: false, isRead: false, user: user, resource: resource)).save(failOnError: true, flush: true)
                 }
+
 
             }
         }

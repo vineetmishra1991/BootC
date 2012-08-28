@@ -1,6 +1,6 @@
 package com.ig.bc
 
-class Linkresource extends Resource {
+class LinkResource extends Resource {
 
     String url
     static constraints = {
