@@ -6,7 +6,7 @@ class ReadingItemTrueRandomAndPrintUnreadItemsService {
 
     }
 
-    def setReadingitemstruerandom() {
+    def setReadingItemsTrueRandom() {
 
         User user = User.get(1)
         user.getReadingitems().each {
@@ -18,7 +18,7 @@ class ReadingItemTrueRandomAndPrintUnreadItemsService {
         }
     }
 
-    def unreadItemsofuser() {
+    def unReadItemsOfUser() {
 
         println "user one has following unread resources"
         User user = User.get(1)

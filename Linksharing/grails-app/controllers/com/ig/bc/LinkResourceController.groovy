@@ -20,77 +20,77 @@ class LinkResourceController {
     }
 
     def save() {
-        def linkresourceInstance = new LinkResource(params)
-        if (!linkresourceInstance.save(flush: true)) {
-            render(view: "create", model: [linkresourceInstance: linkresourceInstance])
+        def linkResourceInstance = new LinkResource(params)
+        if (!linkResourceInstance.save(flush: true)) {
+            render(view: "create", model: [linkresourceInstance: linkResourceInstance])
             return
         }
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), linkresourceInstance.id])
-        redirect(action: "show", id: linkresourceInstance.id)
+        flash.message = message(code: 'default.created.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), linkResourceInstance.id])
+        redirect(action: "show", id: linkResourceInstance.id)
     }
 
     def show(Long id) {
-        def linkresourceInstance = LinkResource.get(id)
-        if (!linkresourceInstance) {
+        def linkResourceInstance = LinkResource.get(id)
+        if (!linkResourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
             return
         }
 
-        [linkresourceInstance: linkresourceInstance]
+        [linkresourceInstance: linkResourceInstance]
     }
 
     def edit(Long id) {
-        def linkresourceInstance = LinkResource.get(id)
-        if (!linkresourceInstance) {
+        def linkResourceInstance = LinkResource.get(id)
+        if (!linkResourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
             return
         }
 
-        [linkresourceInstance: linkresourceInstance]
+        [linkresourceInstance: linkResourceInstance]
     }
 
     def update(Long id, Long version) {
-        def linkresourceInstance = LinkResource.get(id)
-        if (!linkresourceInstance) {
+        def linkResourceInstance = LinkResource.get(id)
+        if (!linkResourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
             return
         }
 
         if (version != null) {
-            if (linkresourceInstance.version > version) {
-                linkresourceInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
+            if (linkResourceInstance.version > version) {
+                linkResourceInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
                         [message(code: 'linkresource.label', default: 'Linkresource')] as Object[],
                         "Another user has updated this Linkresource while you were editing")
-                render(view: "edit", model: [linkresourceInstance: linkresourceInstance])
+                render(view: "edit", model: [linkresourceInstance: linkResourceInstance])
                 return
             }
         }
 
-        linkresourceInstance.properties = params
+        linkResourceInstance.properties = params
 
-        if (!linkresourceInstance.save(flush: true)) {
-            render(view: "edit", model: [linkresourceInstance: linkresourceInstance])
+        if (!linkResourceInstance.save(flush: true)) {
+            render(view: "edit", model: [linkresourceInstance: linkResourceInstance])
             return
         }
 
-        flash.message = message(code: 'default.updated.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), linkresourceInstance.id])
-        redirect(action: "show", id: linkresourceInstance.id)
+        flash.message = message(code: 'default.updated.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), linkResourceInstance.id])
+        redirect(action: "show", id: linkResourceInstance.id)
     }
 
     def delete(Long id) {
-        def linkresourceInstance = LinkResource.get(id)
-        if (!linkresourceInstance) {
+        def linkResourceInstance = LinkResource.get(id)
+        if (!linkResourceInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
             return
         }
 
         try {
-            linkresourceInstance.delete(flush: true)
+            linkResourceInstance.delete(flush: true)
             flash.message = message(code: 'default.deleted.message', args: [message(code: 'linkresource.label', default: 'Linkresource'), id])
             redirect(action: "list")
         }
