@@ -108,7 +108,7 @@ class UserController {
         def readingItem = ReadingItem.createCriteria().list() {
             'resource' {
 
-                inList("topic", [topicsList])
+                'in'("topic", [topicsList])
             }
 
             'eq'("isRead", true)
@@ -119,36 +119,25 @@ class UserController {
     }
 
     def dashboard() {
+    }
 
-//          User user=User.findByEmail(session.userEmail)
-//
-//        // List list=Readingitem.findAllByUserAndIsread(user, false)
-//
-//        List<Readingitem> list=[]
-//
-//          user.readingitems.each {Readingitem readingitem->
-//
-//              if (!readingitem.isRead) {
-//
-//
-//             list.add(readingitem)
+    def register(){
+        render(view:"register")
 
-//              }
-//
-//          }
-//           List<Subscription> subslist=[]
-//        user.subscriptions.each {Subscription subscriber->
-//
-//           subslist.add(subscriber)
-//
-//        }
-//           List<Topic> ownedlist=[]
-//          user.topics.each{Topic topic->
-//
-//             ownedlist.add(topic)
-//
-//          }
+    }
 
-        render(view: "Dashboard")
+    def saveUser(){
+       Date date=params.date("dateOfBirth","MM/dd/yyyy")
+       User user=new User()
+        user.firstname=params.firstname
+        user.lastname=params.lastname
+        user.email=params.email
+        user.dateOfBirth=date
+        user.password=params.password
+        user.male=params.male
+        user.address=params.address
+        user.confirmPassword=params.confirmPassword
+        user.save(flush: true,failOnError: true)
+
     }
 }

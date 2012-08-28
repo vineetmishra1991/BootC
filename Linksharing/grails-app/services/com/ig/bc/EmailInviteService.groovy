@@ -57,7 +57,7 @@ class EmailInviteService {
 
             }
             def readingItems = readingitemList.groupBy {it.resource.topic.name}
-//            println readingItems.values()
+//           println readingItems.values()
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"

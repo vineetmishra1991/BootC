@@ -18,7 +18,7 @@
 
             <td><g:link action="show" id="${readingitemInstance.id}">${fieldValue(bean: readingitemInstance, field: "isFavourite")}</g:link></td>
 
-            <td><g:formatBoolean boolean="${readingitemInstance.isread}" /></td>
+            <td><g:formatBoolean boolean="${readingitemInstance.isRead}" /></td>
 
             <td>${fieldValue(bean: readingitemInstance, field: "resource")}</td>
 

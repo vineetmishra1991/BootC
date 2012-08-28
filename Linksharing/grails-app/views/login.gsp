@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<form action="/Linksharing/login/loginHandler" method="post">
+<form action="${createLink(controller: 'login',action: 'loginHandler')}" method="post">
 
     <br>
 
@@ -25,6 +25,7 @@
             <td align="center"><input type="password" name="t2"></td>
         </tr>
     </table>
+    <a href="${createLink(controller: 'user',action: 'register')}">Register</a>
 
     <div align="center">
         <input type="submit" name="s1" value="Submit">

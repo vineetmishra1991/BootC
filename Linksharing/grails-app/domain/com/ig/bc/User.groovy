@@ -9,6 +9,7 @@ class User {
     String email
     Date dateCreated
     Date lastUpdated
+    Date dateOfBirth
     Boolean male
 
     static hasMany = [subscriptions: Subscription, topics: Topic, readingitems: ReadingItem]
@@ -24,8 +25,8 @@ class User {
         lastUpdated(nullable: true)
         email(email: true, nullable: false, unique: true)
         confirmPassword(bindable: true)
-        password(validator: {currentPassword, obj ->
-            if (currentPassword != obj.confirmPassword) {
+        password(validator: {val, obj ->
+            if (val != obj.confirmPassword) {
                 return false
             }
         })

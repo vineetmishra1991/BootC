@@ -14,8 +14,9 @@
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'mobile.css')}" type="text/css">
+    <g:javascript library="jquery" plugin="jquery"/>    <jqui:resources/>
     <g:layoutHead/>
-    <r:layoutResources/>
+
 </head>
 
 <body>
@@ -26,7 +27,7 @@
 
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 <g:javascript library="application"/>
-<r:layoutResources/>
+
 <g:link controller="admin" action="stats">Stats</g:link>
 </body>
 </html>
