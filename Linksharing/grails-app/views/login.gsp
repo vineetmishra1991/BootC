@@ -2,12 +2,12 @@
         "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns:g="http://www.w3.org/1999/html">
 <head>
-    <meta name="layout" content="main">
     <title></title>
+    <meta name="layout" content="main">
     <g:javascript src="jquery.validate.js"/>
     <script type="text/javascript">
         $(document).ready(function () {
-            jQuery("#submit").validate({
+            jQuery("#loginForm").validate({
                 rules:{
                     name:{
                         required:true
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<form name="loginForm" action="${createLink(controller: 'login', action: 'loginHandler')}" method="post">
+<form id="loginForm" action="${createLink(controller: 'login',action: 'loginHandler')}" method="post">
 
     <br>
 
@@ -41,17 +41,17 @@
     <table>
         <tr>
             <td align="center">Name:</td>
-            <td align="center"><input type="text" name="t1"></td>
+            <td align="center"><input type="text" name="name"></td>
         </tr>
         <tr>
             <td align="center">Password:</td>
-            <td align="center"><input type="password" name="t2"></td>
+            <td align="center"><input type="password" name="password"></td>
         </tr>
     </table>
-    <a href="${createLink(controller: 'user', action: 'register')}">Register</a>
+    <a href="${createLink(controller: 'user',action: 'register')}">Register</a>
 
     <div align="center">
-        <input name="submit" type="submit" name="s1" value="Submit">
+        <input type="submit" name="s1" value="Submit">
     </div>
 </form>
 

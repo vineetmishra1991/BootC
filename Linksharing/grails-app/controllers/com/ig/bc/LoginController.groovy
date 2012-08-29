@@ -14,8 +14,8 @@ class LoginController {
     }
 
     def loginHandler() {
-        String email = params.t1
-        String password = params.t2
+        String email = params.name
+        String password = params.password
         String controllerName = "login"
         String actionName = "index"
         if (email && password) {
