@@ -7,21 +7,21 @@
     <g:javascript src="jquery.validate.js"/>
     <script type="text/javascript">
         $(document).ready(function () {
-            jQuery("#loginForm").validate({
+            jQuery("#submit").validate({
                 rules:{
-                    email:{
-                        email:true
+                    name:{
+                        required:true
                     },
                     password:{
                         required:true
                     }
                 },
                 messages:{
-                    email:{
-                        required:"Email is required"
+                    name:{
+                        required:"Enter Name"
                     },
                     password:{
-                        required:"password is required"
+                        required:"Password is Required!"
                     }
                 }
             });
@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<form name="loginFoem" action="${createLink(controller: 'login', action: 'loginHandler')}" method="post">
+<form name="loginForm" action="${createLink(controller: 'login', action: 'loginHandler')}" method="post">
 
     <br>
 
@@ -51,7 +51,7 @@
     <a href="${createLink(controller: 'user', action: 'register')}">Register</a>
 
     <div align="center">
-        <input type="submit" name="s1" value="Submit">
+        <input name="submit" type="submit" name="s1" value="Submit">
     </div>
 </form>
 

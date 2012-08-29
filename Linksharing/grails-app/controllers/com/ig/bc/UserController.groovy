@@ -143,12 +143,12 @@ class UserController {
 
     def checkEmailAvailability() {
         def email = params.email
-        User user = User.findByEmail(email)
-        if (user) {
-            render "true"
+        def user = User.countByEmail(email)
+        if (!user) {
+            render true
         }
         else {
-            render "false"
+            render false
         }
     }
 }

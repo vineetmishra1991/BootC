@@ -16,39 +16,30 @@
         $(document).ready(function () {
             var url = $("#url").val();
             $('#date').datepicker();
-            $('#checkEmail').bind("click", function () {
-                alert("hi");
-                emailCheckViaAJAX();
-//                emailCheckViaGET();
-//                emailCheckViaGetJSON();
+
+            jQuery("#registration").validate({
+                rules:{
+                    name:{
+                        required:true
+                    },
+                    email:{
+                        required:true,
+                        remote:url
+                    }
+                },
+                messages:{
+                    name:{
+                        required:"Required name"
+                    },
+                    email:{
+                        remote:"Email Already Exists !"
+                    }
+                }
             });
-
-
-//            jQuery("#registration").validate({
-//                rules:{
-//                    name:{
-//                        required:true,
-//                        maxlength:8
-//                    },
-//                    email:{
-//                        remote:url
-//                    },
-//                    datepicker:{
-//                        required:true
-//                    }
-//                },
-//                messages:{
-//                    name:{
-//                        required:"Name is required"
-//                    }
-//                }
-//            });
-
-
         });
 
-        function test() {
-            emailCheckViaAJAX()
+        function check() {
+            emailCheckViaAJAX();  //for ajax call this function in checkMail button
         }
 
         function emailCheckViaAJAX() {
@@ -79,7 +70,7 @@
     <div id="urlGet">
         <g:hiddenField name="url" id="url" value="${createLink(controller: 'user', action: 'checkEmailAvailability')}"/>
     </div>
-    Email:<g:field type="email" name="email" id="email" value=""/> <input type="button" id="checkEmail " value="CheckEmail" onclick="test()">
+    Email:<g:field type="email" name="email" class="email" id="email" value=""/> <input type="button" id="checkEmail " value="CheckEmail">
 
     <div id="message" style="background-color: silver;"></div><br>
     Address:<g:textField name="address" value=""/><br><br>
