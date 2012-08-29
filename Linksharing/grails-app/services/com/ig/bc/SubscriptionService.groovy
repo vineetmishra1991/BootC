@@ -31,6 +31,7 @@ class SubscriptionService {
 
             }
         }
+        throw new RuntimeException()
     }
 
 }

@@ -19,7 +19,7 @@ class ApplicationTagLib {
         User user = User.findByEmail(session.userEmail)
 
         List<Subscription> subslist = Subscription.findAllBySubscriber(user)
-        List<Topic> topicList = subslist.topic
+        List<Topic> topicList = subslist*.topic
 
         out << render(template: '/user/subscribedtopics', model: [topicList: topicList])
 
