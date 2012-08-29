@@ -15,7 +15,7 @@
 		<g:message code="documentresource.filename.label" default="Filename" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="filename" required="" value="${documentresourceInstance?.filename}"/>
+	<g:textField name="filename" required="" value="${documentresourceInstance?.fileName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: documentresourceInstance, field: 'contentType', 'error')} required">
@@ -23,7 +23,7 @@
 		<g:message code="documentresource.contenttype.label" default="Contenttype" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="contenttype" required="" value="${documentresourceInstance?.contenttype}"/>
+	<g:textField name="contenttype" required="" value="${documentresourceInstance?.contentType}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: documentresourceInstance, field: 'title', 'error')} ">

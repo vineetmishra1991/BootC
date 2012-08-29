@@ -32,6 +32,15 @@ class DocumentResourceController {
         documentResourceService.commandObjectBinding(documentResourceAdderCO, path)
     }
 
+    def download(Long id) {
+        def wantedFile = DocumentResource.get(id)
+        byte[] sourcePdf = new File("${grailsApplication.config.uploadPath}/${id}").bytes
+        response.setContentType("application/pdf")
+        response.setHeader("Content-disposition", "attachment; filename=" + wantedFile.fileName)
+        response.contentLength = sourcePdf.length
+        response.outputStream << sourcePdf
+    }
+
     def show(Long id) {
         def documentresourceInstance = DocumentResource.get(id)
         if (!documentresourceInstance) {
