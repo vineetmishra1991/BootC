@@ -5,7 +5,7 @@ class ReadingItem {
     Boolean isFavourite
     Boolean isRead
 
-    static belongsTo = [resource: Resource, user: User]
+    static belongsTo = [resourceItem: Resource, user: User]
 
 
     static constraints = {

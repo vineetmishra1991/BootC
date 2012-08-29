@@ -98,25 +98,6 @@ class UserController {
 //        }
 //    }
 
-    def mostRead() {
-
-        User user = User.findByFirstname('Vineet')
-        def topicsList = user.subscriptions*.topic
-        println topicsList.class
-        topicsList.each {print it.name}
-
-        def readingItem = ReadingItem.createCriteria().list() {
-            'resource' {
-
-                'in'("topic", [topicsList])
-            }
-
-            'eq'("isRead", true)
-        }
-
-        render(readingItem)
-
-    }
 
     def dashboard() {
     }

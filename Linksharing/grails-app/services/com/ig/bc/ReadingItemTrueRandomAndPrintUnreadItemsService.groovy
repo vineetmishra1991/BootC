@@ -25,7 +25,7 @@ class ReadingItemTrueRandomAndPrintUnreadItemsService {
         user.getReadingitems().each {
 
             if (!it.isRead) {
-                LinkResource lr = (LinkResource) it.resource
+                LinkResource lr = (LinkResource) it.resourceItem
                 println lr.url
             }
 

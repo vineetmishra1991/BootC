@@ -20,7 +20,7 @@
 
             <td><g:formatBoolean boolean="${readingitemInstance.isRead}" /></td>
 
-            <td>${fieldValue(bean: readingitemInstance, field: "resource")}</td>
+            <td>${fieldValue(bean: readingitemInstance, field: "resourceItem")}</td>
 
             <td>${fieldValue(bean: readingitemInstance, field: "user")}</td>
 

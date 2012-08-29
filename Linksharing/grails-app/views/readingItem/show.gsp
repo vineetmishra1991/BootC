@@ -41,11 +41,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${readingitemInstance?.resource}">
+				<g:if test="${readingitemInstance?.resourceItem}">
 				<li class="fieldcontain">
 					<span id="resource-label" class="property-label"><g:message code="readingitem.resource.label" default="Resource" /></span>
 					
-						<span class="property-value" aria-labelledby="resource-label"><g:link controller="resource" action="show" id="${readingitemInstance?.resource?.id}">${readingitemInstance?.resource?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="resource-label"><g:link controller="resource" action="show" id="${readingitemInstance?.resourceItem?.id}">${readingitemInstance?.resourceItem?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

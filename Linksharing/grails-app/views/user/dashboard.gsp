@@ -29,33 +29,37 @@
 <div id=tabs>
     <ul>
         <li><a href="#tab1">UnRead Items</a></li>
-        <li><a href="#tab2">Subscribed topics</a></li>
+        <li><a href="#tab2">Subscribed Topics</a></li>
         <li><a href="#tab3">Highest Subscribed Public Topics</a></li>
         <li><a href="#tab4">Owned Topics</a></li>
+        <li><a href="#tab5">Most Read items From Topics Subscribed by You</a></li>
     </ul>
 
     <div id='tab1'>
-        <ls:unreadItems max="5"/>
-    </div>
-
-    <div id='tab2'>
-        <ls:subscribedTopics/>
-    </div>
-
-    <div id='tab3'>
-        <ls:highestSubscribedPublicTopics/>
-    </div>
-
-    <div id='tab4'>
-        <ls:ownedTopics/>
-
-    </div>
+<ls:unreadItems max="5"/>
 </div>
 
-<g:form controller="login" action="logout">
+<div id='tab2'>
+    <ls:subscribedTopics/>
+</div>
 
-    <input type="Submit" value="Logout">
-</g:form>
+<div id='tab3'>
+    <ls:highestSubscribedPublicTopics/>
+</div>
 
-</body>
-</html>
+<div id='tab4'>
+    <ls:ownedTopics/>
+
+</div>
+<div id='tab5'>
+<ls:mostReadItemsForTopicsSubscribedByUser/>
+    </div>
+ </div>
+
+    <g:form controller="login" action="logout">
+
+        <input type="Submit" value="Logout">
+    </g:form>
+
+    </body>
+    </html>

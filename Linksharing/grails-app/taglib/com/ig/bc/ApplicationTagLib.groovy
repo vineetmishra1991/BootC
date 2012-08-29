@@ -57,6 +57,29 @@ class ApplicationTagLib {
 
         out << render(template: '/user/highestSubsPublicTopics', model: [subscriberList: subscription])
     }
+
+    def mostReadItemsForTopicsSubscribedByUser = {attrs ->
+
+        User user = User.findByFirstname('Vineet')
+        List<Topic> topicsList = user.subscriptions*.topic
+        def readingItem = []
+        if (topicsList) {
+            readingItem = ReadingItem.createCriteria().list() {
+                projections {
+                    groupProperty('resourceItem')
+                    count('resourceItem')
+                }
+
+                'resourceItem' {
+                    'in'("topic", topicsList)
+                }
+
+                'eq'("isRead", true)
+            }
+        }
+        out << render(template: '/user/mostreaditems', model: [readingItemsList: readingItem])
+
+    }
 }
 //    def formattedDate={attrs->
 //

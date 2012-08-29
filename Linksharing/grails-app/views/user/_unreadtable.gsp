@@ -11,7 +11,7 @@
     <tbody>
     <g:each in="${list}" status="i" var="item">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            <td><b><a href="${item.resource.url}" target="_blank">${item.resource.url}</a></b></td>
+            <td><b><a href="${item.resourceItem.url}" target="_blank">${item.resourceItem.url}</a></b></td>
             <td><b>${item.isFavourite ? 'Yes' : 'No'}</b></td>
             <td><ls:markAsRead itemId="${item.id}"/></td>
 
