@@ -27,6 +27,7 @@ class LoginController {
 //            else{ flash.message="Not Exist !!"}
 
         }
+//        flash.message="Logged In Successfully !!"
         redirect(controller: controllerName, action: actionName)
 
     }

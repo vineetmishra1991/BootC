@@ -22,8 +22,8 @@
 
 <body>
 
-%{--${flash.message}--}%
-You Are successfully logged in !!!
+<b style="color: purple;font-size: 17px"><i>You Are Successfully logged in !!</i></b>
+
 <br>
 
 <div id=tabs>

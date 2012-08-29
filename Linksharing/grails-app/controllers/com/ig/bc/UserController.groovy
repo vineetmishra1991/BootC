@@ -121,23 +121,34 @@ class UserController {
     def dashboard() {
     }
 
-    def register(){
-        render(view:"register")
+    def register() {
+        render(view: "register")
 
     }
 
-    def saveUser(){
-       Date date=params.date("dateOfBirth","MM/dd/yyyy")
-       User user=new User()
-        user.firstname=params.firstname
-        user.lastname=params.lastname
-        user.email=params.email
-        user.dateOfBirth=date
-        user.password=params.password
-        user.male=params.male
-        user.address=params.address
-        user.confirmPassword=params.confirmPassword
-        user.save(flush: true,failOnError: true)
+    def saveUser() {
+        Date date = params.date("dateOfBirth", "MM/dd/yyyy")
+        User user = new User()
+        user.firstname = params.firstname
+        user.lastname = params.lastname
+        user.email = params.email
+        user.dateOfBirth = date
+        user.password = params.password
+        user.male = params.male
+        user.address = params.address
+        user.confirmPassword = params.confirmPassword
+        user.save(flush: true, failOnError: true)
 
+    }
+
+    def checkEmailAvailability() {
+        def email = params.email
+        User user = User.findByEmail(email)
+        if (user) {
+            render "true"
+        }
+        else {
+            render "false"
+        }
     }
 }

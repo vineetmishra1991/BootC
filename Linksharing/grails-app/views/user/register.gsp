@@ -11,10 +11,62 @@
 <head>
     <meta name="layout" content="main">
     <title></title>
+    <g:javascript src="jquery.validate.js"/>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#date').datepicker()
+            var url = $("#url").val();
+            $('#date').datepicker();
+            $('#checkEmail').bind("click", function () {
+                alert("hi");
+                emailCheckViaAJAX();
+//                emailCheckViaGET();
+//                emailCheckViaGetJSON();
+            });
+
+
+//            jQuery("#registration").validate({
+//                rules:{
+//                    name:{
+//                        required:true,
+//                        maxlength:8
+//                    },
+//                    email:{
+//                        remote:url
+//                    },
+//                    datepicker:{
+//                        required:true
+//                    }
+//                },
+//                messages:{
+//                    name:{
+//                        required:"Name is required"
+//                    }
+//                }
+//            });
+
+
         });
+
+        function test() {
+            emailCheckViaAJAX()
+        }
+
+        function emailCheckViaAJAX() {
+            var url = $("#url").val();
+            $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"html",
+                data:{email:$("#email").val()}
+            }).done(function (data) {
+                        if (data == "true") {
+                            $("#message").html("Email is Not Available !")
+                        }
+                        else {
+                            $("#message").html("Email is available !")
+                        }
+                    });
+        }
     </script>
 
 </head>
@@ -22,9 +74,14 @@
 <body>
 <%@ page import="com.ig.bc.User" %>
 
-<g:form controller="user" action="saveUser">
 
-    Email:<g:field type="email" name="email" value=""/><br><br>
+<g:form name="registration" controller="user" action="saveUser">
+    <div id="urlGet">
+        <g:hiddenField name="url" id="url" value="${createLink(controller: 'user', action: 'checkEmailAvailability')}"/>
+    </div>
+    Email:<g:field type="email" name="email" id="email" value=""/> <input type="button" id="checkEmail " value="CheckEmail" onclick="test()">
+
+    <div id="message" style="background-color: silver;"></div><br>
     Address:<g:textField name="address" value=""/><br><br>
     FirstName:<g:textField name="firstname" value=""/><br><br>
     LastName:<g:textField name="lastname" value=""/><br><br>
