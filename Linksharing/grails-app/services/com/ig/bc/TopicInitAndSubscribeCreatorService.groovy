@@ -14,7 +14,6 @@ class TopicInitAndSubscribeCreatorService {
                 new Topic(name: 'GORM', visibility: Visibility.PUBLIC)]
 
         User.findAllByEmailNotEqual('admin@intelligrape.com').eachWithIndex {user, idx ->
-            println "adding topic to user:${user.email}"
             user.addToTopics(topics[idx]).save(failOnError: true, flush: true)
         }
     }
@@ -27,8 +26,6 @@ class TopicInitAndSubscribeCreatorService {
         User user4 = User.findByFirstname('Ron')
         User user5 = User.findByFirstname('harry')
 
-
-        println Topic.list()
         List<Subscription> subscriptions = [new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user1)),
                 new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user2)),
                 new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user3)),

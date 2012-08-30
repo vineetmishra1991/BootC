@@ -6,7 +6,7 @@ class BootstrapService {
     def topicInitAndSubscribeCreatorService
     def resourceAddToTopicService
     def subscriptionService
-    def readingItemTrueRandomAndPrintUnreadItemsService
+    def readingItemService
 
     def serviceMethod() {
 
@@ -20,8 +20,6 @@ class BootstrapService {
         resourceAddToTopicService.setLinkResourcetotopic()
         subscriptionService.addRandomSubscribersToTopic()
         subscriptionService.setReadingitemofuser()
-        readingItemTrueRandomAndPrintUnreadItemsService.setReadingitemstruerandom()
-        readingItemTrueRandomAndPrintUnreadItemsService.unreadItemsofuser()
-
+        readingItemService.setReadingitemstruerandom()
     }
 }

@@ -34,12 +34,12 @@ class ApplicationTagLib {
         out << render(template: '/user/ownedtopics', model: [ownerList: ownerList])
     }
 
-    def markAsRead = {attrs ->
-
-        ReadingItem item = ReadingItem.get(attrs.long('itemId'))
-        out << """<a href="${createLink(action: "markRead", controller: "readingItem", id: item.id)}">Mark Read</a>"""
-
-    }
+//    def markAsRead = {attrs ->
+//
+//        ReadingItem item = ReadingItem.get(attrs.long('itemId'))
+//        out << """<a href="#", id: item.id)}">Mark Read</a>"""
+//
+//    }
     def highestSubscribedPublicTopics = {attrs ->
 
         def subscription = Subscription.createCriteria().list() {

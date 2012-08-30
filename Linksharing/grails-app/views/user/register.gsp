@@ -11,7 +11,6 @@
 <head>
     <meta name="layout" content="main">
     <title></title>
-    <g:javascript src="jquery.validate.js"/>
     <script type="text/javascript">
         $(document).ready(function () {
             var url = $("#url").val();

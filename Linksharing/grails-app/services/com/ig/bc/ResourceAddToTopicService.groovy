@@ -5,7 +5,7 @@ class ResourceAddToTopicService {
     def serviceMethod() {
 
     }
-
+     //TODO ADD TO bootstrap service
     def setLinkResourcetotopic() {
 
         Topic.list().each {topic ->

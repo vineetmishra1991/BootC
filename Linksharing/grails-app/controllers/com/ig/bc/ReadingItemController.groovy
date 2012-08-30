@@ -100,10 +100,10 @@ class ReadingItemController {
         }
     }
 
-    def markRead(Long id) {
-
+    def markRead() {
+        def id=params.item
         ReadingItem item = ReadingItem.get(id)
         item.isRead = true
-        redirect(controller: 'user', action: 'dashboard')
+        render "true"
     }
 }

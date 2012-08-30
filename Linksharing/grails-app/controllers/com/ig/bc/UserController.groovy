@@ -101,7 +101,7 @@ class UserController {
         user.save(flush: true, failOnError: true)
 
     }
-
+ //TODO ternery operator or elvis operator - (the if else part)
     def checkEmailAvailability() {
         def email = params.email
         def user = User.countByEmail(email)

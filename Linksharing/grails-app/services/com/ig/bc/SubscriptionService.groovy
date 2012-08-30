@@ -5,7 +5,7 @@ class SubscriptionService {
     def serviceMethod() {
 
     }
-
+  //TODO def return type
     def addRandomSubscribersToTopic() {
 
         List<Topic> topic = Topic.list()
@@ -18,7 +18,7 @@ class SubscriptionService {
             user.last().addToSubscriptions(new Subscription(topic: topicfind, seriousness: Seriousness.VERY_SERIOUS)).save(failOnError: true, flush: true)
         }
     }
-
+    //TODO def return type
     def setReadingitemofuser() {
 
         List<User> users = User.list()

@@ -31,13 +31,13 @@ class EmailInviteService {
         }
 
     }
-
+//TODO REFACTOR (IF STATEMENT INTO THE SUBSCRIPTION DOMAIN)
     def sendMailReminder() {
 
         List<User> userList = User.list()
 
         userList.each {User user ->
-              println "in user ${user.id} "
+            println "in user ${user.id} "
             List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.SERIOUS) {
@@ -45,7 +45,7 @@ class EmailInviteService {
 
                         resource.readingitems.each {ReadingItem readingitem ->
 
-                            if (!readingitem.isRead && readingitem.user==user) {
+                            if (!readingitem.isRead && readingitem.user == user) {
 
                                 readingitemList.add(readingitem)
 
@@ -56,19 +56,15 @@ class EmailInviteService {
                 }
 
             }
-            println readingitemList
-            def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
-//            println readingItems
-            println readingItems.class
 
+            def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
+            println readingitemList
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"
                 subject "Hello. This is first Mail (Test)"
                 html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItems', model: [unreadItemsList: readingItems])}"
             }
-            println "mail sent"
-
         }
 
     }
@@ -86,7 +82,7 @@ class EmailInviteService {
                         if (resource.dateCreated > date) {
                             resource.readingitems.each {ReadingItem readingitem ->
 
-                                if (!readingitem.isRead && readingitem.user==user) {
+                                if (!readingitem.isRead && readingitem.user == user) {
 
                                     readingitemList.add(readingitem)
 
@@ -105,7 +101,6 @@ class EmailInviteService {
                 subject "Hello. This is first Mail (Test)"
                 html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItemsByDate', model: [unreadItemsList: readingItems])}"
             }
-            println "mail sent"
 
         }
 
