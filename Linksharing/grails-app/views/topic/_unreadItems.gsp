@@ -10,12 +10,13 @@
     <tbody>
 
     <g:each in="${unreadItemsList}" status="i" var="item">
-        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
+        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <td><b>${item.key}</b></td>
             <td><b>${item.value.collect {it.resourceItem.url}.join(", ")}</b></td>
-
         </tr>
+
     </g:each>
+
     </tbody>
 </table>

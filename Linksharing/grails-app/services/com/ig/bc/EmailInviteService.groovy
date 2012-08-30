@@ -37,7 +37,7 @@ class EmailInviteService {
         List<User> userList = User.list()
 
         userList.each {User user ->
-
+              println "in user ${user.id} "
             List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.SERIOUS) {
@@ -45,7 +45,7 @@ class EmailInviteService {
 
                         resource.readingitems.each {ReadingItem readingitem ->
 
-                            if (!readingitem.isRead) {
+                            if (!readingitem.isRead && readingitem.user==user) {
 
                                 readingitemList.add(readingitem)
 
@@ -56,8 +56,11 @@ class EmailInviteService {
                 }
 
             }
+            println readingitemList
             def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
-//           println readingItems.values()
+//            println readingItems
+            println readingItems.class
+
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"
@@ -83,7 +86,7 @@ class EmailInviteService {
                         if (resource.dateCreated > date) {
                             resource.readingitems.each {ReadingItem readingitem ->
 
-                                if (!readingitem.isRead) {
+                                if (!readingitem.isRead && readingitem.user==user) {
 
                                     readingitemList.add(readingitem)
 
