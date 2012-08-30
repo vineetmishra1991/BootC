@@ -18,7 +18,7 @@ class DocumentResourceController {
     def create() {
         [documentresourceInstance: new DocumentResource(params)]
     }
-
+    //todo
     def save(DocumentResourceAdderCO documentResourceAdderCO) {
 
         def file = documentResourceAdderCO.myFile
