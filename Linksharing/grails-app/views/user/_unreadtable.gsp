@@ -1,25 +1,20 @@
 <script type="text/javascript">
 
-    function check() {
-        makeRead();  //for ajax call this function in checkMail button
-    }
-
-    function makeRead() {
-        var url = ${createLink(controller: 'readingItem', action: 'markRead')};
+    function markItemRead() {
+        var url = "${createLink(controller: 'readingItem', action: 'markRead')}";
         $.ajax({
             type:"GET",
             url:url,
-            dataType:"html",
-            data:{item:$("#item").val()}
+            dataType:"JSON",
+            data:{'item':$("#item").val()}
         }).done(function (data) {
-                    if (data == "true") {
+                    if (data) {
                         $("#row").hide()
                     }
                 });
     }
 </script>
 
-</head>
 <table>
     <thead>
     <tr>
@@ -33,9 +28,9 @@
     <tbody>
     <g:each in="${list}" status="i" var="item">
         <tr id="row" class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            <td><b><a href="${item.resourceItem.url}" target="_blank" onclick="check()">${item.resourceItem.url}</a></b></td>
+            <td><b><a href="${item.resourceItem.url}" target="_blank">${item.resourceItem.url}</a></b></td>
             <td><b>${item.isFavourite ? 'Yes' : 'No'}</b></td>
-            <td><g:hiddenField name="url" id="item" value="${item.id}"/><a href="" onclick="check()">Mark Read</a></td>
+            <td><g:hiddenField name="url" id="item" value="${item.id}"/><a href="" onclick="markItemRead()">Mark Read</a></td>
         </tr>
     </g:each>
     </tbody>

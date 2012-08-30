@@ -36,30 +36,31 @@
     </ul>
 
     <div id='tab1'>
-<ls:unreadItems max="5"/>
-</div>
-
-<div id='tab2'>
-    <ls:subscribedTopics/>
-</div>
-
-<div id='tab3'>
-    <ls:highestSubscribedPublicTopics/>
-</div>
-
-<div id='tab4'>
-    <ls:ownedTopics/>
-
-</div>
-<div id='tab5'>
-<ls:mostReadItemsForTopicsSubscribedByUser/>
+        <ls:unreadItems max="5"/>
     </div>
- </div>
 
-    <g:form controller="login" action="logout">
+    <div id='tab2'>
+        <ls:subscribedTopics/>
+    </div>
 
-        <input type="Submit" value="Logout">
-    </g:form>
+    <div id='tab3'>
+        <ls:highestSubscribedPublicTopics/>
+    </div>
 
-    </body>
-    </html>
+    <div id='tab4'>
+        <ls:ownedTopics/>
+
+    </div>
+
+    <div id='tab5'>
+        <ls:mostReadItemsForTopicsSubscribedByUser/>
+    </div>
+</div>
+
+<g:form controller="login" action="logout">
+
+    <input type="Submit" value="Logout">
+</g:form>
+
+</body>
+</html>
