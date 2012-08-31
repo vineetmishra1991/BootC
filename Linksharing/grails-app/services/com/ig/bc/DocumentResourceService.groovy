@@ -20,6 +20,7 @@ class DocumentResourceService {
         documentResource.contentType = file.contentType
         documentResource.save(flush: true, failOnError: true)
         topicNew.addToResources(documentResource).save(flush: true, failOnError: true)
-
+        def topicId=topicNew.id
+        return topicId
     }
 }

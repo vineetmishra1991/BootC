@@ -25,7 +25,7 @@
         });
 
         function checkViaAJAX() {
-            var url = "${createLink(controller: 'topic', action: 'renderDocument')}";
+            var url = "${createLink(controller: 'topic', action: 'renderDocument',params:['topic.id':"${topicInstance?.id}"])}";
             $.ajax({
                 type:"GET",
                 url:url,
@@ -37,7 +37,7 @@
                     });
         }
         function newCheckViaAJAX() {
-            var url = "${createLink(controller: 'topic', action: 'renderLink')}";
+            var url = "${createLink(controller: 'linkResource', action: 'create',params: ['topic.id':"${topicInstance?.id}"])}";
             $.ajax({
                 type:"GET",
                 url:url,

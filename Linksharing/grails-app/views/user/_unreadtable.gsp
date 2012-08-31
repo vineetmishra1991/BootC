@@ -1,7 +1,6 @@
 <script type="text/javascript">
 
     function markItemRead(id) {
-        alert(id);
         var url = "${createLink(controller: 'readingItem', action: 'markRead')}";
         $.ajax({
             type:"GET",

@@ -29,7 +29,8 @@ class DocumentResourceController {
             return false
         }
         def path = grailsApplication.config.uploadPath
-        documentResourceService.commandObjectBinding(documentResourceAdderCO, path)
+        Long newId = documentResourceService.commandObjectBinding(documentResourceAdderCO, path)
+        redirect(controller: 'topic', action: 'show', params: ['id': newId])
     }
 
     def download(Long id) {

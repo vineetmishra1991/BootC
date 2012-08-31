@@ -127,13 +127,10 @@ class TopicController {
 
     def renderDocument() {
 //        println "here"
-        render template: "../documentResource/addDocument"
+        def id=params.topic.id
+        render template: "../documentResource/addDocument" ,model: [id:id]
+
 
     }
-
-    def renderLink() {
-//        println "here"
-        render view: "../linkResource/create";
-    }
-
+//
 }
