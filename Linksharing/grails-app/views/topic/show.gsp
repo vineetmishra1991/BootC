@@ -79,6 +79,7 @@
             </li>
         </g:if>
 
+
         <g:if test="${topicInstance?.owner}">
             <li class="fieldcontain">
                 <span id="owner-label" class="property-label"><g:message code="topic.owner.label" default="Owner"/></span>

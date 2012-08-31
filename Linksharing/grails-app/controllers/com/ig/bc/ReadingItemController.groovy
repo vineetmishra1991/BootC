@@ -101,7 +101,6 @@ class ReadingItemController {
     }
 
     def markRead() {
-
         def id = params.item
         ReadingItem item = ReadingItem.get(id)
         item.isRead = true

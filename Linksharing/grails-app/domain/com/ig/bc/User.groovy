@@ -25,10 +25,14 @@ class User {
         lastUpdated(nullable: true)
         email(email: true, nullable: false, unique: true)
         confirmPassword(bindable: true)
-        password(validator: {val, obj ->
-            if (val != obj.confirmPassword) {
-                return false
-            }
-        })
+
+//        password(validator: {val, obj ->
+//            if (obj.instanceOf(User)) {
+//                if (val != obj.confirmPassword) {
+//                    return false
+//                }
+//            }
+//            else return true
+//        })
     }
 }

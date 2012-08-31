@@ -126,11 +126,28 @@ class TopicController {
     }
 
     def renderDocument() {
-//        println "here"
-        def id=params.topic.id
-        render template: "../documentResource/addDocument" ,model: [id:id]
+        def id = params.topic.id
+        render template: "../documentResource/addDocument", model: [id: id]
 
 
     }
-//
+
+    def addSubscriptionToUser() {
+        List<String> topicIds = params.list("topicIds")
+        List<Long> topicIdsList = topicIds.collect {String topicId ->
+
+            topicId.toLong()
+
+        }
+
+        User user = User.findByEmail(session.userEmail)
+        println user.firstname
+        topicIdsList.each {Long id ->
+            Topic topicNew = Topic.get(id)
+            println topicNew
+            user.addToSubscriptions(new Subscription(topic: topicNew,seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
+        }
+         redirect(controller: 'login',action: 'loginHandler')
+    }
+
 }
