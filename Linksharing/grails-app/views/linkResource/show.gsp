@@ -1,4 +1,3 @@
-
 <%@ page import="com.ig.bc.LinkResource" %>
 <!doctype html>
 <html>

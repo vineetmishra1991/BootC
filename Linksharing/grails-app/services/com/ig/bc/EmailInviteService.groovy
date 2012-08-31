@@ -37,7 +37,6 @@ class EmailInviteService {
         List<User> userList = User.list()
 
         userList.each {User user ->
-            println "in user ${user.id} "
             List<ReadingItem> readingitemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.SERIOUS) {
@@ -58,7 +57,6 @@ class EmailInviteService {
             }
 
             def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
-            println readingitemList
             asynchronousMailService.sendAsynchronousMail {
 
                 to "${user.email}"

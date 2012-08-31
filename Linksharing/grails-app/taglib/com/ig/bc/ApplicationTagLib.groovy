@@ -80,6 +80,11 @@ class ApplicationTagLib {
         out << render(template: '/user/mostreaditems', model: [readingItemsList: readingItem])
 
     }
+
+    def addDocumentResource={attrs->
+
+        out << render(template: '/documentResource/addDocument')
+    }
 }
 //    def formattedDate={attrs->
 //

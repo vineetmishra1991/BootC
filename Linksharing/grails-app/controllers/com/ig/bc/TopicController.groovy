@@ -115,14 +115,25 @@ class TopicController {
 
     }
 
-    def sendMail(){
+    def sendMail() {
 
         emailInviteService.sendMailReminder()
     }
 
-    def sendMailAccordingToDate(){
+    def sendMailAccordingToDate() {
 
         emailInviteService.sendReminderAccordingToDate()
+    }
+
+    def renderDocument() {
+//        println "here"
+        render template: "../documentResource/addDocument"
+
+    }
+
+    def renderLink() {
+//        println "here"
+        render view: "../linkResource/create";
     }
 
 }
