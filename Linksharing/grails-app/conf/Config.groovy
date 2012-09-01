@@ -64,13 +64,13 @@ grails.hibernate.cache.queries = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-        grails.mail.default.from = "linksharingvineet1991@gmail.com"
+        grails.mail.default.from = "linksharingv@gmail.com"
         grails {
             mail {
                 host = "smtp.gmail.com"
                 port = 465
-                username = "linksharingvineet1991@gmail.com"
-                password = "igdefault1"
+                username = "linksharingv@gmail.com"
+                password = "igdefault"
                 props = ["mail.smtp.auth": "true",
                         "mail.smtp.socketFactory.port": "465",
                         "mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",

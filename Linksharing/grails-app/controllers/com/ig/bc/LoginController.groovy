@@ -8,6 +8,7 @@ class LoginController {
             redirect(controller: 'user', action: 'dashboard')
         }
         else {
+
             render(view: '/login')
         }
 
@@ -24,10 +25,8 @@ class LoginController {
                 controllerName = 'user'
                 actionName = 'dashboard'
             }
-//            else{ flash.message="Not Exist !!"}
-
         }
-//        flash.message="Logged In Successfully !!"
+        flash.message = "Username And Password Doesn't Exist ! Please Try Again !!"
         redirect(controller: controllerName, action: actionName)
 
     }
@@ -35,6 +34,7 @@ class LoginController {
     def logout() {
 
         session.invalidate()
+        flash.message = "Thanks For Visiting The Site!!"
         redirect(action: 'index')
     }
 
