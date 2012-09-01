@@ -24,6 +24,13 @@
                     email:{
                         required:true,
                         remote:url
+                    },
+                    password:{
+                        required:true
+                    },
+                    confirmPassword:{
+                        required:true,
+                        equalTo:"#password"
                     }
                 },
                 messages:{
@@ -32,6 +39,10 @@
                     },
                     email:{
                         remote:"Email Already Exists !"
+                    },
+                    confirmPassword:{
+
+                        equalTo:"Password and ConfirmPassword donot match"
                     }
                 }
             });
@@ -57,6 +68,7 @@
                         }
                     });
         }
+
     </script>
 
 </head>
@@ -77,8 +89,8 @@
     LastName:<g:textField name="lastname" value=""/><br><br>
     Sex(Male):<g:checkBox name="male" value=""/><br><br>
     Date of Birth:<g:field type="text" name="dateOfBirth" id="date"/><br><br>
-    Password:<g:textField name="password" value=""/><br><br>
-    ConfirmPassword<g:textField name="confirmPassword" value=""/><br><br>
+    Password:<g:textField name="password" id="password" value=""/><br><br>
+    ConfirmPassword<g:textField name="confirmPassword" id="confirmPassword" value=""/><br><br>
 
     <input type="submit" value="Register">
 </g:form>
