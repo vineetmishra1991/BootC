@@ -13,14 +13,15 @@ class DocumentResourceService {
         def summary = documentResourceAdderCO.summary
         def file = documentResourceAdderCO.myFile
         Topic topicNew = Topic.get(id)
-        DocumentResource documentResource = new DocumentResource(title: title, summary: summary, topic: topicNew).save(flush: true, failOnError: true)
+        User user = topicNew.owner
+        DocumentResource documentResource = new DocumentResource(title: title, summary: summary, topic: topicNew, owner: user).save(flush: true, failOnError: true)
         def resourceId = documentResource.id
         file.transferTo(new File("${path}/${resourceId}"))
         documentResource.fileName = resourceId
         documentResource.contentType = file.contentType
         documentResource.save(flush: true, failOnError: true)
         topicNew.addToResources(documentResource).save(flush: true, failOnError: true)
-        def topicId=topicNew.id
+        def topicId = topicNew.id
         return topicId
     }
 }

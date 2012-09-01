@@ -36,7 +36,7 @@
     </ul>
 
     <div id='tab1'>
-        <ls:unreadItems max="5"/>
+        <ls:unreadItems max="15"/>
     </div>
 
     <div id='tab2'>

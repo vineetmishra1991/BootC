@@ -1,16 +1,15 @@
 <script type="text/javascript">
 
-    function markItemRead(id) {
+    function markItemRead(id, newId) {
         var url = "${createLink(controller: 'readingItem', action: 'markRead')}";
         $.ajax({
             type:"GET",
             url:url,
             dataType:"JSON",
-            data:{'item':$("#item").val()}
+            data:{'item':$("#" + newId).val()}
         }).done(function (data) {
                     if (data) {
                         $("#" + id).hide();
-
                     }
                 });
     }
@@ -31,7 +30,7 @@
         <tr id="row_${i}" class="${(i % 2) == 0 ? 'even' : 'odd'}">
             <td><b><a href="${item.resourceItem.url}" target="_blank">${item.resourceItem.url}</a></b></td>
             <td><b>${item.isFavourite ? 'Yes' : 'No'}</b></td>
-            <td><g:hiddenField name="url" id="item" value="${item.id}"/><a onclick="markItemRead('row_${i}')">Mark Read</a></td>
+            <td><g:hiddenField name="url" id="item_${i}" value="${item.id}"/><a onclick="markItemRead('row_${i}', 'item_${i}')">Mark Read</a></td>
         </tr>
     </g:each>
     </tbody>
