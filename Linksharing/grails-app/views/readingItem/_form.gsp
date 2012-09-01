@@ -2,35 +2,35 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'isFavourite', 'error')} ">
-	<label for="isfavorite">
-		<g:message code="readingitem.isfavorite.label" default="Isfavorite" />
+<div class="fieldcontain ${hasErrors(bean: readingItemInstance, field: 'isFavourite', 'error')} ">
+	<label for="isFavourite">
+		<g:message code="readingItem.isFavourite.label" default="Is Favourite" />
 		
 	</label>
-	<g:checkBox name="isfavorite" value="${readingitemInstance?.isfavorite}" />
+	<g:checkBox name="isFavourite" value="${readingItemInstance?.isFavourite}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'isRead', 'error')} ">
-	<label for="isread">
-		<g:message code="readingitem.isread.label" default="Isread" />
+<div class="fieldcontain ${hasErrors(bean: readingItemInstance, field: 'isRead', 'error')} ">
+	<label for="isRead">
+		<g:message code="readingItem.isRead.label" default="Is Read" />
 		
 	</label>
-	<g:checkBox name="isread" value="${readingitemInstance?.isread}" />
+	<g:checkBox name="isRead" value="${readingItemInstance?.isRead}" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'resource', 'error')} required">
-	<label for="resource">
-		<g:message code="readingitem.resource.label" default="Resource" />
+<div class="fieldcontain ${hasErrors(bean: readingItemInstance, field: 'resourceItem', 'error')} required">
+	<label for="resourceItem">
+		<g:message code="readingItem.resourceItem.label" default="Resource Item" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="resource" name="resource.id" from="${com.ig.bc.Resource.list()}" optionKey="id" required="" value="${readingitemInstance?.resource?.id}" class="many-to-one"/>
+	<g:select id="resourceItem" name="resourceItem.id" from="${com.ig.bc.Resource.list()}" optionKey="id" required="" value="${readingItemInstance?.resourceItem?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: readingitemInstance, field: 'user', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: readingItemInstance, field: 'user', 'error')} required">
 	<label for="user">
-		<g:message code="readingitem.user.label" default="User" />
+		<g:message code="readingItem.user.label" default="User" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="user" name="user.id" from="${com.ig.bc.User.list()}" optionKey="id" required="" value="${readingitemInstance?.user?.id}" class="many-to-one"/>
+	<g:select id="user" name="user.id" from="${com.ig.bc.User.list()}" optionKey="id" required="" value="${readingItemInstance?.user?.id}" class="many-to-one"/>
 </div>
 

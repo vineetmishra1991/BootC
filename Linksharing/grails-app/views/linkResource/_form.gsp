@@ -2,35 +2,60 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: linkresourceInstance, field: 'summary', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'summary', 'error')} ">
 	<label for="summary">
-		<g:message code="linkresource.summary.label" default="Summary" />
+		<g:message code="linkResource.summary.label" default="Summary" />
 		
 	</label>
-	<g:textArea name="summary" cols="40" rows="5" maxlength="1024" value="${linkresourceInstance?.summary}"/>
+	<g:textArea name="summary" cols="40" rows="5" maxlength="1024" value="${linkResourceInstance?.summary}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: linkresourceInstance, field: 'url', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'url', 'error')} ">
 	<label for="url">
-		<g:message code="linkresource.url.label" default="Url" />
+		<g:message code="linkResource.url.label" default="Url" />
 		
 	</label>
-	<g:field type="url" name="url" value="${linkresourceInstance?.url}"/>
+	<g:field type="url" name="url" value="${linkResourceInstance?.url}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: linkresourceInstance, field: 'title', 'error')} ">
-	<label for="title">
-		<g:message code="linkresource.title.label" default="Title" />
-		
-	</label>
-	<g:textField name="title" value="${linkresourceInstance?.title}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: linkresourceInstance, field: 'topic', 'error')} required">
-	<label for="topic">
-		<g:message code="linkresource.topic.label" default="Topic" />
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'owner', 'error')} required">
+	<label for="owner">
+		<g:message code="linkResource.owner.label" default="Owner" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="topic" name="topic.id" from="${com.ig.bc.Topic.list()}" optionKey="id" required="" value="${linkresourceInstance?.topic?.id}" class="many-to-one"/>
+	<g:select id="owner" name="owner.id" from="${com.ig.bc.User.list()}" optionKey="id" required="" value="${linkResourceInstance?.owner?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'readingitems', 'error')} ">
+	<label for="readingitems">
+		<g:message code="linkResource.readingitems.label" default="Readingitems" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${linkResourceInstance?.readingitems?}" var="r">
+    <li><g:link controller="readingItem" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="readingItem" action="create" params="['linkResource.id': linkResourceInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'readingItem.label', default: 'ReadingItem')])}</g:link>
+</li>
+</ul>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'title', 'error')} ">
+	<label for="title">
+		<g:message code="linkResource.title.label" default="Title" />
+		
+	</label>
+	<g:textField name="title" value="${linkResourceInstance?.title}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: linkResourceInstance, field: 'topic', 'error')} required">
+	<label for="topic">
+		<g:message code="linkResource.topic.label" default="Topic" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="topic" name="topic.id" from="${com.ig.bc.Topic.list()}" optionKey="id" required="" value="${linkResourceInstance?.topic?.id}" class="many-to-one"/>
 </div>
 

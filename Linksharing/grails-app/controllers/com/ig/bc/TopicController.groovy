@@ -141,13 +141,11 @@ class TopicController {
         }
 
         User user = User.findByEmail(session.userEmail)
-        println user.firstname
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
-            println topicNew
-            user.addToSubscriptions(new Subscription(topic: topicNew,seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
+            user.addToSubscriptions(new Subscription(topic: topicNew, seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
         }
-         redirect(controller: 'login',action: 'loginHandler')
+        redirect(controller: 'login', action: 'loginHandler')
     }
 
 }

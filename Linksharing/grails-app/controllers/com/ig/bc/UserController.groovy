@@ -17,6 +17,10 @@ class UserController {
         [userInstance: new User(params)]
     }
 
+    def delete(){
+
+        render "User Cannot Be Deleted !!"
+    }
     def save() {
         def userInstance = new User(params)
         if (!userInstance.save(flush: true)) {
@@ -101,7 +105,7 @@ class UserController {
         user.save(flush: true, failOnError: true)
 
     }
- //TODO ternery operator or elvis operator - (the if else part)
+    //TODO ternery operator or elvis operator - (the if else part)
     def checkEmailAvailability() {
         def email = params.email
         def user = User.countByEmail(email)

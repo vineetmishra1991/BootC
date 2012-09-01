@@ -1,5 +1,5 @@
 <div>
-    <g:form controller="documentResource" action="save" enctype="multipart/form-data" method="POST">
+    <g:form controller="documentResource" action="saveDocument" enctype="multipart/form-data" method="POST">
         Title: <input type="text" name="title"> <br> <br>
         Summary: <textarea maxlength="1000" name="summary">
     </textarea>   <br> <br><br>
