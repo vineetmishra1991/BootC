@@ -2,13 +2,6 @@ package com.ig.bc
 
 import org.codehaus.groovy.grails.validation.Validateable
 
-/**
- * Created with IntelliJ IDEA.
- * User: intelligrape
- * Date: 23/8/12
- * Time: 9:51 AM
- * To change this template use File | Settings | File Templates.
- */
 @Validateable
 class VaildatorCO {
 

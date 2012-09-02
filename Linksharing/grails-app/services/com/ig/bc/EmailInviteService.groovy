@@ -30,13 +30,13 @@ class EmailInviteService {
             html "<b>Hello !! You have been invited to checkout these topics ${topicsList}</b>"
         }
     }
-//TODO REFACTOR (IF STATEMENT INTO THE SUBSCRIPTION DOMAIN)
+
     def sendMailReminder() {
 
         List<User> userList = User.list()
 
         userList.each {User user ->
-            List<ReadingItem> readingitemList = []
+            List<ReadingItem> readingItemList = []
             user.subscriptions.each {Subscription subscription ->
                 if (subscription.seriousness == Seriousness.SERIOUS) {
                     subscription.topic.resources.each {Resource resource ->
@@ -45,25 +45,26 @@ class EmailInviteService {
 
                             if (!readingitem.isRead && readingitem.user == user) {
 
-                                readingitemList.add(readingitem)
+                                readingItemList.add(readingitem)
 
                             }
-
                         }
                     }
                 }
-
             }
-
-            def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
-            asynchronousMailService.sendAsynchronousMail {
-
-                to "${user.email}"
-                subject "Hello. This is first Mail (Test)"
-                html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItems', model: [unreadItemsList: readingItems])}"
-            }
+            def readingItems = readingItemList.groupBy {it.resourceItem.topic.name}
+            sendMailReminderOfUnreadItems(readingItems,user)
         }
+    }
 
+    def sendMailReminderOfUnreadItems(def readingItems,User user) {
+
+        asynchronousMailService.sendAsynchronousMail {
+
+            to "${user.email}"
+            subject "Hello. This is first Mail (Test)"
+            html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItems', model: [unreadItemsList: readingItems])}"
+        }
     }
 
     def sendReminderAccordingToDate() {
@@ -89,22 +90,22 @@ class EmailInviteService {
                         }
                     }
                 }
-
             }
             def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
-            asynchronousMailService.sendAsynchronousMail {
-
-                to "${user.email}"
-                subject "Hello. This is first Mail (Test)"
-                html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItemsByDate', model: [unreadItemsList: readingItems])}"
-            }
+            sendMailAsDate(readingItems,user)
 
         }
 
     }
 
+    def sendMailAsDate(def readingItems,User user) {
+
+        asynchronousMailService.sendAsynchronousMail {
+
+            to "${user.email}"
+            subject "Hello. This is first Mail (Test)"
+            html "The Unread Resources are :${groovyPageRenderer.render(template: '/topic/unreadItemsByDate', model: [unreadItemsList: readingItems])}"
+        }
+    }
+
 }
-
-
-
-

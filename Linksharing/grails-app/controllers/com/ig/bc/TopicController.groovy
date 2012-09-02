@@ -132,8 +132,6 @@ class TopicController {
     def renderDocument() {
         def id = params.topic.id
         render template: "../documentResource/addDocument", model: [id: id]
-
-
     }
 
     def addSubscriptionToUser() {

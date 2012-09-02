@@ -100,7 +100,7 @@ class DocumentResourceController {
         }
     }
 
-    //todo
+
     def saveDocument(DocumentResourceAdderCO documentResourceAdderCO) {
 
         def file = documentResourceAdderCO.myFile
@@ -111,7 +111,7 @@ class DocumentResourceController {
             return false
         }
         def path = grailsApplication.config.uploadPath
-        Long newId = documentResourceService.commandObjectBinding(documentResourceAdderCO, path)
+        Long newId = documentResourceService.saveDocumentResource(documentResourceAdderCO, path)
         redirect(controller: 'topic', action: 'show', params: ['id': newId])
     }
 

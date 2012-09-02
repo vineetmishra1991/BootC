@@ -80,7 +80,7 @@
 <g:form name="registration" controller="user" action="saveUser">
     <div id="urlGet">
         <g:hiddenField name="url" id="url" value="${createLink(controller: 'user', action: 'checkEmailAvailability')}"/>
-    </div>
+    </div> <br>
     Email:<g:field type="email" name="email" class="email" id="email" value=""/>
 
     <div id="message" style="background-color: silver;"></div><br>
