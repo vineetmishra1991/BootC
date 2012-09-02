@@ -102,17 +102,21 @@ class TopicController {
     }
 
     def sendInvite(VaildatorCO validateCO) {
-///        println "Errors in BookCommand : " + validateEmail.errors
-////        if(validateEmail.hasErrors()){println "error"}
-//        println "hey"
-//      if (!validateCO.validate()){
-//
-//           validateCO.errors.allErrors.each {
-//              println it
-//           }
-//      }
-        emailInviteService.sendInviteMail(validateCO)
 
+        List<String> topicIds = params.list("topicIdList")
+
+        List<Long> topicIdsList = topicIds.collect {String topicId ->
+
+            topicId.toLong()
+
+        }
+
+        def topicsList = topicIdsList.collect {id ->
+            Topic topic = Topic.get(id)
+            topic.name
+        }
+
+        emailInviteService.sendInviteMail(validateCO, topicsList)
     }
 
     def sendMail() {

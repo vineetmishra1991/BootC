@@ -24,7 +24,7 @@
 
         });
 
-        function checkViaAJAX() {
+        function getDocumentViaAJAX() {
             var url = "${createLink(controller: 'topic', action: 'renderDocument',params:['topic.id':"${topicInstance?.id}"])}";
             $.ajax({
                 type:"GET",
@@ -36,7 +36,7 @@
 //                        $("resource_dialog").html(data)
                     });
         }
-        function newCheckViaAJAX() {
+        function getLinkResourceViaAJAX() {
             var url = "${createLink(controller: 'linkResource', action: 'create',params: ['topic.id':"${topicInstance?.id}"])}";
             $.ajax({
                 type:"GET",
@@ -136,8 +136,8 @@
 
     <div id="resource_dialog" title="Add New Resource">
         <div id="containerDiv">
-            <a href="#" onclick="checkViaAJAX()">Add Document Resource</a><br><br>
-            <a href="#" onclick="newCheckViaAJAX()">Add Link Resource</a>
+            <a href="#" onclick="getDocumentViaAJAX()">Add Document Resource</a><br><br>
+            <a href="#" onclick="getLinkResourceViaAJAX()">Add Link Resource</a>
         </div>
     </div>
 

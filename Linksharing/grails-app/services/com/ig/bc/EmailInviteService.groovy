@@ -10,7 +10,7 @@ class EmailInviteService {
 
     }
 
-    def sendInviteMail(VaildatorCO validateCO) {
+    def sendInviteMail(VaildatorCO validateCO, def topicsList) {
 
         if (!validateCO.validate()) {
 
@@ -27,9 +27,8 @@ class EmailInviteService {
 
             to "${email1}", "${email2}", "${email3}"
             subject "Hello. This is first Mail (Test)"
-            html '<b>Hello</b>'
+            html "<b>Hello !! You have been invited to checkout these topics ${topicsList}</b>"
         }
-
     }
 //TODO REFACTOR (IF STATEMENT INTO THE SUBSCRIPTION DOMAIN)
     def sendMailReminder() {

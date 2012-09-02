@@ -81,7 +81,7 @@
     <div id="urlGet">
         <g:hiddenField name="url" id="url" value="${createLink(controller: 'user', action: 'checkEmailAvailability')}"/>
     </div>
-    Email:<g:field type="email" name="email" class="email" id="email" value=""/> <input type="button" id="checkEmail " value="CheckEmail">
+    Email:<g:field type="email" name="email" class="email" id="email" value=""/>
 
     <div id="message" style="background-color: silver;"></div><br>
     Address:<g:textField name="address" value=""/><br><br>

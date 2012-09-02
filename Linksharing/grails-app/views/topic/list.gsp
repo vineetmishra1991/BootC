@@ -66,8 +66,10 @@
         Email2: <input type="text" name="email2"> <br> <br>
         Email3: <input type="text" name="email3"> <br> <br>
         <textarea maxlength="1000">
-        </textarea>   <br>
-        <br><input type="submit" value="Invite">
+        </textarea>   <br> <br>
+        <b>Invite From These !!</b> <br> <br>
+        <g:select id="topic" name="topicIdList" multiple="true" from="${com.ig.bc.Topic.list()}" optionKey="id" required="" optionValue="name"/>
+        <br><g:submitButton value="Invite" name="Invite"/>
     </g:form>
 </div>
 <script type="text/javascript">
