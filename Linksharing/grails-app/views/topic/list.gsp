@@ -25,7 +25,9 @@
     <table>
         <thead>
         <tr>
-            <th><g:checkBox value="1" id="selectAll" name="topicIds" checked="false"/></th>
+            <th>Subscribe:  <g:checkBox value="1" id="selectAllSubscribe" name="topicIdsSubscribe" checked="false"/>
+                UnSubscribe:  <g:checkBox value="2" id="selectAllUnSubscribe" name="topicIdsUnSubscribe" checked="false"/>
+                Subscribe(InverseCheck):  <g:checkBox value="3" id="selectAllInverse" name="topicIdsInverse" checked="false"/></th>
             <g:sortableColumn property="name" title="${message(code: 'topic.name.label', default: 'Name')}"/>
 
             <th><g:message code="topic.owner.label" default="Owner"/></th>
@@ -39,7 +41,9 @@
             <g:each in="${topicInstanceList}" status="i" var="topicInstance">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td>
-                        <g:checkBox class="select" value="${topicInstance.id}" name="topicIds" checked="false"/>
+                        <g:checkBox class="selectSubscribe" value="${topicInstance.id}" name="topicIdsSubscribe" checked="false"/>
+                        <g:checkBox class="selectUnSubscribe" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>
+                        <g:checkBox class="selectInverse" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>
                         <g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link>
                     </td>
                     <td>${fieldValue(bean: topicInstance, field: "owner")}</td>
@@ -51,6 +55,7 @@
 
             </tbody>
             <g:submitButton name="Submit" value="Subscribe to Topic"/>
+            <g:actionSubmit name="SubmitMe" value="UnSubscribe to Topic" action="removeSubscriptionFromUser"/>
         </g:form>
     </table>
 
@@ -75,12 +80,35 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $('#selectAll').click(function () {
+        $('#selectAllSubscribe').click(function () {
             var checked = $(this).attr('checked') ? true : false;
-            $('.select').attr('checked', checked);
+            $('.selectSubscribe').attr('checked', checked);
 
         });
-    })
+
+        $('#selectAllUnSubscribe').click(function () {
+            var checked = $(this).attr('checked') ? true : false;
+            $('.selectUnSubscribe').attr('checked', checked);
+
+        });
+
+        $('#selectAllInverse').change(function () {
+
+            $('.selectInverse').each(function () {
+
+                if ((this).isChecked) {
+
+                    this.attr('checked', false)
+                }
+                else {
+                    this.attr('checked', true)
+                }
+
+            })
+
+        });
+
+    });
 </script>
 </body>
 </html>

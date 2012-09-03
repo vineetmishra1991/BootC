@@ -135,7 +135,8 @@ class TopicController {
     }
 
     def addSubscriptionToUser() {
-        List<String> topicIds = params.list("topicIds")
+        List<String> topicIds = params.list("topicIdsSubscribe")
+        println topicIds
         List<Long> topicIdsList = topicIds.collect {String topicId ->
 
             topicId.toLong()
@@ -147,6 +148,42 @@ class TopicController {
             Topic topicNew = Topic.get(id)
             user.addToSubscriptions(new Subscription(topic: topicNew, seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
         }
+        redirect(controller: 'login', action: 'loginHandler')
+    }
+
+    def removeSubscriptionFromUser() {
+        List<String> topicIds = params.list("topicIdsUnSubscribe")
+        println topicIds
+        List<Long> topicIdsList = topicIds.collect {String topicId ->
+
+            topicId.toLong()
+
+        }
+
+        User user = User.findByEmail(session.userEmail)
+        println user.firstname
+
+        topicIdsList.each {Long id ->
+            Topic topicNew = Topic.get(id)
+            println topicNew.name
+            Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
+            println subscription.subscriber.firstname
+            println subscription.topic.name
+
+            subscription.topic.resources.each {Resource resource ->
+
+                resource.readingitems.each {ReadingItem readingItem ->
+
+                    if (readingItem.user == user) {
+
+                        readingItem.delete()
+                    }
+                }
+            }
+
+            subscription.delete()
+        }
+
         redirect(controller: 'login', action: 'loginHandler')
     }
 
