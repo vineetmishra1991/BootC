@@ -161,15 +161,11 @@ class TopicController {
         }
 
         User user = User.findByEmail(session.userEmail)
-        println user.firstname
 
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
-            println topicNew.name
-            Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
-            println subscription.subscriber.firstname
-            println subscription.topic.name
 
+            Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
             subscription.topic.resources.each {Resource resource ->
 
                 resource.readingitems.each {ReadingItem readingItem ->

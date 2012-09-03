@@ -25,9 +25,12 @@
     <table>
         <thead>
         <tr>
-            <th>Subscribe:  <g:checkBox value="1" id="selectAllSubscribe" name="topicIdsSubscribe" checked="false"/>
-                UnSubscribe:  <g:checkBox value="2" id="selectAllUnSubscribe" name="topicIdsUnSubscribe" checked="false"/>
-                Subscribe(InverseCheck):  <g:checkBox value="3" id="selectAllInverse" name="topicIdsInverse" checked="false"/></th>
+            <th>Subscribe:    <g:checkBox value="1" id="selectAllSubscribe" name="topicIdsSubscribe" checked="false"/>
+            UnSubscribe:    <g:checkBox value="2" id="selectAllUnSubscribe" name="topicIdsUnSubscribe" checked="false"/>
+            Subscribe(InverseCheck):    <input type="button" id="inverse" name="inverse" value="Inverse"/></th>
+        </tr>
+        <tr>
+
             <g:sortableColumn property="name" title="${message(code: 'topic.name.label', default: 'Name')}"/>
 
             <th><g:message code="topic.owner.label" default="Owner"/></th>
@@ -43,7 +46,7 @@
                     <td>
                         <g:checkBox class="selectSubscribe" value="${topicInstance.id}" name="topicIdsSubscribe" checked="false"/>
                         <g:checkBox class="selectUnSubscribe" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>
-                        <g:checkBox class="selectInverse" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>
+                        %{--<g:checkBox class="selectInverse" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>--}%
                         <g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link>
                     </td>
                     <td>${fieldValue(bean: topicInstance, field: "owner")}</td>
@@ -92,16 +95,14 @@
 
         });
 
-        $('#selectAllInverse').change(function () {
+        $('#inverse').click(function () {
 
-            $('.selectInverse').each(function () {
-
-                if ((this).isChecked) {
-
-                    this.attr('checked', false)
+            $('.selectSubscribe').each(function () {
+                if ($(this).is(':checked')) {
+                    $(this).attr('checked', false)
                 }
                 else {
-                    this.attr('checked', true)
+                    $(this).attr('checked', true)
                 }
 
             })
