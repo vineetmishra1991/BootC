@@ -103,13 +103,27 @@ class BootstrapService {
     void addRandomSubscribersToTopic() {
 
         List<Topic> topic = Topic.list()
+
         topic.each {topicFind ->
             List<User> user = User.list()
             User userDelete = topicFind.owner
+
             user = user - userDelete
+
             Collections.shuffle(user)
-            user.first().addToSubscriptions(new Subscription(topic: topicFind, seriousness: Seriousness.SERIOUS)).save(failOnError: true, flush: true)
-            user.last().addToSubscriptions(new Subscription(topic: topicFind, seriousness: Seriousness.VERY_SERIOUS)).save(failOnError: true, flush: true)
+
+            User userFirst = user.first()
+            User userSecond = user.last()
+
+            if (!(Subscription.findBySubscriberAndTopic(userFirst, topicFind))) {
+                user.first().addToSubscriptions(new Subscription(topic: topicFind, seriousness: Seriousness.SERIOUS)).save(failOnError: true, flush: true)
+
+            }
+
+            if (!(Subscription.findBySubscriberAndTopic(userSecond, topicFind))) {
+                user.last().addToSubscriptions(new Subscription(topic: topicFind, seriousness: Seriousness.VERY_SERIOUS)).save(failOnError: true, flush: true)
+
+            }
         }
     }
 

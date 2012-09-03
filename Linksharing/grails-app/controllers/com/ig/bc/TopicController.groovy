@@ -153,7 +153,7 @@ class TopicController {
 
     def removeSubscriptionFromUser() {
         List<String> topicIds = params.list("topicIdsUnSubscribe")
-        println topicIds
+
         List<Long> topicIdsList = topicIds.collect {String topicId ->
 
             topicId.toLong()
@@ -164,20 +164,22 @@ class TopicController {
 
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
-
             Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
+            println subscription.subscriber.firstname
+            println subscription.topic.name
+
             subscription.topic.resources.each {Resource resource ->
 
                 resource.readingitems.each {ReadingItem readingItem ->
 
                     if (readingItem.user == user) {
 
-                        readingItem.delete()
+                        readingItem.delete(flush: true)
                     }
                 }
             }
 
-            subscription.delete()
+            subscription.delete(flush: true)
         }
 
         redirect(controller: 'login', action: 'loginHandler')

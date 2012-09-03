@@ -37,5 +37,4 @@ class LoginController {
         flash.message = "Thanks For Visiting The Site!!"
         redirect(action: 'index')
     }
-
 }

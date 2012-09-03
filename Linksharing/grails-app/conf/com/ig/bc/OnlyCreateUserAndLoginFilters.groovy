@@ -3,10 +3,12 @@ package com.ig.bc
 class OnlyCreateUserAndLoginFilters {
 
     def filters = {
-        all(controller: '*', action: '*') {
+        all(controller: 'login|user', action: 'index|register|saveUser|checkEmailAvailability|loginHandler', invert: true) {
+
             before = {
-                if (!session.userEmail && !controllerName.equals('login') && !(controllerName.equals('user') && actionName.equals('register')) && !(controllerName.equals
-                        ('user') && actionName.equals('saveUser')) && !(controllerName.equals('user') && actionName.equals('checkEmailAvailability'))) {
+
+                if (!(session.userEmail)) {
+
                     flash.message = "Login First !!"
                     redirect(controller: 'login')
                     return false
@@ -15,3 +17,4 @@ class OnlyCreateUserAndLoginFilters {
         }
     }
 }
+

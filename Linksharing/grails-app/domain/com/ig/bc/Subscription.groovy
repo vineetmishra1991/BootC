@@ -7,4 +7,9 @@ class Subscription {
     Seriousness seriousness
 
     static belongsTo = [subscriber: User, topic: Topic]
+
+    static constraints = {
+        topic(unique: 'subscriber')
+
+    }
 }
