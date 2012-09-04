@@ -136,19 +136,23 @@ class TopicController {
 
     def addSubscriptionToUser() {
         List<String> topicIds = params.list("topicIdsSubscribe")
-        println topicIds
+
         List<Long> topicIdsList = topicIds.collect {String topicId ->
 
             topicId.toLong()
 
         }
 
+        List<Topic> topicList = Topic.getAll(topicIdsList)
+        println topicList*.name
+
         User user = User.findByEmail(session.userEmail)
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
             user.addToSubscriptions(new Subscription(topic: topicNew, seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
         }
-        redirect(controller: 'login', action: 'loginHandler')
+        flash.message = "Topics subscribed are ${topicList}"
+        redirect(controller: 'user', action: 'dashboard')
     }
 
     def removeSubscriptionFromUser() {
@@ -165,20 +169,21 @@ class TopicController {
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
             Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
-            println subscription.subscriber.firstname
-            println subscription.topic.name
+//            println subscription.subscriber.firstname
+//            println subscription.topic.name
 
             subscription.topic.resources.each {Resource resource ->
-
+                List<ReadingItem> toBeDeletedItems = []
                 resource.readingitems.each {ReadingItem readingItem ->
-
                     if (readingItem.user == user) {
-
-                        readingItem.delete(flush: true)
+                        toBeDeletedItems.add(readingItem)
                     }
                 }
+                toBeDeletedItems.each { ReadingItem readingItem ->
+                    resource.removeFromReadingitems(readingItem)
+                    readingItem.delete()
+                }
             }
-
             subscription.delete(flush: true)
         }
 
