@@ -135,42 +135,46 @@ class TopicController {
     }
 
     def addSubscriptionToUser() {
-        List<String> topicIds = params.list("topicIdsSubscribe")
 
-        List<Long> topicIdsList = topicIds.collect {String topicId ->
+        def topicIdsNew = params.item
+
+        def topicNewList = topicIdsNew.split(',')
+
+        List<Long> topicIdsList = topicNewList.collect {String topicId ->
 
             topicId.toLong()
 
         }
 
-        List<Topic> topicList = Topic.getAll(topicIdsList)
-        println topicList*.name
-
         User user = User.findByEmail(session.userEmail)
+
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
             user.addToSubscriptions(new Subscription(topic: topicNew, seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
         }
-        user.subscriptions.each {Subscription subscription ->
-            subscription.topic.resources.each { Resource resource ->
+
+        topicIdsList.each {Long id ->
+            Topic topicNew = Topic.get(id)
+            topicNew.resources.each {Resource resource ->
                 user.addToReadingitems(new ReadingItem(isFavourite: false, isRead: false, user: user, resourceItem: resource)).save(failOnError: true, flush: true)
             }
         }
 
-        flash.message = "Topics subscribed are ${topicList}"
-        redirect(controller: 'user', action: 'dashboard')
+        render "true"
     }
 
     def removeSubscriptionFromUser() {
-        List<String> topicIds = params.list("topicIdsUnSubscribe")
 
-        List<Long> topicIdsList = topicIds.collect {String topicId ->
+        def topicIdsNew = params.item
+
+        def topicNewList = topicIdsNew.split(',')
+
+        List<Long> topicIdsList = topicNewList.collect {String topicId ->
 
             topicId.toLong()
 
         }
 
-        List<Topic> topicList = Topic.getAll(topicIdsList)
         User user = User.findByEmail(session.userEmail)
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
@@ -185,14 +189,13 @@ class TopicController {
                 }
                 toBeDeletedItems.each { ReadingItem readingItem ->
                     resource.removeFromReadingitems(readingItem)
-                    readingItem.delete()
+                    readingItem.delete(flush: true)
                 }
             }
             subscription.delete(flush: true)
         }
 
-        flash.message = "Topics UnSubscribed are ${topicList}"
-        redirect(controller: 'user', action: 'dashboard')
+        render "true"
     }
 
 }

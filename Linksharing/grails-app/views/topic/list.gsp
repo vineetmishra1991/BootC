@@ -5,6 +5,89 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#selectAllSubscribe').click(function () {
+                var checked = $(this).attr('checked') ? true : false;
+                $('.selectSubscribe').attr('checked', checked);
+
+            });
+
+            $('#selectAllUnSubscribe').click(function () {
+                var checked = $(this).attr('checked') ? true : false;
+                $('.selectUnSubscribe').attr('checked', checked);
+
+            });
+
+            $('#inverse').click(function () {
+
+                $('.selectSubscribe').each(function () {
+                    if ($(this).is(':checked')) {
+                        $(this).attr('checked', false)
+                    }
+                    else {
+                        $(this).attr('checked', true)
+                    }
+
+                })
+
+            });
+        });
+
+        function subscribeToTopic() {
+
+            var list = '';
+
+            $(".selectSubscribe:checked").each(function () {
+
+                if (list != '') {
+                    list = list + ",";
+                }
+                list = list + $(this).val()
+            });
+
+            var url = "${createLink(controller: 'topic', action: 'addSubscriptionToUser')}";
+            $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"html",
+                data:{ item:list}
+            }).done(function (data) {
+                        if (data == "true")
+                            $("#topicNew").html("");
+                        $("#topicNew").html("<br><a href='${createLink(controller: 'user',action: 'dashboard')}'>Topics subscribed,Now go to Dashboard</a>");
+                    });
+
+        }
+
+        function unSubscribeToTopic() {
+
+            var list = '';
+
+            $(".selectUnSubscribe:checked").each(function () {
+
+                if (list != '') {
+                    list = list + ",";
+                }
+                list = list + $(this).val()
+            });
+
+            var url = "${createLink(controller: 'topic', action: 'removeSubscriptionFromUser')}";
+            $.ajax({
+                type:"GET",
+                url:url,
+                dataType:"html",
+                data:{ item:list}
+            }).done(function (data) {
+                        if (data == "true")
+                            $("#topicNew").html("");
+                        $("#topicNew").html("<br><a href='${createLink(controller: 'user',action: 'dashboard')}'>Topics UnSubscribed,Now go to Dashboard</a>");
+                    });
+
+        }
+
+    </script>
 </head>
 
 <body>
@@ -39,27 +122,27 @@
 
         </tr>
         </thead>
-    <tbody>
-        <g:form controller="topic" action="addSubscriptionToUser">
-            <g:each in="${topicInstanceList}" status="i" var="topicInstance">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>
-                        <g:checkBox class="selectSubscribe" value="${topicInstance.id}" name="topicIdsSubscribe" checked="false"/>
-                        <g:checkBox class="selectUnSubscribe" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>
-                        %{--<g:checkBox class="selectInverse" value="${topicInstance.id}" name="topicIdsUnSubscribe" checked="false"/>--}%
-                        <g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link>
-                    </td>
-                    <td>${fieldValue(bean: topicInstance, field: "owner")}</td>
+        <tbody>
+        <g:each in="${topicInstanceList}" status="i" var="topicInstance">
+            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                <td>
+                    <g:checkBox class="selectSubscribe" value="${topicInstance.id}" id="topicIdsSubscribe" name="topicIdsSubscribe" checked="false"/>
+                    <g:checkBox class="selectUnSubscribe" value="${topicInstance.id}" id="topicIdsUnSubscribe" name="topicIdsUnSubscribe" checked="false"/>
+                    <g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link>
+                </td>
+                <td>${fieldValue(bean: topicInstance, field: "owner")}</td>
 
-                    <td>${fieldValue(bean: topicInstance, field: "visibility")}</td>
+                <td>${fieldValue(bean: topicInstance, field: "visibility")}</td>
 
-                </tr>
-            </g:each>
+            </tr>
+        </g:each>
 
-            </tbody>
-            <g:submitButton name="Submit" value="Subscribe to Topic"/>
-            <g:actionSubmit name="SubmitMe" value="UnSubscribe to Topic" action="removeSubscriptionFromUser"/>
-        </g:form>
+        </tbody>
+        <input type="button" value="Subscribe to Topic" onclick="subscribeToTopic()"/>
+        <input type="button" value="UnSubscribe to Topic" onclick="unSubscribeToTopic()"/>
+        <g:link controller="user" action="dashboard" style="background-color: orange;">Go to Dashboard</g:link>
+        <div id="topicNew">
+        </div>
     </table>
 
     <div class="pagination">
@@ -80,36 +163,5 @@
         <br><g:submitButton value="Invite" name="Invite"/>
     </g:form>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $('#selectAllSubscribe').click(function () {
-            var checked = $(this).attr('checked') ? true : false;
-            $('.selectSubscribe').attr('checked', checked);
-
-        });
-
-        $('#selectAllUnSubscribe').click(function () {
-            var checked = $(this).attr('checked') ? true : false;
-            $('.selectUnSubscribe').attr('checked', checked);
-
-        });
-
-        $('#inverse').click(function () {
-
-            $('.selectSubscribe').each(function () {
-                if ($(this).is(':checked')) {
-                    $(this).attr('checked', false)
-                }
-                else {
-                    $(this).attr('checked', true)
-                }
-
-            })
-
-        });
-
-    });
-</script>
 </body>
 </html>

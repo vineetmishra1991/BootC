@@ -34,6 +34,8 @@
         <li><a href="#tab4">Owned Topics</a></li>
         <li><a href="#tab5">Most Read items From Topics Subscribed by You</a></li>
     </ul>
+    <br>
+    <g:link controller="topic" action="list" style="background-color: #00ff00;">Subscribe/UnSubscribe Topics</g:link>
 
     <div id='tab1'>
         <ls:unreadItems max="15"/>

@@ -90,7 +90,7 @@
     Sex(Male):<g:checkBox name="male" value=""/><br><br>
     Date of Birth:<g:field type="text" name="dateOfBirth" id="date"/><br><br>
     Password:<g:textField name="password" id="password" value=""/><br><br>
-    ConfirmPassword<g:textField name="confirmPassword" id="confirmPassword" value=""/><br><br>
+    ConfirmPassword: <g:textField name="confirmPassword" id="confirmPassword" value=""/><br><br>
 
     <input type="submit" value="Register">
 </g:form>

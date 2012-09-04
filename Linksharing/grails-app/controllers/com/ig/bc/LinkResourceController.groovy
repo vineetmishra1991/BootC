@@ -63,8 +63,8 @@ class LinkResourceController {
         if (version != null) {
             if (linkResourceInstance.version > version) {
                 linkResourceInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                          [message(code: 'linkResource.label', default: 'LinkResource')] as Object[],
-                          "Another user has updated this LinkResource while you were editing")
+                        [message(code: 'linkResource.label', default: 'LinkResource')] as Object[],
+                        "Another user has updated this LinkResource while you were editing")
                 render(view: "edit", model: [linkResourceInstance: linkResourceInstance])
                 return
             }

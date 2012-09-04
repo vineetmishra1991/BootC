@@ -26,9 +26,10 @@ class LoginController {
                 actionName = 'dashboard'
             }
         }
-        flash.message = "Username And Password Doesn't Exist ! Please Try Again !!"
+        if (!(controllerName == 'user' && actionName == 'dashboard')) {
+            flash.message = "Username And Password Doesn't Exist ! Please Try Again !!"
+        }
         redirect(controller: controllerName, action: actionName)
-
     }
 
     def logout() {
