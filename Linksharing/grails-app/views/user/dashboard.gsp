@@ -40,6 +40,7 @@
     </div>
 
     <div id='tab2'>
+        ${flash.message}
         <ls:subscribedTopics/>
     </div>
 

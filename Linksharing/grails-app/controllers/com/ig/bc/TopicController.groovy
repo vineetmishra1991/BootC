@@ -151,6 +151,12 @@ class TopicController {
             Topic topicNew = Topic.get(id)
             user.addToSubscriptions(new Subscription(topic: topicNew, seriousness: Seriousness.SERIOUS)).save(flush: true, failOnError: true)
         }
+        user.subscriptions.each {Subscription subscription ->
+            subscription.topic.resources.each { Resource resource ->
+                user.addToReadingitems(new ReadingItem(isFavourite: false, isRead: false, user: user, resourceItem: resource)).save(failOnError: true, flush: true)
+            }
+        }
+
         flash.message = "Topics subscribed are ${topicList}"
         redirect(controller: 'user', action: 'dashboard')
     }
@@ -164,13 +170,11 @@ class TopicController {
 
         }
 
+        List<Topic> topicList = Topic.getAll(topicIdsList)
         User user = User.findByEmail(session.userEmail)
-
         topicIdsList.each {Long id ->
             Topic topicNew = Topic.get(id)
             Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
-//            println subscription.subscriber.firstname
-//            println subscription.topic.name
 
             subscription.topic.resources.each {Resource resource ->
                 List<ReadingItem> toBeDeletedItems = []
@@ -187,7 +191,8 @@ class TopicController {
             subscription.delete(flush: true)
         }
 
-        redirect(controller: 'login', action: 'loginHandler')
+        flash.message = "Topics UnSubscribed are ${topicList}"
+        redirect(controller: 'user', action: 'dashboard')
     }
 
 }
