@@ -10,6 +10,5 @@ class Subscription {
 
     static constraints = {
         topic(unique: 'subscriber')
-
     }
 }

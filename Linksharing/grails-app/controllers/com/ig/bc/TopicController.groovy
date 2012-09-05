@@ -176,26 +176,46 @@ class TopicController {
         }
 
         User user = User.findByEmail(session.userEmail)
-        topicIdsList.each {Long id ->
-            Topic topicNew = Topic.get(id)
-            Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
-
-            subscription.topic.resources.each {Resource resource ->
-                List<ReadingItem> toBeDeletedItems = []
-                resource.readingitems.each {ReadingItem readingItem ->
-                    if (readingItem.user == user) {
-                        toBeDeletedItems.add(readingItem)
-                    }
-                }
-                toBeDeletedItems.each { ReadingItem readingItem ->
-                    resource.removeFromReadingitems(readingItem)
-                    readingItem.delete(flush: true)
+        List<ReadingItem> readingItems = topicIdsList ? ReadingItem.createCriteria().list {
+            eq('user', user)
+            'resourceItem' {
+                'topic' {
+                    inList('id', topicIdsList)
                 }
             }
-            subscription.delete(flush: true)
-        }
+        } : []
 
+        readingItems*.delete(flush: true)
+
+        List<Subscription> subscriptions = topicIdsList ? Subscription.createCriteria().list {
+
+            eq('subscriber', user)
+
+            'topic' {
+                inList('id', topicIdsList)
+            }
+        } : []
+
+        subscriptions*.delete(flush: true)
+
+//        topicIdsList.each {Long id ->
+//            Topic topicNew = Topic.get(id)
+//            Subscription subscription = Subscription.findBySubscriberAndTopic(user, topicNew)
+//            subscription.delete(flush: true)
+//        }
+//            subscription.topic.resources.each {Resource resource ->
+//                List<ReadingItem> toBeDeletedItems = []
+//                resource.readingitems.each {ReadingItem readingItem ->
+//                    if (readingItem.user == user) {
+//                        toBeDeletedItems.add(readingItem)
+//                    }
+//                }
+//                toBeDeletedItems*.delete(flush: true)
+//
+//            }
+//            subscription.delete(flush: true)
+//        }
+//
         render "true"
     }
-
 }
