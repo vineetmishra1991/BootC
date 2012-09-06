@@ -12,6 +12,7 @@ class TopicController {
     }
 
     def list(Integer max) {
+        println params
         params.max = Math.min(max ?: 10, 100)
         [topicInstanceList: Topic.list(params), topicInstanceTotal: Topic.count()]
     }
@@ -103,18 +104,28 @@ class TopicController {
 
     def sendInvite(VaildatorCO validateCO) {
 
-        List<String> topicIds = params.list("topicIdList")
+//        println params.topicIdList
+//        println params.topicIdList.getClass().name
 
-        List<Long> topicIdsList = topicIds.collect {String topicId ->
+        def topics = params.topicIdList
 
-            topicId.toLong()
+//        def topicsNew = topics.split(',')
+//
+//        println topicsNew
+//
+//        List<String> topicIds = params.list("topicIdList")
+//
+//        List<Long> topicIdsList = topicIds.collect {String topicId ->
+//
+//            topicId.toLong()
+//
+//        }
 
-        }
-
-        def topicsList = topicIdsList.collect {id ->
+        def topicsList = topics.collect {id ->
             Topic topic = Topic.get(id)
             topic.name
         }
+        println topicsList
 
         emailInviteService.sendInviteMail(validateCO, topicsList)
     }
@@ -137,6 +148,8 @@ class TopicController {
     def addSubscriptionToUser() {
 
         def topicIdsNew = params.item
+
+        println params.item.getClass().name
 
         def topicNewList = topicIdsNew.split(',')
 

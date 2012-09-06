@@ -33,31 +33,32 @@ class EmailInviteService {
 
     def sendMailReminder() {
 
-        List<User> userList = User.list()
+        List<User> users = User.list()
 
-        userList.each {User user ->
-            List<ReadingItem> readingItemList = []
-            user.subscriptions.each {Subscription subscription ->
-                if (subscription.seriousness == Seriousness.SERIOUS) {
-                    subscription.topic.resources.each {Resource resource ->
+        users.each {User user ->
 
-                        resource.readingitems.each {ReadingItem readingitem ->
+            List<Subscription> subscriptions = Subscription.findAllBySubscriberAndSeriousness(user, Seriousness.SERIOUS)
 
-                            if (!readingitem.isRead && readingitem.user == user) {
+            List<Topic> topics = subscriptions*.topic
 
-                                readingItemList.add(readingitem)
+            def readingItemList = topics ? ReadingItem.createCriteria().list {
 
-                            }
-                        }
-                    }
+                eq('user', user)
+                'resourceItem' {
+
+                    inList('topic', topics)
                 }
-            }
+
+                eq('isRead', false)
+                maxResults 10
+            } : []
+
             def readingItems = readingItemList.groupBy {it.resourceItem.topic.name}
-            sendMailReminderOfUnreadItems(readingItems,user)
+            sendMailReminderOfUnreadItems(readingItems, user)
         }
     }
 
-    def sendMailReminderOfUnreadItems(def readingItems,User user) {
+    def sendMailReminderOfUnreadItems(def readingItems, User user) {
 
         asynchronousMailService.sendAsynchronousMail {
 
@@ -69,36 +70,32 @@ class EmailInviteService {
 
     def sendReminderAccordingToDate() {
 
-        List<User> userList = User.list()
-        Date date = new Date() - 2
-        userList.each {User user ->
+        List<User> users = User.list()
 
-            List<ReadingItem> readingitemList = []
-            user.subscriptions.each {Subscription subscription ->
-                if (subscription.seriousness == Seriousness.VERY_SERIOUS) {
-                    subscription.topic.resources.each {Resource resource ->
-                        if (resource.dateCreated > date) {
-                            resource.readingitems.each {ReadingItem readingitem ->
+        users.each {User user ->
 
-                                if (!readingitem.isRead && readingitem.user == user) {
+            List<Subscription> subscriptions = Subscription.findAllBySubscriberAndSeriousness(user, Seriousness.VERY_SERIOUS)
 
-                                    readingitemList.add(readingitem)
+            List<Topic> topics = subscriptions*.topic
 
-                                }
+            def readingItemList = topics ? ReadingItem.createCriteria().list {
 
-                            }
-                        }
-                    }
+                eq('user', user)
+                'resourceItem' {
+
+                    inList('topic', topics)
+                    gt('dateCreated', new Date() - 2)
                 }
-            }
-            def readingItems = readingitemList.groupBy {it.resourceItem.topic.name}
-            sendMailAsDate(readingItems,user)
 
+                eq('isRead', false)
+                maxResults 10
+            } : []
+            def readingItems = readingItemList.groupBy {it.resourceItem.topic.name}
+            sendMailAsDate(readingItems, user)
         }
-
     }
 
-    def sendMailAsDate(def readingItems,User user) {
+    def sendMailAsDate(def readingItems, User user) {
 
         asynchronousMailService.sendAsynchronousMail {
 

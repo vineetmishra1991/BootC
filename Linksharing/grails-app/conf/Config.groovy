@@ -105,5 +105,6 @@ log4j = {
             'org.hibernate',
             'net.sf.ehcache.hibernate'
 
+    info 'grails.app'
 
 }

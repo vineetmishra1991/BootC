@@ -117,4 +117,31 @@ class UserController {
             render false
         }
     }
+
+    def findUnread() {
+
+        User user = User.findByEmail(session.userEmail)
+        List<Subscription> subscriptions = Subscription.findAllBySubscriberAndSeriousness(user, Seriousness.SERIOUS)
+
+        List<Topic> topics = subscriptions*.topic
+
+        def readingItems = topics ? ReadingItem.createCriteria().list {
+
+            eq('user', user)
+            'resourceItem' {
+
+                inList('topic', topics)
+                gt('dateCreated', new Date() - 2)
+
+            }
+
+            eq('isRead', false)
+            // maxResults 10
+        } : []
+
+        def readingItemsList = readingItems.groupBy {it.resourceItem.topic.name}
+
+        render readingItemsList
+
+    }
 }
