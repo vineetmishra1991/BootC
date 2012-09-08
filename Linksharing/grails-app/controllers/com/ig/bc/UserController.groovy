@@ -85,7 +85,11 @@ class UserController {
     }
 
     def dashboard() {
+        User user = User.findByEmail(session.userEmail)
+        def name = user.firstname
+        render(view: 'dashboard', model: ['nameUser': name])
     }
+
 
     def register() {
         render(view: "register")
@@ -105,6 +109,8 @@ class UserController {
         user.confirmPassword = params.confirmPassword
         user.save(flush: true, failOnError: true)
 
+        session.userEmail = user.email
+        redirect(controller: 'login')
     }
 
     def checkEmailAvailability() {
@@ -143,5 +149,12 @@ class UserController {
 
         render readingItemsList
 
+    }
+
+    def test() {
+
+        println params.Name
+//        println Name
+//        println num
     }
 }

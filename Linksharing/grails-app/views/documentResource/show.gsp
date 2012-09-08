@@ -24,7 +24,6 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <ol class="property-list documentResource">
-
         <g:if test="${documentResourceInstance?.summary}">
             <li class="fieldcontain">
                 <span id="summary-label" class="property-label"><g:message code="documentResource.summary.label" default="Summary"/></span>

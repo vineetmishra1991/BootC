@@ -22,7 +22,11 @@
 
 <body>
 
-<b style="color: purple;font-size: 17px"><i>You Are Successfully logged in !!</i></b>
+<b style="color: purple;font-size: 17px"><i>Welcome   ${nameUser} !!</i></b>
+
+<g:form controller="login" action="logout">
+    <input type="Submit" value="Logout">
+</g:form>
 
 <br>
 
@@ -33,6 +37,7 @@
         <li><a href="#tab3">Highest Subscribed Public Topics</a></li>
         <li><a href="#tab4">Owned Topics</a></li>
         <li><a href="#tab5">Most Read items From Topics Subscribed by You</a></li>
+        <li><a href="#tab6">All Reading Items List</a></li>
     </ul>
     <br>
     <g:link controller="topic" action="list" style="background-color: #00ff00;">Subscribe/UnSubscribe Topics</g:link>
@@ -55,15 +60,15 @@
 
     </div>
 
+    <div id='tab6'>
+        <ls:getReadingItems max="20"/>
+
+    </div>
+
     <div id='tab5'>
         <ls:mostReadItemsForTopicsSubscribedByUser/>
     </div>
 </div>
-
-<g:form controller="login" action="logout">
-
-    <input type="Submit" value="Logout">
-</g:form>
 
 </body>
 </html>

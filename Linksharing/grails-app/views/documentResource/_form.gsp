@@ -1,7 +1,6 @@
 <%@ page import="com.ig.bc.DocumentResource" %>
 
 
-
 <div class="fieldcontain ${hasErrors(bean: documentResourceInstance, field: 'summary', 'error')} ">
 	<label for="summary">
 		<g:message code="documentResource.summary.label" default="Summary" />

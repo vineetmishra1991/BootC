@@ -54,7 +54,7 @@ class ApplicationTagLib {
 
     def mostReadItemsForTopicsSubscribedByUser = {attrs ->
 
-        User user = User.findByFirstname('Vineet')
+        User user = User.findByEmail(session.userEmail)
         List<Topic> topicsList = user.subscriptions*.topic
         def readingItem = []
         if (topicsList) {
@@ -78,6 +78,20 @@ class ApplicationTagLib {
     def addDocumentResource = {attrs ->
 
         out << render(template: '/documentResource/addDocument')
+    }
+//    def formattedDate = {attrs ->
+//
+//        out << """Date: ${attrs.date.format("MM dd yyyy")}"""
+//    }
+
+    def getReadingItems = {attrs ->
+
+        Integer max = attrs.int('max')
+
+        User user = User.findByEmail(session.userEmail)
+        List<ReadingItem> readingItemInstance = ReadingItem.findAllByUser(user, [max: max])
+        out << render(template: '/readingItem/readinItem', model: [readingItem: readingItemInstance])
+
     }
 }
 
