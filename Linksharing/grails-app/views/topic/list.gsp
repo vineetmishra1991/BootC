@@ -65,7 +65,7 @@
 
             var list = '';
 
-            $(".selectUnSubscribe:checked").each(function () {
+            $(".selectSubscribe:checked").each(function () {
 
                 if (list != '') {
                     list = list + ",";
@@ -108,9 +108,8 @@
     <table>
         <thead>
         <tr>
-            <th>Subscribe:    <g:checkBox value="1" id="selectAllSubscribe" name="topicIdsSubscribe" checked="false"/>
-            UnSubscribe:    <g:checkBox value="2" id="selectAllUnSubscribe" name="topicIdsUnSubscribe" checked="false"/>
-            Subscribe(InverseCheck):    <input type="button" id="inverse" name="inverse" value="Inverse"/></th>
+            <th>Subscribe/UnSubscribe:    <g:checkBox value="1" id="selectAllSubscribe" name="topicIdsSubscribe" checked="false"/>
+            Subscribe/UnSubscribe(InverseCheck):    <input type="button" id="inverse" name="inverse" value="Inverse"/></th>
         </tr>
         <tr>
 
@@ -127,7 +126,6 @@
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>
                     <g:checkBox class="selectSubscribe" value="${topicInstance.id}" id="topicIdsSubscribe" name="topicIdsSubscribe" checked="false"/>
-                    <g:checkBox class="selectUnSubscribe" value="${topicInstance.id}" id="topicIdsUnSubscribe" name="topicIdsUnSubscribe" checked="false"/>
                     <g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link>
                 </td>
                 <td>${fieldValue(bean: topicInstance, field: "owner")}</td>

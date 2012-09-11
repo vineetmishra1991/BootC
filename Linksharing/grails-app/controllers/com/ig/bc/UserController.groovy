@@ -153,8 +153,57 @@ class UserController {
 
     def test() {
 
-        println params.Name
-//        println Name
-//        println num
+        User user = User.findByEmail(session.userEmail)
+        def readingItems = ReadingItem.createCriteria().list {
+
+            projections {
+
+                groupProperty('isRead')
+                count('user')
+
+            }
+            eq('user', user)
+
+        }
+        render readingItems
+    }
+
+    def testNew() {
+
+        if ("") {
+            render "hello"
+        }
+        else {
+            render "Unreachable"
+        }
+
+    }
+
+    def testNew1() {
+
+        List<User> users = User.list()
+        def firstNameList = users*.firstname
+
+        render firstNameList.min()
+
+    }
+
+    def voTest() {
+
+        User user = User.findByEmail(session.userEmail)
+        Topic topic = Topic.findByOwner(user)
+        List<Subscription> subscriptions = Subscription.findAllByTopic(topic)
+        List<User> users = subscriptions*.subscriber
+
+//        println topics*.name
+//
+//        user.getTopics().each {
+//            println it.name
+//        }
+//
+//        println user.topics*.name
+        UserVo userVo = new UserVo(topic: topic, owner: user, subscribers: users)
+
+        println userVo
     }
 }

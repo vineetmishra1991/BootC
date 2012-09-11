@@ -20,6 +20,7 @@ class SubscriptionController {
     }
 
     def save() {
+
         def subscriptionInstance = new Subscription(params)
         if (!subscriptionInstance.save(flush: true)) {
             render(view: "create", model: [subscriptionInstance: subscriptionInstance])
