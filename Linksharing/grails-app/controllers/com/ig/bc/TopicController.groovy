@@ -231,4 +231,30 @@ class TopicController {
 //
         render "true"
     }
+
+    def makeUnLike() {
+
+        def stringList = params.item
+        def newList = stringList.split('_')
+        def id = newList[1]
+        def newId = id.toString().toLong();
+        Subscription item = Subscription.get(newId)
+        item.isLike = null
+        item.save(flush: true)
+        render item.id
+    }
+
+
+
+    def makeLike() {
+        def stringList = params.item
+        def newList = stringList.split('_')
+        def id = newList[1]
+        def newId = id.toString().toLong();
+        println newId
+        Subscription item = Subscription.get(newId)
+        item.isLike = true
+        item.save(flush: true)
+        render item.id
+    }
 }

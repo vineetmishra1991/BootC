@@ -26,6 +26,8 @@
 					
 						<th><g:message code="subscription.topic.label" default="Topic" /></th>
 					
+						<g:sortableColumn property="isLike" title="${message(code: 'subscription.isLike.label', default: 'Is Like')}" />
+					
 						<g:sortableColumn property="dateCreated" title="${message(code: 'subscription.dateCreated.label', default: 'Date Created')}" />
 					
 						<g:sortableColumn property="lastUpdated" title="${message(code: 'subscription.lastUpdated.label', default: 'Last Updated')}" />
@@ -41,6 +43,8 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${subscriptionInstance.id}">${fieldValue(bean: subscriptionInstance, field: "topic")}</g:link></td>
+					
+						<td><g:formatBoolean boolean="${subscriptionInstance.isLike}" /></td>
 					
 						<td><g:formatDate date="${subscriptionInstance.dateCreated}" /></td>
 					

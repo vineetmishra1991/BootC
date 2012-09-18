@@ -72,16 +72,16 @@ class BootstrapService {
         User user8 = User.findByFirstname('harryr')
         User user9 = User.findByFirstname('harrys')
 
-        List<Subscription> subscriptions = [new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user1)),
-                new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user2)),
-                new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user3)),
-                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user4)),
-                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user5)),
-                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user2)),
-                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user6)),
-                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user7)),
-                new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user8)),
-                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user9)),]
+        List<Subscription> subscriptions = [new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user1),isLike: true),
+                new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user2),isLike: true),
+                new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user3),isLike: true),
+                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user4),isLike: true),
+                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user5),isLike: true),
+                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user2),isLike: true),
+                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user6),isLike: true),
+                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user7),isLike: true),
+                new Subscription(seriousness: Seriousness.VERY_SERIOUS, topic: Topic.findByOwner(user8),isLike: true),
+                new Subscription(seriousness: Seriousness.SERIOUS, topic: Topic.findByOwner(user9),isLike: true)]
 
 
         User.list().eachWithIndex {user, idx ->

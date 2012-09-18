@@ -12,7 +12,7 @@ class User {
     Date dateOfBirth
     Boolean male
 
-    static hasMany = [subscriptions: Subscription, topics: Topic, readingitems: ReadingItem]
+    static hasMany = [subscriptions: Subscription, topics: Topic, readingitems: ReadingItem ]
 
     static transients = ['fullName', 'confirmPassword']
 

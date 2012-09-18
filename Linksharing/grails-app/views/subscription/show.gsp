@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${subscriptionInstance?.isLike}">
+				<li class="fieldcontain">
+					<span id="isLike-label" class="property-label"><g:message code="subscription.isLike.label" default="Is Like" /></span>
+					
+						<span class="property-value" aria-labelledby="isLike-label"><g:formatBoolean boolean="${subscriptionInstance?.isLike}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${subscriptionInstance?.dateCreated}">
 				<li class="fieldcontain">
 					<span id="dateCreated-label" class="property-label"><g:message code="subscription.dateCreated.label" default="Date Created" /></span>
