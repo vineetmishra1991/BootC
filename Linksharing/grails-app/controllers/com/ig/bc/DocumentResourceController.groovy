@@ -112,7 +112,7 @@ class DocumentResourceController {
         }
         def path = grailsApplication.config.uploadPath
         Long newId = documentResourceService.saveDocumentResource(documentResourceAdderCO, path)
-        redirect(controller: 'topic', action: 'show', params: ['id': newId])
+        redirect(controller: 'user', action: 'dashboard')
     }
 
     def download(Long id) {

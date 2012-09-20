@@ -86,10 +86,11 @@ class ApplicationTagLib {
 
     def getReadingItems = {attrs ->
 
-        Integer max = attrs.int('max')
+//        Integer max = attrs.int('max')
 
         User user = User.findByEmail(session.userEmail)
-        List<ReadingItem> readingItemInstance = ReadingItem.findAllByUser(user, [max: max])
+//        List<ReadingItem> readingItemInstance = ReadingItem.findAllByUser(user, [max: max])
+        List<ReadingItem> readingItemInstance = ReadingItem.findAllByUser(user)
         out << render(template: '/readingItem/readinItem', model: [readingItem: readingItemInstance])
 
     }

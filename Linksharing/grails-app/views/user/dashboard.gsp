@@ -5,7 +5,7 @@
   Time: 5:51 PM
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@ page import="com.ig.bc.*" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -61,7 +61,7 @@
     </div>
 
     <div id='tab6'>
-        <ls:getReadingItems max="20"/>
+        <ls:getReadingItems/>
 
     </div>
 
@@ -70,5 +70,10 @@
     </div>
 </div>
 
+<% User user = User.findByEmail(session.userEmail);
+if (user.admin) { %>
+<g:link controller="admin" action="stats">Stats</g:link>  <br>
+<g:link controller="admin" action="makeAdmin">Make Admin</g:link>
+<% } %>
 </body>
 </html>

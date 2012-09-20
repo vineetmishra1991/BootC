@@ -11,8 +11,9 @@ class User {
     Date lastUpdated
     Date dateOfBirth
     Boolean male
+    Boolean admin
 
-    static hasMany = [subscriptions: Subscription, topics: Topic, readingitems: ReadingItem ]
+    static hasMany = [subscriptions: Subscription, topics: Topic, readingitems: ReadingItem]
 
     static transients = ['fullName', 'confirmPassword']
 
@@ -24,6 +25,7 @@ class User {
         dateCreated(nullable: true)
         lastUpdated(nullable: true)
         email(email: true, nullable: false, unique: true)
+        admin(nullable: true)
         confirmPassword(bindable: true)
 
 

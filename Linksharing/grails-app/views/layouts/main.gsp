@@ -29,8 +29,6 @@
 
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 <g:javascript library="application"/>
-<% if (session.userEmail == "admin@intelligrape.com") { %>
-<g:link controller="admin" action="stats">Stats</g:link>
-<% } %>
+
 </body>
 </html>

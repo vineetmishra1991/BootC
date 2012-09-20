@@ -76,7 +76,6 @@
 <body>
 <%@ page import="com.ig.bc.User" %>
 
-
 <g:form name="registration" controller="user" action="saveUser">
     <div id="urlGet">
         <g:hiddenField name="url" id="url" value="${createLink(controller: 'user', action: 'checkEmailAvailability')}"/>

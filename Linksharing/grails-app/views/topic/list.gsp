@@ -125,7 +125,7 @@
         <g:each in="${topicInstanceList}" status="i" var="topicInstance">
             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                 <td>
-                    <g:checkBox class="selectSubscribe" value="${topicInstance.id}" id="topicIdsSubscribe" name="topicIdsSubscribe" checked="false"/>
+                    <g:checkBox class="selectSubscribe" value="${topicInstance.id}" id="topicIdsSubscribe_${i}" name="topicIdsSubscribe" checked="false"/>
                     <g:link action="show" id="${topicInstance.id}">${fieldValue(bean: topicInstance, field: "name")}</g:link>
                 </td>
                 <td>${fieldValue(bean: topicInstance, field: "owner")}</td>
@@ -155,7 +155,7 @@
         Email2: <input type="text" name="email2"> <br> <br>
         Email3: <input type="text" name="email3"> <br> <br>
         <textarea maxlength="1000">
-        </textarea>   <br> <br>
+        </textarea><br> <br>
         <b>Invite From These !!</b> <br> <br>
         <g:select id="topic" name="topicIdList" multiple="true" from="${com.ig.bc.Topic.list()}" optionKey="id" required="" optionValue="name"/>
         <br><g:submitButton value="Invite" name="Invite"/>
