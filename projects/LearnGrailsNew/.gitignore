@@ -1,0 +1,12 @@
+target
+test
+stacktrace.log
+.ipr
+*.iml
+.classpath
+out/
+*.tld
+.project
+*~
+.idea
+
