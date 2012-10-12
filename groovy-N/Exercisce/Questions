@@ -1,0 +1,22 @@
+Class Student{
+String name
+int age
+int class
+}
+
+List<Student> students=Student.list()
+
+1. Find age of students whose name is unique.
+2. Find name of students whose name starts with s or S.
+3. Find name of students whose age is greater than 20.
+4. Find name of students whose age is greater than 20 and less than 60.
+5. Find unique names of students whose age is greater than 20 and less than 60.
+6. Find name of student whose age is maximum.
+7. Print the name of students in ascending order(order by age). 
+8. Print the name of students in descending order(order by age).
+9.Create a list of students in which age of  student is double from existing list.
+10.Print the names of students(seperated by comma).  
+
+11. How to list all files in a directory(hint new File(".") )
+12. Upload a image file and save in database and your home folder also.  (hint: file.transferTo() )
+13. How to check that (File file=new File("/home/..../abc.txt")  exists or not.

@@ -1,0 +1,596 @@
+cat id_rsa.pub > .ssh/authorized_keys
+cat .ssh/authorized_keys 
+exit
+exit
+ssh -keygen -t rsa
+vim authorized_keys
+ssh -keygen -t rsa
+ssh-keygen -t rsa
+ll
+cd .ssh/
+ll
+ifconfig
+scp ~/.ssh/id_rsa.pub bootcamp@192.168.1.158:~/
+ssh 192.168.1.158
+ssh bootcamp@192.168.1.158
+cls
+off
+off
+exit
+cat test
+cd vikneet
+cd vineet
+cat test
+cat test |grep "i"
+cd ..
+history
+cat test |grep "i"
+vineet
+cd vineet
+cat test |grep "i"
+cat test |grep -c "i"
+passwd
+passwd
+lpskao
+\f
+sudo bash
+meminfo
+proc
+/etc/proc
+cat /etc/proc/meminfo
+/etc/proc/meminfo
+cd etc
+cd /etc
+ls
+cd opt
+cd /proc
+cat meminfo
+top
+cd ..
+history
+passwd
+su vineet
+sudo bash
+su vineet
+apt -get install Mblaze
+apt -get install MBlaze
+sudo bash
+cat /etc/passwd
+vineet
+passwd
+sudo bash
+deluser vineet
+myusql
+mysql
+mysql -uroot -p
+mysql -uroot -pigdefault bootcamp easy easy1;
+mysql
+show databases;
+mysql 
+sudo bash
+mysqldump -uroot -pigdefault bootcamp easy easy1
+sudo bash
+deluser vineet
+deluser -r vineet
+deluser -group vineet
+deluser vineet --remove-home
+--remove-home
+deluser vineet
+ifcxonfig
+ifconfig
+exit
+git
+which git
+mklsls
+ls
+mkdir session2ew alias and env variable we add those to .bashrc file. 
+mkdir sessio2n
+exit
+delete vineet
+ifconfig
+ssh intelligrape@192.168.1.127
+git
+cd vineet'
+cd vineet
+mkdit gitproj
+mkdir gitproj
+git
+ll
+cd ..
+ll
+cd vineet
+git config --global user.name "vineet"
+git config --global user.email "vnt.mshra@gmail.com"
+ll
+cd ..
+ll
+cd vineet
+ll
+cd gitproj
+gitstatus
+vim abc,txt
+git init
+ll
+git status
+git add abc.txt
+git add abc,txt
+git add abc.txt
+git diff
+vim abc.txt
+git diff
+git status
+commit
+git
+commit abc.txt
+git commit
+o
+git -m "my 1st commit"
+git commit -m "my 1st commit"
+status
+git status
+git commit -a -m "my 1st commit"
+vim xyz.txt
+git commit -a -m "add xyz"
+git add xyz.txt
+vim xyz.txt
+git commit
+git commit -m "hii"
+git status
+git commit -a -m "hii"
+vim xyz.txt
+git status
+vim abc.txt
+git checkout.
+git status
+git checkout .
+git status
+ll
+vim abc.txt
+git add abc.txt
+git cls
+cd ~
+cls
+ls
+clear
+scp vineet/ intelligrape@192.168.1.127:/~
+scp vineet intelligrape@192.168.1.127:/~
+clear
+ls
+gitg
+sudo apt-get install gitg
+git clone git@github.com:salilk/newgitest.git
+cd vineet
+cd gitproj
+cd ..
+mkdir project
+cd project
+git clone git@github.com:salilk/newgitest.git
+git branch
+ll
+cd newigtest
+cd newgitest
+git branch
+git branch -r
+git fetch origin
+git branch
+git branch -r
+git branch -a
+git checkout -b feature2 origin/feature2
+git branch
+ll
+cat feature2.txt
+git fetch origin
+git branch
+git branch -r
+git merge origin/feature2
+git pull origin/feature2
+git pull origin feature2
+ll
+vim feature.txt
+vim feature2.txt
+git commit -a -m "done"
+git pull origin feature2
+cd /
+ls
+cd home
+ls
+sudo rm -rf vineet
+ls
+history
+cd vineet
+mkdir test
+mkdir demo
+cd demo
+git init
+vim abc.txt
+git add abc.txt
+git status
+vim abc.txt
+git status
+git checkout abc.txt
+cat abc.txt
+vim abc.txt
+cat abc.txt
+git status
+git checkout -a -m "done"
+git checkout -a -m"done"
+git commit -a -m "done"
+git lkog
+git log
+vim abc.txt
+git diff --cached
+git diff
+git add abc.txt
+git diff --cached
+git status
+git checkout abc.txt
+git diff
+git diff --cached
+git status
+cat abc.txt
+git log
+git reset -hard
+git reset --hard
+cat abc.txt
+vim abc.txt
+
+git add abc.txt
+vim abc.txt
+cat abc.txt
+git checkout abc.txt
+cat abc.txt
+git status
+git checkout abc.txt
+git status
+cat abc.txt
+git log
+git checkoutbaab31af547480b7aacc12c6f13b79b047ad45de
+git checkout baab31af547480b7aacc12c6f13b79b047ad45de
+cat abc.txt
+vim abc.txt
+git diff --cached
+git diff
+history
+cd vineet
+cd demo
+git status
+cat abc.txt
+git diff
+git diff --cached
+git status
+git reset HEAD abc.txt
+cat abc.txt
+git status
+git log
+git diff 
+git diff --cached
+git add abc.txt
+git diff
+vim abc.txt
+git diff
+git status
+vim abc.txt
+git diff
+git diff --cached
+git status
+git checkout abc.txt
+git diff
+git diff --cached
+git commit -m "done"
+git status
+cat abc.txt
+vim abc.txt
+git log
+git diff
+git add abc.txt
+git checkout a306e02acf0d7f579434ef0a7138fb80c794f9ae
+cat abc.txt
+git diff
+git diff --cached
+git checkout man
+git
+sudo apt -get update
+sudo apt-get update
+sudo apt-get install kde-config-touchpad
+mkdir groovy
+groovy
+groovy console
+groovy Console
+groovyConsole
+groovy -e "println 'hello'"
+groovyConsole
+dpkg -l "vlc"
+sudo apt-get install vlc-player
+sudo apt-cache search  "^vlc"
+sudo apt-get install vlc
+groovyConsole
+idea.sh
+groovyConsole
+chmod 777 /opt
+chmod 777 /opt/
+tar -xvzf -/opt/grails-2.1.0
+tar -xvzf /opt/grails-2.1.0
+tar -xvzf opt/grails-2.1.0
+ll
+tar -xvzf opt/grails-2.1.0.zip 
+ls /opt
+tar -xvzf opt/grails-2.1.0.zip 
+
+unzip opt/grails-2.1.0.zip 
+cd opt/
+ll
+
+ll
+ln -rf grails
+rm grails
+ll
+unzip grails-2.1.0.zip 
+ll
+ln -s grails-2.1.0 grails
+ll
+cd
+vim .bashrc
+vim .bash_profile
+permisiion man
+cd /media
+ls
+cd 7CC6-9428/
+ls
+grails-2.1.0.zip
+sudo cp grails-2.1.0.zip /opt/
+ls /opt/
+cd ~
+cd /opt/
+chmod 777
+chmod "777"
+chmod --help
+chmod 777
+chmod 777+
+chmod 777/opt/
+chmod 777/opt
+chmod 777 opt 
+cd /
+chmod 777 opt 
+sudo bash
+cd
+cd applications
+grails create-app myApp
+cd myApp
+cd ..
+ll
+cd myApp
+ll
+nautilus .
+grails --version
+grails run-app
+exit
+quit
+quit
+exiyt
+exit
+groovyConsole
+history
+history|grep i
+idea.sh
+groovyConsole
+idea.sh
+cd vineet
+cat imgFile.img
+vi imgFile.img
+idea.sh
+groovyConsole
+idea.sh
+q
+groovyConsole
+sudo apt-get install bluez python-gobject python-dbus
+sudo bash
+clr
+clear
+vim .bashrc
+sudo /etc/init.d/bluetooth restart
+sudo gedit /etc/modiles
+sudo gedit /etc/modules
+sudo gedit /etc/modules
+sudo killall bluetoothd
+sudo bluetooth --udev
+sudo bluetoothd --udev
+sudo killall bluetoothd
+bluetootgd
+cd applications
+cd myapp
+cd myApp
+cd..
+cd
+cd applications
+cd myApp
+grails run-app
+cd applications
+cd myApp
+grails run-app
+grtails create-domain-class com.ig.bc.user
+grails create-domain-class com.ig.bc.user
+idea.sh
+which java
+grails create-controller com.ig.bc.UserController
+grails run-app
+pgrep -f tomcat
+pgrep -f idea
+pgrep -f java
+grails run-app
+grails -Dport=9090 run-app
+grails run-app
+top
+history
+clear
+grails -Dserver.port=9292 run-app
+history
+idea.sh
+grails -Dport=9292 run-app
+grails -Dport=9090 run-app
+grails generate-controller User
+applications
+cd applications
+cd myApp
+grails generate-controller User
+grails generate-controller com.ig.bc.User
+netstat|grep 8080
+netstat
+idea.sh
+cd appplications
+cd applications
+cd myApp
+grails generate-view com.ig.bc.User
+grails run-app
+idea.sh
+cd applications
+cd myApp
+grails install-templates
+idea.sh
+cd applications
+cd myApp
+grails clean run-app
+grails run-app
+grails -Dport=9090 run-app
+grails -Dserver.port=9090 run-app
+grails clean;
+grails -Dserver.port=9090 run-app
+grails generate-all com.ig.bc.User
+grails clean;
+cd
+ll
+cd applications/
+cd myApp/
+ll
+grails run-app
+cd
+cd Downloads
+ll
+cd utorrent-server-3.0-ubuntu-10.10-27079.tar.gz
+cd utorrent-server-v3_0
+utserver.exe
+utserver
+install utserver
+install utserver -apt
+
+apt-get install utserver
+cd applications
+cd myApp
+idea.sh
+which idea sh
+which idea.sh
+ifconfig
+bash sudo
+sudo bash
+passwd
+ls
+cp ideaIU-11.1.3.tar.gz /opt/
+cd /opt
+ll
+rm idea
+tar -xvzf ideaIU-11.1.3.tar.gz
+ls
+ln -s idea-IU-117.798/ idea
+q
+xc
+c
+clear
+quit
+exit
+sudo bash
+exit
+idea.sh
+sudo bash
+vineet%^&
+mysql
+which ktorrent
+vim /boot/grub/grub.cfg
+groovyConsole
+uname -a
+cd ..
+git clone git@git.intelligrape.net:vineet-bootcamp.git
+rm -rf vineet-bootcamp/
+cd
+cd .ssh/
+ls
+cat id_rsa.pub 
+clear
+ssh-keygen 
+cat id_rsa.pub 
+man ssh-add
+CD
+cd
+ll
+cd bootcamp/
+du -sh
+du -sh *
+cd vineet
+ll
+cd..
+cd
+cd bootcamp
+git status
+git add -A
+git status
+git commit -A
+git commit -m "commitedgit commit -A"
+git status
+git push origin master
+git --hard 
+ll
+git status
+nautilus.
+git status
+git log
+git status
+git pull
+git pull origin master
+cat>demo
+cat demo
+git status
+git add .
+git status
+git commit -m'test commit'
+git status
+git push origin master
+ll
+cd vineet/
+ll
+alias ll
+git status
+ll
+du -sh *
+cd ..
+du -sh *
+git log -1
+git push origin master
+ll
+du -sh *
+git reset --hard
+du -sh *
+git reset --hard HEAD^2
+git reset --hard HEAD^1
+git status
+du -sh *
+git remote -v
+ll
+du -sh .
+ll
+du -sh *
+cd .git/
+ll
+du -sh *
+ll
+cd ..
+ll
+rm -rf .git
+ll
+git init
+git remote add origin git@git.intelligrape.net:vineet-bootcamp
+git status
+git add .
+git commit -m "Made first commit and added gitignor"
+git status
+git push origin master
+git remote
+git status
+git push origin master

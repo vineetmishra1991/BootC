@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xmlns:cache="http://www.springframework.org/schema/cache" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+   <!--<context:component-scan base-package="apackage"/>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <cache:annotation-driven/>
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcache"></property>
+    </bean>
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="file:grails-app/conf/ehcache.xml"/>
+    </bean>
+
+
+    <context:component-scan base-package="net.thoughtforge.service"/>-->
+    <!--<context:load-time-weaver/>-->
+
+
+    <!--&lt;!&ndash; this is the object that will be proxied by Spring's AOP infrastructure &ndash;&gt;
+    <bean id="fooService" class="com.service.DefaultFooService"/>
+
+    &lt;!&ndash; this is the actual advice itself &ndash;&gt;
+    <bean id="profiler" class="apackage.SimpleProfiler"/>
+
+
+    <aop:config>
+        <aop:aspect ref="profiler">
+
+            <aop:pointcut id="theExecutionOfSomeFooServiceMethod"
+                          expression="execution(* com.service.DefaultFooService.getFoo(String,int)) and args(name, age)"/>
+
+            <aop:around method="profile" pointcut-ref="theExecutionOfSomeFooServiceMethod"/>
+
+
+        </aop:aspect>
+    </aop:config>
+-->
+</beans>
+
+
+        <!--<aop:aspectj-autoproxy proxy-target-class="true">
+
+       </aop:aspectj-autoproxy>
+       <context:component-scan base-package="apackage"></context:component-scan>-->

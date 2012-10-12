@@ -1,0 +1,17 @@
+<!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
+
+<aspectj>
+	<weaver>
+		<!-- only weave classes in our application-specific packages -->
+		<include within="net.thoughtforge.service.*"/>
+	</weaver>
+	<aspects>
+		<!-- weave in just this aspect -->
+		<concrete-aspect name="profilingAspect"
+				extends="net.thoughtforge.aspect.ProfilingAspect">
+				
+			<pointcut name="profilingPointcut"
+					expression="execution(* *(..)) &amp;&amp; @annotation(net.thoughtforge.aspect.Profilable)"/>
+		</concrete-aspect>
+	</aspects>
+</aspectj>

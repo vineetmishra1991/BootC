@@ -1,0 +1,17 @@
+ def test() {                                                                                                                                           
+     List<Question> questions = Question.list(max: 2, offset: 2)
+     render questions
+
+leave 2(offset) records of the question list obtained and then show max (2) records(start showinf from 3rd record),
+           
+offset means from where to start showing the records and then next time if in paginate tag                               
+    
+, suppose total records are 10 then the offset initially was 2 and 2 (max)records displayed ie 4 records are displayed..                        
+     
+paginate tag will now set offset to 4 automatically and then 2 more elements would be displayed(max)..                                           
+     
+and similarly the paginate tag will manage , if no paginate tag is used then                                                                     
+     
+we need to explicitly generate the offset...                                                                                                     
+    
+which is offset=max + offset                                                                                                                     
