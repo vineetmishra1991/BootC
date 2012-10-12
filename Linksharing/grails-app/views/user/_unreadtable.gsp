@@ -6,7 +6,7 @@
             type:"GET",
             url:url,
             dataType:"JSON",
-            data:{'item':$("#" + newId).val()}
+            data:{'item':$("#" + newId).val()}                            {
         }).done(function (data) {
                     if (data) {
                         $("#" + id).hide();
